@@ -28,7 +28,7 @@ class UsersSeeder extends Seeder
                 ],
 
                 [
-                    'nama_user'=>'Unicef',
+                    'nama_user'=>'Unicef Indonesia',
                     'alamat_user'=>'Jl. Jenderal Sudirman No.Kav. 29-31, RT.8/RW.3, Kuningan, Karet, Kecamatan Setiabudi, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12920',
                     'foto_profil'=>'unicef.png',
                     'nomor_telepon'=>628987654321,
