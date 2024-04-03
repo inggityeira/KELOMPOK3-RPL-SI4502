@@ -8,6 +8,6 @@
 
 @section('content')
 {{-- ISI KONTEN KALIAN DIBAWAH INI --}}
-DETAIL KEGIATAN
+Detail
 
 @endsection
