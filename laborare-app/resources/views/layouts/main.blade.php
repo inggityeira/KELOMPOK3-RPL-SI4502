@@ -16,16 +16,21 @@
             font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
             color: white;
         }
+        #main-content {
+            min-height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
     </style>
 
     @stack('css')
 </head>
 
 <body>
-    
+
     <section id="main-content">
         @include('layouts.navbar')
-    
+
         @yield('content')
     </section>
 

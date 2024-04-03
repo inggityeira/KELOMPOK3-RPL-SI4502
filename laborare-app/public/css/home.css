@@ -1,0 +1,143 @@
+#img-home {
+    position: relative;
+
+    position: relative;
+    width: 100%;
+    height: 724px;
+    overflow: hidden;
+  }
+
+  #img-home::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 350px;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 10));
+    z-index: 2;
+}
+
+
+#gerakan-text {
+    position: absolute;
+    bottom: 200px;
+    left: 50%;
+    transform: translateX(-50%);
+    word-spacing: 4.5px;
+
+    z-index: 3; /* Memastikan teks berada di atas gradien */
+}
+
+#btn-cari-kegiatan {
+    position: absolute;
+    bottom: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+    background-color: white;
+    font-size: 15px;
+}
+
+
+#about-text-image {
+    text-align:justify;
+    position: absolute;
+    bottom: 5%;
+    right: 1%;
+    z-index: 3;
+}
+
+#text-gerakan-sukarelawan {
+    padding: 122px;
+}
+
+#btn-selengkapnya {
+    padding: 92px;
+
+}
+
+#btn-selengkapnya a {
+    width: 432px;
+    height: 63px;
+    line-height: 63px; /* untuk mengatur teks di tengah */
+    font-size: 16px;
+    text-align: center;
+    border: none;
+    text-decoration: none;
+    color: black;
+    background-color: white;
+}
+
+
+.home-2 {
+    padding: 25px 0;
+    position: relative;
+    width: 100%;
+    height: 804px; /* Contoh tinggi 400px, sesuaikan dengan kebutuhan Anda */
+    overflow: hidden; /* Menghindari gambar keluar dari div jika terlalu besar */
+}
+
+.home-2 img {
+    width: 100%;
+}
+
+
+.home-2 .text-on-image {
+    position: absolute;
+    left: 116px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 24px;
+    color: white;
+    padding: 10px;
+}
+
+.text-on-image p {
+    padding: 24px 0;
+    font-size: 16px;
+}
+
+.btn-bergabung {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: white;
+    color: black;
+    border: none;
+    border-radius: 1px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+
+.home-3 {
+    font-family: 'Times New Roman', Times, serif;
+    margin-top: 25px;
+    position: relative;
+    width: 100%;
+    height: 408px; /* Contoh tinggi 400px, sesuaikan dengan kebutuhan Anda */
+    overflow: hidden; /* Menghindari gambar keluar dari div jika terlalu besar */
+}
+
+.home-3 img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Memotong gambar untuk mengisi div */
+    object-position: center; /* Pusatkan gambar di dalam div */
+}
+
+.text-home-3 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+}
+
+
+.kegiatan-kami {
+    margin-top: 150px;
+}
