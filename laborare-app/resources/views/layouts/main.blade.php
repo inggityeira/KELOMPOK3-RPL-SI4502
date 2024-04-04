@@ -20,7 +20,10 @@
             min-height: 100%;
             display: flex;
             flex-direction: column;
-        }
+        }
+        .nav-link.active {
+            text-decoration: underline;
+        }
     </style>
 
     @stack('css')
