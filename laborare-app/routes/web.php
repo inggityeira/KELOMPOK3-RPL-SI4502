@@ -81,3 +81,13 @@ Route::get('/profil-Org', function () {
 Route::get('/editprofil-Org', function () {
     return view('profil.editorganisasi');
 });
+
+// donasi
+Route::get('/listdonasi-Ind', function () {
+    return view('donasi-ind.listdonasi');
+});
+
+// poin
+Route::get('/jumlahpoin', function () {
+    return view('poin.jumlahpoin');
+});

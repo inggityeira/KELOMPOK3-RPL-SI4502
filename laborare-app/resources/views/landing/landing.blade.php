@@ -21,14 +21,17 @@
 <body>
     <nav class="navbar navbar-expand-lg bg-transparent" style="margin-right: 3%;">
         <div class="navbar-nav" style="font-size: 18px;">
-            <h2><img src="/img/LOGO.png" alt="Laborare" style=" width:70%;"></h2> 
-            <a class="nav-link position-absolute start-50" aria-current="page" href="/timkami" style="color: white; margin-top: 1%;"><strong>TIM KAMI</strong></a>
-            <a class="btn position-absolute end-0" style="background-color:white; color:black; font-weight: 600;  margin-top: 1%; " aria-current="page" href="/signup"><strong>MASUK</strong></a>
+            <a href="/"><h2><img src="/img/LOGO.png" alt="Laborare" style=" width:70%;"></h2></a> 
+            <a class="nav-link position-absolute start-50" aria-current="page" href="/timkami" style="color: white; margin-top: 1%; letter-spacing:5px;"><strong>TIM KAMI</strong></a>
+            <a class="btn position-absolute end-0" style="background-color:white; color:black; margin-top: 1%; " aria-current="page" href="/masuk"><strong>MASUK</strong></a>
         </div>
     </nav>
     
     <div class="background-image" style="background-image: url('/img/landing.png'); height: 550px; background-size: cover; background-position: center; margin-top: -2%;">
-        <!-- Isi div ini -->
+        <h1 style="color: white; font-size: 700%; margin-left:2%; position: absolute; bottom: 45%; line-height: 0.7;"><strong>Selamat<br>Datang.</strong></h1>
+        <a class="btn" style="background-color:white; color:black; font-size:110%; margin-left:2%; border-radius: 0%; width:13%; letter-spacing:5px; position: absolute; bottom: 25%;" aria-current="page" href="/daftar"><strong>AYO MULAI!</strong></a>
+        
+
     </div>    
 
 </body>
