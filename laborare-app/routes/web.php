@@ -23,6 +23,7 @@ Route::middleware(['alreadyLoggedIn'])->group(function () {
     Route::get('/timkami', [AuthManager::class, 'timkami']);
     Route::get('/masuk', [AuthManager::class, 'masuk'])->name('masuk');
     Route::post('/user-masuk', [AuthManager::class, 'userMasuk'])->name('user-masuk');
+    Route::post('/user-daftar', [AuthManager::class, 'userDaftar'])->name('user-daftar');
 });
 
 Route::get('/logout', [AuthManager::class, 'logout']);

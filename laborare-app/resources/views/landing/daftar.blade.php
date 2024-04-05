@@ -30,7 +30,7 @@
     <div class="background-image d-flex flex-column justify-content-center align-items-center" style="background-image: url('/img/register.png');  background-size: 100% 100%;  background-position: center; margin-top: -2%;">
         <h1 style="color: white; margin-top:20px; font-size:50px; letter-spacing:7px;"><strong>DAFTAR</strong></h1>
         <div class="d-flex flex-column justify-content-center align-items-center" style="width: 55%; margin-top: 2%; background:black; border-radius: 10px;">
-            <form class="row g-3" enctype="multipart/form-data" style="width: 90%; margin-top: 2%;">
+            <form class="row g-3" enctype="multipart/form-data" style="width: 90%; margin-top: 2%;" action="{{route('user-daftar')}}" method="POST">
                 @if(Session::has('success'))
                 <div class="alert alert-success">{{Session::get('success')}}</div>
                 @endif

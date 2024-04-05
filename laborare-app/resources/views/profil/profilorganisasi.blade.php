@@ -13,7 +13,12 @@
 @endphp
 
     <center>
-        <div class="bg-secondary rounded-circle mb-3" style="width: 150px; height: 150px;"></div>
+        @if($user->foto_profil != null)
+            <img src="{{asset('fotoprofil/'.$user->foto_profil)}}" alt="Profile" style="border-radius: 50%; width: 150px; height: 150px;">
+        @else
+            <img src="{{asset('fotoprofil/kosong.png')}}" alt="Profile" style="border-radius: 50%; width: 150px; height: 150px;">
+        @endif
+
         <h1 class="fw-bolder text-uppercase" style="font-size: 48px">{{ $user->nama_user }}</h1>
         <p style="width: 46%">{{ $user->alamat_user }}</p>
     </center>

@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Session;
 
 class AuthManager extends Controller
 {
-    // halaman
+    // HALAMAN
     public function home()
     {
         return view('home');
@@ -37,7 +37,7 @@ class AuthManager extends Controller
         return view('landing.daftar');
     }
 
-    // masuk database
+    // LOGIN
     public function userMasuk(Request $request)
     {
 
@@ -63,6 +63,41 @@ class AuthManager extends Controller
             return back()->with('fail', 'Email ini belum terdaftar.');
         }
 
+    }
+
+    // REGISTER
+    public function userDaftar(Request $request)
+    {
+        $request->validate([
+            'nama_user'=>'required',
+            'alamat_user'=>'required',
+            'nomor_telepon'=>'required',
+            'email'=>'required|email|unique:users',
+            'password'=>'required|min:5|max:12'
+        ]);
+
+        $user= new User();
+        $user->nama_user = $request->nama_user;
+        $user->alamat_user = $request->alamat_user;
+        $user->nomor_telepon = $request->nomor_telepon;
+        $user->email = $request->email;
+        $user->password = Hash::make($request->password);
+        $user->peran_user = 'Individu';
+
+        if ($request->hasFile('foto_profil')) {
+            $request->file('foto_profil')->move('fotoprofil/', $request->file('foto_profil')->getClientOriginalName());
+            $user->foto_profil = $request->file('foto_profil')->getClientOriginalName();
+        }
+
+        // $request->file('foto_profil')->move('fotoprofil/', $request->file('foto_profil')->getClientOriginalName());
+        // $user->foto_profil = $request->file('foto_profil')->getClientOriginalName();
+        
+        $daftar = $user->save();
+        if($daftar){
+            return back()->with('success', 'You have successfully signed up.');
+        }else{
+            return back()->with('fail', 'Something wrong.');
+        }
     }
 
     // Logout
