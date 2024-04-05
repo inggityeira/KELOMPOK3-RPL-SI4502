@@ -18,6 +18,19 @@
             @else
                 <a class="{{ Request::is('listsukarelawan*') ? 'nav-link active' : 'nav-link' }} mx-5" aria-current="page" href="/listsukarelawan" style="color: white; margin-top: -18px;"><strong>REKRUITASI</strong></a>
             @endif --}}
+            @php
+                $user = \App\Models\User::where('id_user', session('loginId'))->first();
+            @endphp
+            @if($user)
+                <div class="card-header">{{ $user->nama_user }}</div>
+
+                <div class="card-body">
+                    <div class="form-group">
+                        <label>Peran User:</label>
+                        <p>{{ $user->peran_user }}</p>
+                    </div>
+                </div>
+            @endif
         </li>
         <li class="nav-item">
             <a class="navbar-nav ml-auto d-flex flex-column align-items-center justify-content-center" style="margin-right: -70%; margin-top:-8%; text-decoration: none;" href="/profil-Ind">

@@ -15,14 +15,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 // landing
+Route::get('/', [AuthManager::class, 'landing'])->middleware('alreadyLoggedIn');
+Route::get('/masuk', [AuthManager::class, 'masuk'])->name('masuk')->middleware('alreadyLoggedIn');
+Route::post('/user-masuk', [AuthManager::class, 'userMasuk'])->name('user-masuk')->middleware('alreadyLoggedIn');
+Route::get('/daftar', [AuthManager::class, 'daftar'])->middleware('alreadyLoggedIn');
+Route::get('/timkami', [AuthManager::class, 'timkami'])->middleware('alreadyLoggedIn');
 
-Route::get('/', [AuthManager::class, 'landing']);
-Route::get('/masuk', [AuthManager::class, 'masuk']);
-Route::get('/daftar', [AuthManager::class, 'daftar']);
-Route::get('/timkami', [AuthManager::class, 'timkami']);
-Route::get('/home', [AuthManager::class, 'home']);
+Route::get('/home', [AuthManager::class, 'home'])->middleware('AuthCheck');
 
-Route::post('/user-masuk', [AuthManager::class, 'userMasuk'])->name('user-masuk');
 
 // kegiatan individu
 Route::get('/carikegiatan', function () {

@@ -9,6 +9,9 @@
 
 @section('content')
 {{-- ISI KONTEN KALIAN DIBAWAH INI --}}
+
+
+
 <div id="img-home">
     <img src="img/home.png" class="img-fluid" alt="home.png">
     <p id="gerakan-text" class="fw-bolder">G E R A K A N &nbsp; B E R B A G I &nbsp; 2 0 2 4</p>
