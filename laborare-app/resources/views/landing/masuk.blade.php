@@ -26,8 +26,9 @@
         </div>
     </nav>
 
-    <div class="background-image d-flex flex-column justify-content-center align-items-center" style="background-image: url('/img/masuk.png'); height: 550px; background-size: cover; background-position: center; margin-top: -2%;">
-        <form style="width: 35%;" action="{{route('user-masuk')}}" method="POST">
+    <div class="background-image d-flex flex-column justify-content-center align-items-center" style="background-image: url('/img/masuk.png'); height: 570px; background-size: 100% 100%; background-position: center; margin-top: -2%;">
+        <h1 style="color: white; margin-top:20px; font-size:50px; letter-spacing:7px;"><strong>MASUK</strong></h1>
+        <form style="width: 40%;" action="{{route('user-masuk')}}" method="POST">
 
             @if(Session::has('success'))
             <div class="alert alert-success">{{Session::get('success')}}</div>
