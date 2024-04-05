@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -38,17 +39,29 @@ class AuthManager extends Controller
     // masuk database
     public function userMasuk(Request $request)
     {
-        $credentials = $request->validate([
-            'email'=>'required|email:dns',
+
+        $request->validate([
+            'email'=>'required|email',
             'password'=>'required|min:5|max:20'
         ]);
 
-        if(Auth::attempt($credentials)) {
-            // $request->session()->regenerate();
-            return redirect()->intended('/home');
+        $user = User::where('email', '=', $request->email)->first();
+        if($user){
+            if(Hash::check($request->password, $user->password)){
+                $request->session()->put('loginId', $user->id_user);
+                if ($request->has('remember')){
+                    $minutes=1440;
+                    $response = new Response('Set Cookie');
+                    $response->withCookie(cookie('remember_token', $user->getRememberToken(), $minutes));
+                }
+                return redirect('home');
+            } else {
+                return back()->with('fail', 'Password yang anda masukan salah.');
+            }
+        }else{
+            return back()->with('fail', 'Email ini belum terdaftar.');
         }
 
-        return back()->with('loginError', 'Anda tidak bisa masuk!');
     }
 
 }
