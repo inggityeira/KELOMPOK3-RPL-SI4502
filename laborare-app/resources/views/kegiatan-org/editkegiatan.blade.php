@@ -84,8 +84,10 @@ EDIT KEGIATAN
 
     <label for="activityCategory">Kategori Kegiatan</label>
     <select id="activityCategory" name="activityCategory">
-      <option value="category1">Category 1</option>
-      <option value="category2">Category 2</option>
+      <option value="category1">Pendidikan</option>
+      <option value="category2">Lingkungan</option>
+      <option value="category3">Sosial</option>
+      <option value="category4">Kesehatan</option>
     </select>
 
     <label for="activityDescription">Deskripsi Kegiatan</label>
