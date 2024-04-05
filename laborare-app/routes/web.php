@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthManager;
+use App\Http\Controllers\Organisasi;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -64,13 +65,9 @@ Route::get('/editprofil-Ind', function () {
 });
 
 // profil organisasi
-Route::get('/profil-Org', function () {
-    return view('profil.profilindividu');
-});
-
-Route::get('/editprofil-Org', function () {
-    return view('profil.editorganisasi');
-});
+Route::get('/profil-Org/{id}', [Organisasi::class, 'index'])->name('profil-organisasi');
+Route::get('/editprofil-Org/{id}', [Organisasi::class, 'edit'])->name('edit-organisasi');
+Route::post('/updateprofil-Org/{id}', [Organisasi::class, 'update'])->name('update-organisasi');
 
 // donasi
 Route::get('/listdonasi-Ind', function () {
