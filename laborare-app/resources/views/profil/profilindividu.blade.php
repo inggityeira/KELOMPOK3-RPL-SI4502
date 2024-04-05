@@ -47,7 +47,7 @@
         </div>
         <div class="form-group mt-4">
             <a href="/editprofil-Ind" type="submit" class="btn btn-light mr-2">Edit</a>
-            <a href="" type="submit" class="btn btn-danger">Keluar</a>
+            <a href="/logout" type="submit" class="btn btn-danger">Keluar</a>
         </div>
     </form>
 </div>
@@ -58,5 +58,5 @@
 
 
 
-    
+
 @endsection

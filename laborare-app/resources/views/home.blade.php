@@ -108,7 +108,7 @@
     <div class="row mt-5">
       <div class="col-sm">
         <div class="card border-0 rounded-0" style="width: 19rem;">
-          <img class="card-img-top" src="img/1.1.png" alt="Card image cap"  height="237px">
+          <img class="card-img-top" src="img/1.1.jpg" alt="Card image cap"  height="237px">
           <div class="card-body">
             <p class="card-text fw-bolder">Sukarelawan, <br> Senyum Untuk Semua</p>
           </div>
@@ -116,7 +116,7 @@
       </div>
       <div class="col-sm">
         <div class="card border-0 rounded-0" style="width: 19rem;">
-          <img class="card-img-top" src="img/1.2.png" alt="Card image cap"  height="237px">
+          <img class="card-img-top" src="img/1.2.jpg" alt="Card image cap"  height="237px">
           <div class="card-body">
             <p class="card-text fw-bolder">Bersama, <br> Kita Bisa Membuat Perbedaan</p>
           </div>
@@ -124,7 +124,7 @@
       </div>
       <div class="col-sm">
         <div class="card border-0 rounded-0" style="width: 19rem;">
-          <img class="card-img-top" src="img/1.3.png" alt="Card image cap"  height="237px">
+          <img class="card-img-top" src="img/1.3.jpg" alt="Card image cap"  height="237px">
           <div class="card-body">
             <p class="card-text fw-bolder">Bersama, <br> Bisa Merasakan Hal Yang Sama</p>
           </div>
