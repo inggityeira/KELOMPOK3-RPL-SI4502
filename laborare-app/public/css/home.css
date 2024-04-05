@@ -60,7 +60,7 @@
 #btn-selengkapnya a {
     width: 432px;
     height: 63px;
-    line-height: 63px; /* untuk mengatur teks di tengah */
+    line-height: 63px;
     font-size: 16px;
     text-align: center;
     border: none;
