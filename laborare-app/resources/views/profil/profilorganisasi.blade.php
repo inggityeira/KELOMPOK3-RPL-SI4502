@@ -35,7 +35,7 @@
             </div>
             <div class="form-group float-end mt-4">
                 <button type="submit" class="btn btn-outline-light px-4">Edit</button>
-                <a class="btn btn-danger px-3 ms-2">Keluar</a>
+                <a class="btn btn-danger px-3 ms-2" href="/logout">Keluar</a>
             </div>
         </form>
     </div>
