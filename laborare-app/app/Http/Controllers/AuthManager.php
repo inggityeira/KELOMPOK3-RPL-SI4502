@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 
 class AuthManager extends Controller
 {
@@ -62,6 +63,15 @@ class AuthManager extends Controller
             return back()->with('fail', 'Email ini belum terdaftar.');
         }
 
+    }
+
+    // Logout
+    public function logout()
+    {
+        if (Session::has('loginId')){
+            Session::pull('loginId');
+            return redirect('/');
+        }
     }
 
 }

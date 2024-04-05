@@ -25,6 +25,7 @@ Route::middleware(['alreadyLoggedIn'])->group(function () {
     Route::post('/user-masuk', [AuthManager::class, 'userMasuk'])->name('user-masuk');
 });
 
+Route::get('/logout', [AuthManager::class, 'logout']);
 Route::get('/home', [AuthManager::class, 'home'])->middleware('AuthCheck');
 
 // ORGANISASI

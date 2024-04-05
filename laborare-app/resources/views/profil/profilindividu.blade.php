@@ -42,7 +42,7 @@
                 </div>
             <div class="form-group mt-4">
                 <button type="submit" class="btn btn-light mr-2">Edit</button>
-                <button type="submit" class="btn btn-danger">Keluar</button>
+                <a href="/logout" class="btn btn-danger">Keluar</a>
             </div>
         </form>
     </div>
