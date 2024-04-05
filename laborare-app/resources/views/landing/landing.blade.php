@@ -30,8 +30,6 @@
     <div class="background-image" style="background-image: url('/img/landing.png'); height: 550px; background-size: cover; background-position: center; margin-top: -2%;">
         <h1 style="color: white; font-size: 700%; margin-left:2%; position: absolute; bottom: 45%; line-height: 0.7;"><strong>Selamat<br>Datang.</strong></h1>
         <a class="btn" style="background-color:white; color:black; font-size:110%; margin-left:2%; border-radius: 0%; width:13%; letter-spacing:5px; position: absolute; bottom: 25%;" aria-current="page" href="/daftar"><strong>AYO MULAI!</strong></a>
-        
-
     </div>    
 
 </body>
