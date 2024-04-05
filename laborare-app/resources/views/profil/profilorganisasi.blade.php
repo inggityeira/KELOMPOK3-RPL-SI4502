@@ -8,6 +8,10 @@
 
 @section('content')
 {{-- ISI KONTEN KALIAN DIBAWAH INI --}}
+@php
+    $user = \App\Models\User::where('id_user', session('loginId'))->first();
+@endphp
+
     <center>
         <div class="bg-secondary rounded-circle mb-3" style="width: 150px; height: 150px;"></div>
         <h1 class="fw-bolder text-uppercase" style="font-size: 48px">{{ $user->nama_user }}</h1>
