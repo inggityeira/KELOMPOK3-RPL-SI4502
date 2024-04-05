@@ -36,13 +36,6 @@
             @if(Session::has('fail'))
             <div class="alert alert-danger">{{Session::get('fail')}}</div>
             @endif
-            
-            {{-- @if(session()->has('loginError'))
-            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                {{session('loginError')}}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-            @endif --}}
 
             @csrf
 
@@ -61,10 +54,10 @@
                 <input type="password" class="form-control" name="password" placeholder="Masukan Password disini" style="border-radius: 8px; background: white;">
             </div>
 
-            {{-- <div class="form-check mb-3">
+            <div class="form-check mb-3">
                 <input class="form-check-input" type="checkbox" name="remember" id="rememberPasswordCheck">
                 <label class="remember-me form-check-label second-text" for="rememberPasswordCheck" style="color: white;">Ingat Aku</label>
-            </div> --}}
+            </div>
 
             <div class="button-login d-grid mb-5">
                 <button class="btn btn-lg  text-black btn-login fw-bold" type="submit" style="background-color:#E5EFF8; font-size: 15px;">Masuk</button>

@@ -9,13 +9,20 @@
 
 @section('content')
 {{-- ISI KONTEN KALIAN DIBAWAH INI --}}
-
-
+@php
+    $user = \App\Models\User::where('id_user', session('loginId'))->first();
+@endphp
 
 <div id="img-home">
     <img src="img/home.png" class="img-fluid" alt="home.png">
     <p id="gerakan-text" class="fw-bolder">G E R A K A N &nbsp; B E R B A G I &nbsp; 2 0 2 4</p>
-    <a href="" id="btn-cari-kegiatan" class="btn btn-white fw-bolder rounded-0">CARI KEGIATAN</a>
+    @if($user)
+      @if($user->peran_user == 'Organisasi')
+        <a href="/listbaru-Org" id="btn-cari-kegiatan" class="btn btn-white fw-bolder rounded-0">KEGIATAN</a>  
+      @elseif($user->peran_user == 'Individu')
+        <a href="/listkegiatan-Ind" id="btn-cari-kegiatan" class="btn btn-white fw-bolder rounded-0">CARI KEGIATAN</a>  
+      @endif
+    @endif
 
     <div id="about-text-image">
       <h1 class="fs-6 text-white" >L A B O R A R E</h1>
@@ -28,7 +35,7 @@
   </div>
 
   <div id="text-gerakan-sukarelawan" class="d-flex justify-content-center">
-    <h3 class="fw-bolder">G e r a k a n &nbsp; S u k a r e l a w a n &nbsp; T e r a t a s</h3>
+    <h3 class="fw-bolder">G e r a k a n &nbsp; S u k a r e l a w a n</h3>
   </div>
 
   <div class="container">
@@ -49,7 +56,13 @@
   </div>
 
   <div id="btn-selengkapnya" class="d-flex justify-content-center container">
-      <a href="" class="fw-bold">Lihat Selengkapnya</a>
+    @if($user)
+      @if($user->peran_user == 'Organisasi')
+        <a href="/listbaru-Org" class="fw-bold">Lihat Selengkapnya</a>  
+      @elseif($user->peran_user == 'Individu')
+        <a href="/listkegiatan-Ind" class="fw-bold">Lihat Selengkapnya</a>
+      @endif
+    @endif
   </div>
 
 
@@ -65,7 +78,14 @@
          Kami yang bersemangat dan berkomitmen dalam membawa <br>
          perubahan positif. Bergabunglah sekarang dan jadilah bagian <br>
          dari gerakan kami menuju dunia yang lebih baik!</p>
-      <a href="" class="btn-bergabung">Bergabung Sebagai Sukarelawan</a>
+      
+      @if($user)
+        @if($user->peran_user == 'Organisasi')
+          <a href="/listbaru-Org" class="btn-bergabung">Bergabung Bersama Kami</a>
+        @elseif($user->peran_user == 'Individu')
+          <a href="/listkegiatan-Ind" class="btn-bergabung">Bergabung Bersama Kami</a>
+        @endif
+      @endif
   </div>
   </div>
 

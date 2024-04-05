@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Symfony\Component\HttpFoundation\Response;
 
-class Organisasi
+class Individu
 {
     /**
      * Handle an incoming request.
@@ -19,7 +19,7 @@ class Organisasi
     {
         $user = User::where('id_user', Session::get('loginId'))->first();
 
-        if ($user->peran_user == 'Organisasi') {
+        if ($user->peran_user == 'Individu') {
             return $next($request);
         }
 

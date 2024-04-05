@@ -56,6 +56,7 @@ class Kernel extends HttpKernel
         'AuthCheck' => \App\Http\Middleware\AuthCheck::class,
         'alreadyLoggedIn' => \App\Http\Middleware\AlreadyLoggedIn::class,
         'organisasi' => \App\Http\Middleware\Organisasi::class,
+        'individu' => \App\Http\Middleware\Individu::class,
         'auth' => \App\Http\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'auth.session' => \Illuminate\Session\Middleware\AuthenticateSession::class,
