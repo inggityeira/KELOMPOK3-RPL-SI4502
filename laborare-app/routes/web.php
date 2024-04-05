@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthManager;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,25 +15,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 // landing
-Route::get('/', function () {
-    return view('landing.landing');
-});
 
-Route::get('/masuk', function () {
-    return view('landing.masuk');
-});
+Route::get('/', [AuthManager::class, 'landing']);
+Route::get('/masuk', [AuthManager::class, 'masuk']);
+Route::get('/daftar', [AuthManager::class, 'daftar']);
+Route::get('/timkami', [AuthManager::class, 'timkami']);
+Route::get('/home', [AuthManager::class, 'home']);
 
-Route::get('/daftar', function () {
-    return view('landing.daftar');
-});
-
-Route::get('/timkami', function () {
-    return view('landing.timkami');
-});
-
-Route::get('/home', function () {
-    return view('home');
-});
+Route::post('/user-masuk', [AuthManager::class, 'userMasuk'])->name('user-masuk');
 
 // kegiatan individu
 Route::get('/carikegiatan', function () {
@@ -90,4 +80,9 @@ Route::get('/listdonasi-Ind', function () {
 // poin
 Route::get('/jumlahpoin', function () {
     return view('poin.jumlahpoin');
+});
+
+// rekruitasi
+Route::get('/listsukarelawan', function () {
+    return view('rekruitasi.listsukarelawan');
 });
