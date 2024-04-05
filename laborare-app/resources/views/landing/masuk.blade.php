@@ -29,12 +29,20 @@
     <div class="background-image d-flex flex-column justify-content-center align-items-center" style="background-image: url('/img/masuk.png'); height: 550px; background-size: cover; background-position: center; margin-top: -2%;">
         <form style="width: 35%;" action="{{route('user-masuk')}}" method="POST">
 
-            @if(session()->has('loginError'))
+            @if(Session::has('success'))
+            <div class="alert alert-success">{{Session::get('success')}}</div>
+            @endif
+
+            @if(Session::has('fail'))
+            <div class="alert alert-danger">{{Session::get('fail')}}</div>
+            @endif
+            
+            {{-- @if(session()->has('loginError'))
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
                 {{session('loginError')}}
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
-            @endif
+            @endif --}}
 
             @csrf
 
