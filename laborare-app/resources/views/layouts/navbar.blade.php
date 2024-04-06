@@ -39,7 +39,7 @@
         <li class="nav-item">
             @if($user)
                 @if($user->peran_user == 'Organisasi')
-                    <a class="navbar-nav ml-auto d-flex flex-column align-items-center justify-content-center" style="margin-right: -70%; margin-top:-15%; text-decoration: none;" href="/profil-Org/{id}">
+                    <a class="navbar-nav ml-auto d-flex flex-column align-items-center justify-content-center" style="margin-right: -70%; margin-top:-15%; text-decoration: none;" href="/profil-Org">
                         @if($user->foto_profil != null)
                             <img src="{{asset('fotoprofil/'.$user->foto_profil)}}" alt="Profile" style="border-radius: 50%; width: 60px; height: 60px;">
                         @else
