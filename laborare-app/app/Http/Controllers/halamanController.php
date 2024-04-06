@@ -12,9 +12,11 @@ class halamanController extends Controller
         return view('kegiatan-ind.carikegiatan');
     }
 
-    public function detailkegiatanInd()
+    public function detailkegiatanInd($id)
     {
-        return view('kegiatan-ind.detailkegiatan');
+        $kegiatan = Kegiatan :: find($id);
+
+        return view('kegiatan-ind.detailkegiatan', ['kegiatan' => $kegiatan]);
     }
 
     public function listkegiatanInd()
