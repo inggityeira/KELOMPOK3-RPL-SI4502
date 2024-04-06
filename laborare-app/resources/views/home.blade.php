@@ -9,10 +9,20 @@
 
 @section('content')
 {{-- ISI KONTEN KALIAN DIBAWAH INI --}}
+@php
+    $user = \App\Models\User::where('id_user', session('loginId'))->first();
+@endphp
+
 <div id="img-home">
     <img src="img/home.png" class="img-fluid" alt="home.png">
     <p id="gerakan-text" class="fw-bolder">G E R A K A N &nbsp; B E R B A G I &nbsp; 2 0 2 4</p>
-    <a href="" id="btn-cari-kegiatan" class="btn btn-white fw-bolder rounded-0">CARI KEGIATAN</a>
+    @if($user)
+      @if($user->peran_user == 'Organisasi')
+        <a href="/listbaru-Org" id="btn-cari-kegiatan" class="btn btn-white fw-bolder rounded-0">KEGIATAN</a>
+      @elseif($user->peran_user == 'Individu')
+        <a href="/listkegiatan-Ind" id="btn-cari-kegiatan" class="btn btn-white fw-bolder rounded-0">CARI KEGIATAN</a>
+      @endif
+    @endif
 
     <div id="about-text-image">
       <h1 class="fs-6 text-white" >L A B O R A R E</h1>
@@ -25,7 +35,7 @@
   </div>
 
   <div id="text-gerakan-sukarelawan" class="d-flex justify-content-center">
-    <h3 class="fw-bolder">G e r a k a n &nbsp; S u k a r e l a w a n &nbsp; T e r a t a s</h3>
+    <h3 class="fw-bolder">G e r a k a n &nbsp; S u k a r e l a w a n</h3>
   </div>
 
   <div class="container">
@@ -46,7 +56,13 @@
   </div>
 
   <div id="btn-selengkapnya" class="d-flex justify-content-center container">
-      <a href="" class="fw-bold">Lihat Selengkapnya</a>
+    @if($user)
+      @if($user->peran_user == 'Organisasi')
+        <a href="/listbaru-Org" class="fw-bold">Lihat Selengkapnya</a>
+      @elseif($user->peran_user == 'Individu')
+        <a href="/listkegiatan-Ind" class="fw-bold">Lihat Selengkapnya</a>
+      @endif
+    @endif
   </div>
 
 
@@ -62,7 +78,14 @@
          Kami yang bersemangat dan berkomitmen dalam membawa <br>
          perubahan positif. Bergabunglah sekarang dan jadilah bagian <br>
          dari gerakan kami menuju dunia yang lebih baik!</p>
-      <a href="" class="btn-bergabung">Bergabung Sebagai Sukarelawan</a>
+
+      @if($user)
+        @if($user->peran_user == 'Organisasi')
+          <a href="/listbaru-Org" class="btn-bergabung fw-bolder">Bergabung Sebagai Sukarelawan</a>
+        @elseif($user->peran_user == 'Individu')
+          <a href="/listkegiatan-Ind" class="btn-bergabung fw-bolder">Bergabung Sebagai Sukarelawan</a>
+        @endif
+      @endif
   </div>
   </div>
 
@@ -84,16 +107,16 @@
   <div class="container px-4">
     <div class="row mt-5">
       <div class="col-sm">
-        <div class="card border-0 rounded-0" style="width: 18rem;">
-          <img class="card-img-top" src="img/1.1.png" alt="Card image cap"  height="237px">
+        <div class="card border-0 rounded-0" style="width: 19rem;">
+          <img class="card-img-top" src="img/1.1.jpg" alt="Card image cap"  height="237px">
           <div class="card-body">
             <p class="card-text fw-bolder">Sukarelawan, <br> Senyum Untuk Semua</p>
           </div>
         </div>
       </div>
       <div class="col-sm">
-        <div class="card border-0 rounded-0" style="width: 18rem;">
-          <img class="card-img-top" src="img/1.2.png" alt="Card image cap"  height="237px">
+        <div class="card border-0 rounded-0" style="width: 19rem;">
+          <img class="card-img-top" src="img/1.2.jpg" alt="Card image cap"  height="237px">
           <div class="card-body">
             <p class="card-text fw-bolder">Bersama, <br> Kita Bisa Membuat Perbedaan</p>
           </div>
@@ -101,7 +124,7 @@
       </div>
       <div class="col-sm">
         <div class="card border-0 rounded-0" style="width: 19rem;">
-          <img class="card-img-top" src="img/1.3.png" alt="Card image cap"  height="237px">
+          <img class="card-img-top" src="img/1.3.jpg" alt="Card image cap"  height="237px">
           <div class="card-body">
             <p class="card-text fw-bolder">Bersama, <br> Bisa Merasakan Hal Yang Sama</p>
           </div>

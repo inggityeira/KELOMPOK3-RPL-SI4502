@@ -1,0 +1,32 @@
+.listkegiatan-home {
+    position: relative;
+    width: 100%;
+    height: 408px; /* Contoh tinggi 400px, sesuaikan dengan kebutuhan Anda */
+    overflow: hidden; /* Menghindari gambar keluar dari div jika terlalu besar */
+}
+
+.listkegiatan-home img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Memotong gambar untuk mengisi div */
+    object-position: center; /* Pusatkan gambar di dalam div */
+}
+
+.text-listkegiatan-home {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+}
+
+.fill-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 25%; /* Ukuran fill 60% dari bawah */
+    background-color: rgba(0, 0, 0, 0.6); /* Warna latar belakang dengan opacity 60% */
+    z-index: 0; /* Mengatur z-index agar berada di bawah teks */
+}
