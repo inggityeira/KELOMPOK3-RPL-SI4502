@@ -7,11 +7,9 @@ use Illuminate\Http\Request;
 
 class Organisasi extends Controller
 {
-    public function index($id)
+    public function index()
     {
-        $user = User::find($id);
-
-        return view('profil.profilorganisasi', ['user' => $user]);
+        return view('profil.profilorganisasi');
     }
 
     public function edit($id)
