@@ -3,9 +3,9 @@
     $user = \App\Models\User::where('id_user', session('loginId'))->first();
 @endphp
 
-<nav class="navbar navbar-expand-lg bg-transparent" style="margin-right: 3%; margin-bottom: -2%;">
+<nav class="navbar navbar-expand-lg bg-transparent position-relative" style="margin-right: 100px; margin-bottom: -2%; height:100px;">
     <a href="/home"><h2><img src="/img/LOGO.png" alt="Laborare" style=" width:100%;"></h2></a>
-    <ul class="navbar-nav" style="font-size: 18px;  margin-left:7%; letter-spacing:5px;">
+    <ul class="navbar-nav position-absolute top-10 " style="font-size: 18px;  margin-left:350px; margin-top:-30px; letter-spacing:5px;">
         <li class="nav-item">
             <a class="{{ Request::is('home*') ? 'nav-link active' : 'nav-link' }} mx-5" aria-current="page" href="/home" style="color: white;"><strong>BERANDA</strong></a>
         </li>
@@ -36,30 +36,28 @@
                 @endif
             @endif
         </li>
-        <li class="nav-item">
-            @if($user)
-                @if($user->peran_user == 'Organisasi')
-                    <a class="navbar-nav ml-auto d-flex flex-column align-items-center justify-content-center" style="margin-right: -70%; margin-top:-15%; text-decoration: none;" href="/profil-Org">
-                        @if($user->foto_profil != null)
-                            <img src="{{asset('fotoprofil/'.$user->foto_profil)}}" alt="Profile" style="border-radius: 50%; width: 60px; height: 60px;">
-                        @else
-                            <img src="{{asset('fotoprofil/kosong.png')}}" alt="Profile" style="border-radius: 50%; width: 60px; height: 60px;">
-                        @endif
-                        <div style="color: white; letter-spacing:0px; font-size:90%;">Profil</div>
-                    </a>
-                @elseif($user->peran_user == 'Individu')
-                    <a class="navbar-nav ml-auto d-flex flex-column align-items-center justify-content-center" style="margin-right: -70%; margin-top:-8%; text-decoration: none;" href="/profil-Ind">
-                        @if($user->foto_profil != null)
-                            <img src="{{asset('fotoprofil/'.$user->foto_profil)}}" alt="Profile" style="border-radius: 50%; width: 60px; height: 60px;">
-                        @else
-                            <img src="{{asset('fotoprofil/kosong.png')}}" alt="Profile" style="border-radius: 50%; width: 60px; height: 60px;">
-                        @endif
-                        <div style="color: white; letter-spacing:0px; font-size:90%;">Profil</div>
-                    </a>
-                @endif
-            @endif
-        </li>            
     </ul>
+    @if($user)
+        @if($user->peran_user == 'Organisasi')
+            <a class="navbar-nav ml-auto d-flex flex-column align-items-center justify-content-center position-absolute top-10 start-100" style=" margin-top:-20px; text-decoration: none;" href="/profil-Org">
+                @if($user->foto_profil != null)
+                    <img src="{{asset('fotoprofil/'.$user->foto_profil)}}" alt="Profile" style="border-radius: 50%; width: 40px; height: 40px;">
+                @else
+                    <img src="{{asset('fotoprofil/kosong.png')}}" alt="Profile" style="border-radius: 50%; width: 40px; height: 40px;">
+                @endif
+                <div style="color: white; letter-spacing:0px; font-size:90%;">Profil</div>
+            </a>
+        @elseif($user->peran_user == 'Individu')
+            <a class="navbar-nav ml-auto d-flex flex-column align-items-center justify-content-center position-absolute top-10 start-100" style="margin-top:-20px; text-decoration: none;" href="/profil-Ind">
+                @if($user->foto_profil != null)
+                    <img src="{{asset('fotoprofil/'.$user->foto_profil)}}" alt="Profile" style="border-radius: 50%; width: 40px; height: 40px;">
+                @else
+                    <img src="{{asset('fotoprofil/kosong.png')}}" alt="Profile" style="border-radius: 50%; width: 40px; height: 40px;">
+                @endif
+                <div style="color: white; letter-spacing:0px; font-size:90%;">Profil</div>
+            </a>
+        @endif
+    @endif
 </nav>
 
 {{-- Nav End --}}
