@@ -9,10 +9,17 @@ class Kegiatan extends Model
 {
     use HasFactory;
 
-    protected $primaryKey = 'id_kegiatan';
-
     protected $table = 'kegiatan';
 
-    protected $guarded = [];
+    protected $primaryKey = 'id_kegiatan';
+
+    protected $fillable = [
+        'nama_kegiatan',
+        'deskripsi_kegiatan',
+        'tanggal_kegiatan',
+        'kategori_kegiatan',
+        'sampul_kegiatan',
+        'status_kegiatan'
+    ];
 }
 

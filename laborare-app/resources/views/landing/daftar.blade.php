@@ -19,11 +19,11 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg bg-transparent" style="margin-right: 3%;">
+    <nav class="navbar navbar-expand-lg bg-transparent position-relative" style="margin-right: 100px; margin-bottom: -2%; height:100px;">
         <div class="navbar-nav" style="font-size: 18px;">
-            <a href="/"><h2><img src="/img/LOGO.png" alt="Laborare" style=" width:70%;"></h2></a> 
-            <a class="nav-link position-absolute start-50" aria-current="page" href="/timkami" style="color: white; margin-top: 1%; letter-spacing:5px;"><strong>TIM KAMI</strong></a>
-            <a class="btn position-absolute end-0" style="background-color:white; color:black; margin-top: 1%; " aria-current="page" href="/masuk"><strong>MASUK</strong></a>
+            <a href="/"><h2><img src="/img/LOGO.png" alt="Laborare" style=" width:100%;"></h2></a> 
+            <a class="nav-link position-absolute start-50" aria-current="page" href="/timkami" style="color: white; margin-top: 30px; letter-spacing:5px;"><strong>TIM KAMI</strong></a>
+            <a class="btn position-absolute end-0" style="background-color:white; color:black; margin-top: 30px; " aria-current="page" href="/masuk"><strong>MASUK</strong></a>
         </div>
     </nav>
 
@@ -76,10 +76,14 @@
                 </div>
     
                 <div class="button-login d-grid mb-5">
-                    <button class="btn btn-lg btn-primary text-white btn-login fw-bold" type="submit" style="background-color:#2895F7; font-size: 15px;">Sign-Up</button>
+                    <button class="btn btn-lg  text-black btn-login fw-bold" type="submit" style="background-color:#E5EFF8; font-size: 15px;">Daftar</button>
                 </div>
-    
             </form>
+            <div>
+                <p style="color: white; font-size: 18px; font-weight: 500; text-align: center;">- ATAU -</p>
+                <p style="color: white; font-size: 15px; font-weight: 400; text-align: center;">Sudah punya akun? <a href="/masuk" class="primary-text fw-medium" style=" color:white;">Masuk</a></p>
+            </div>
+
         </div>
         <br>
     </div>
