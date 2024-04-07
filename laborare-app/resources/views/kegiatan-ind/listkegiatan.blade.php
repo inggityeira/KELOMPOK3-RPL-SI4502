@@ -11,15 +11,19 @@
 {{-- ISI KONTEN KALIAN DIBAWAH INI --}}
 
 <div class="container">
-    <div class="row">
-      <div class="col">
-        <p>Kegiatan</p>
+    <nav style="--bs-breadcrumb-divider: ;">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/listkegiatan-Ind" class="text-decoration-none text-white fw-semibold">Kegiatan</a>
+            </li>
+        </ol>
+    </nav>
+</div>
+
+<div class="container d-flex justify-content-center">
+    <p id="kegiatan-text" class="fw-bolder">KEGIATAN YANG AKAN DATANG</p>
       </div>
       <div class="col">
-        <h4>Kegiatan Yang Akan Datang</h4>
-      </div>
-      <div class="col">
-        <a href="" class="btn btn-light fw-bolder">Kegiatan yang diikuti</a>
+        <a href="" id= "btn-kegiatan-yang-diikuti" class="btn btn-light fw-bolder">Kegiatan yang diikuti</a>
       </div>
     </div>
 </div>

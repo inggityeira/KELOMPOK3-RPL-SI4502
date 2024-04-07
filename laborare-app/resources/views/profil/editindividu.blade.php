@@ -8,6 +8,3 @@
 
 @section('content')
 {{-- ISI KONTEN KALIAN DIBAWAH INI --}}
-EDIT PROFIL
-
-@endsection
