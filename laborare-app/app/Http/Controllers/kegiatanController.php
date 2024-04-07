@@ -39,5 +39,10 @@ class kegiatanController extends Controller
             return back()->with('failed', 'Something wrong.');
         }
         }
+    public function openList(){
+        $keggiatan = keggiatan::all();
+
+        return view('keggiatan.listKeggiatan', compact('keggiatan'));
+    }
     }
 
