@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kegiatan;
 use Illuminate\Http\Request;
 
 class halamanController extends Controller
@@ -12,9 +13,10 @@ class halamanController extends Controller
         return view('kegiatan-ind.carikegiatan');
     }
 
-    public function detailkegiatanInd()
-    {
-        return view('kegiatan-ind.detailkegiatan');
+    public function detailkegiatanInd($id_kegiatan)
+    { 
+        $kegiatan = Kegiatan::find($id_kegiatan);
+        return view('kegiatan-ind.detailkegiatan', ['kegiatan' => $kegiatan]);
     }
 
     public function listkegiatanInd()
