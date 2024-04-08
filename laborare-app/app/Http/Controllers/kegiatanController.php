@@ -49,5 +49,29 @@ class kegiatanController extends Controller
         $organisasi = keggiatan::findOrFail($id_kegiatan);
         return view('keggiatan.update', compact('organisasi','keggiatan'));
     }
+    public function update(Request $request, $id_kegiatan)
+    {
+        $keggiatan = kegiatan::findOrFail($id_kegiatan);
+        $keggiatan->update([
+           'id_kegiatan' => $request->id_kegiatan,
+           'nama_kegiatan' => $request->nama_kegiatan,
+           'deskripsi_kegiatan' => $request->deskripsi_kegiatan,
+           'tanggal_kegiatan' => $request->tanggal_kegiatan,
+           'kategori_kegiatan' => $request->kategori_kegiatan,
+           'sampul_kegiatan' => $request->sampul_kegiatan,
+           'status_kegiatan' => $request->status_kegiatan,
+           'created_at' => $request->created_at,
+           'updated_at' => $request->updated_at,
+        ]);
+
+        return redirect()->route('kegiatan.kegiatan')->with('Success','Data updated successfully');
+    }
+    public function delete(Request $request, $id_kegiatan)
+    {
+        $keggiatan = kegiatan::findOrFail($id_kegiatan);
+        $keggiatan->delete();
+
+        return redirect()->route('kegiatan.kegiatan')->with('Success','Data deleted successfully.');
+    }
     }
 
