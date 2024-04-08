@@ -44,5 +44,10 @@ class kegiatanController extends Controller
 
         return view('keggiatan.listKeggiatan', compact('keggiatan'));
     }
+    public function viewUpdate($id_kegiatan){
+        $keggiatan = keggiatan::all();
+        $organisasi = keggiatan::findOrFail($id_kegiatan);
+        return view('keggiatan.update', compact('organisasi','keggiatan'));
+    }
     }
 
