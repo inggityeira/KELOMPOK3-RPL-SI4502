@@ -12,6 +12,16 @@
     object-position: center; /* Pusatkan gambar di dalam div */
 }
 
+#btn-kegiatan-yang-diikuti {
+    position: absolute;
+    top: 85px;
+    right: 4%;
+    transform: translateX(-50%);
+    z-index: 3;
+    background-color: white;
+    font-size: 15px;
+}
+
 .text-kegiatan-home {
     font-family: 'Times New Roman', Times, serif;
     position: absolute;

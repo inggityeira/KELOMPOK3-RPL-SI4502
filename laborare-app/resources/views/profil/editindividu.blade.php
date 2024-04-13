@@ -7,6 +7,9 @@
 @endpush
 
 @section('content')
+<<<<<<< HEAD
+{{-- ISI KONTEN KALIAN DIBAWAH INI --}}
+=======
 <div class="container">
         <nav style="--bs-breadcrumb-divider: ;">
             <ol class="breadcrumb">
@@ -61,3 +64,4 @@
 </div>
 
 @endsection
+>>>>>>> 0cf96a657349064165e7bb61265223c5916d3f59
