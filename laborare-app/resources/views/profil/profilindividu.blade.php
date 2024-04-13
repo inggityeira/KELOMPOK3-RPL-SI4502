@@ -9,8 +9,13 @@
 @section('content')
 {{-- ISI KONTEN KALIAN DIBAWAH INI --}}
 <div class="container">
-   <a href="/profil-Ind" style="text-decoration: none; color: white;">Profile</a>
-</div>
+        <nav style="--bs-breadcrumb-divider: ;">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/profil-Ind" class="text-decoration-none text-white fw-semibold">Profil</a>
+                </li>
+            </ol>
+        </nav>
+    </div>
 
 <div class="d-flex flex-column align-items-center mt-5 text-center">
     <img src="/fotoprofil/inggit.jpg" alt="..." class="rounded-circle" width="130px" height="130px">
