@@ -88,9 +88,6 @@ class AuthManager extends Controller
             $request->file('foto_profil')->move('fotoprofil/', $request->file('foto_profil')->getClientOriginalName());
             $user->foto_profil = $request->file('foto_profil')->getClientOriginalName();
         }
-
-        // $request->file('foto_profil')->move('fotoprofil/', $request->file('foto_profil')->getClientOriginalName());
-        // $user->foto_profil = $request->file('foto_profil')->getClientOriginalName();
         
         $daftar = $user->save();
         if($daftar){

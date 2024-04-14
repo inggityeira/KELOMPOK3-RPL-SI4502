@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthManager;
 use App\Http\Controllers\halamanController;
+use App\Http\Controllers\Individu;
 use App\Http\Controllers\KegiatanInd;
 use App\Http\Controllers\Organisasi;
 use Illuminate\Support\Facades\Route;
@@ -36,12 +37,15 @@ Route::middleware(['AuthCheck', 'organisasi'])->group(function () {
     Route::get('/listbaru-Org', [halamanController::class, 'listbaruOrg']);
     Route::get('/editkegiatan-Org', [halamanController::class, 'editkegiatanOrg']);
     Route::get('/kegiatanbaru-Org', [halamanController::class, 'kegiatanbaruOrg']);
+
     // profil organisasi
     Route::get('/profil-Org', [Organisasi::class, 'index'])->name('profil-organisasi');
     Route::get('/editprofil-Org/{id}', [Organisasi::class, 'edit'])->name('edit-organisasi');
     Route::post('/updateprofil-Org/{id}', [Organisasi::class, 'update'])->name('update-organisasi');
+
     // donasi organisasi
     Route::get('/listdonasi-Org', [halamanController::class, 'listdonasiOrg']);
+
     // rekruitasi
     Route::get('/listsukarelawan', [halamanController::class, 'listsukarelawan']);
 });
@@ -51,12 +55,15 @@ Route::middleware(['AuthCheck', 'individu'])->group(function () {
     // kegiatan individu
     Route::get('/listkegiatan-Ind', [KegiatanInd::class, 'listkegiatanInd'])->name('listkegiatan-Ind');
     Route:: get('/detailkegiatan-Ind/{id}', [halamanController::class, 'detailkegiatanInd'])->name('detailkegiatan-Ind');
+
     // profil individu
-    Route::get('/profil-Ind', [halamanController::class, 'profilInd']);
-    Route::get('/editprofil-Ind', [halamanController::class, 'editprofilInd']);
-    Route::post('/editprofil-Ind', [halamanController::class, 'storeprofilInd'])->name('editprofil-Ind');
+    Route::get('/profil-Ind', [halamanController::class, 'profilInd'])->name('profil-individu');
+    Route::get('/editprofil-Ind/{id}', [Individu::class, 'editprofilInd'])->name('edit-individu');
+    Route::post('/updateprofil-Ind/{id}', [Individu::class, 'storeprofilInd'])->name('editprofil-Ind');
+
     // donasi individu
     Route::get('/listdonasi-Ind', [halamanController::class, 'listdonasiInd']);
+    
     // poin
     Route::get('/jumlahpoin', [halamanController::class, 'jumlahpoin']);
 });
