@@ -21,14 +21,6 @@ class halamanController extends Controller
         return view('kegiatan-ind.detailkegiatan', ['kegiatan' => $kegiatan]);
     }
 
-    public function listkegiatanInd()
-    {
-        $getKegiatan = Kegiatan::paginate(6);
-        return view('kegiatan-ind.listkegiatan', [
-            'kegiatan' => $getKegiatan
-        ]);
-    }
-
     // kegiatan organisasi
     public function detailkegiatanOrg()
     {

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthManager;
 use App\Http\Controllers\halamanController;
+use App\Http\Controllers\KegiatanInd;
 use App\Http\Controllers\Organisasi;
 use Illuminate\Support\Facades\Route;
 
@@ -48,8 +49,7 @@ Route::middleware(['AuthCheck', 'organisasi'])->group(function () {
 // INDIVIDU
 Route::middleware(['AuthCheck', 'individu'])->group(function () {
     // kegiatan individu
-    Route::get('/carikegiatan', [halamanController::class, 'carikegiatan']);
-    Route::get('/listkegiatan-Ind', [halamanController::class, 'listkegiatanInd']);
+    Route::get('/listkegiatan-Ind', [KegiatanInd::class, 'listkegiatanInd'])->name('listkegiatan-Ind');
     Route:: get('/detailkegiatan-Ind/{id}', [halamanController::class, 'detailkegiatanInd'])->name('detailkegiatan-Ind');
     // profil individu
     Route::get('/profil-Ind', [halamanController::class, 'profilInd']);

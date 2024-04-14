@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kegiatan;
 use Illuminate\Http\Request;
 
 class kegiatanController extends Controller
@@ -21,7 +22,7 @@ class kegiatanController extends Controller
             'editKegiatan'=>'required'
         ]);
 
-        $kegiatan = new kegiatan();
+        $kegiatan = new Kegiatan();
         $kegiatan->id_kegiatan = $request->noidKegiatan;
         $kegiatan->nama_kegiatan = $request->namaKegiatan;
         $kegiatan->deskripsi_kegiatan = $request->deskripsiKegiatan;
@@ -41,15 +42,15 @@ class kegiatanController extends Controller
         }
   
     public function openList(){
-        $keggiatan = keggiatan::all();
+        $keggiatan = Kegiatan::all();
 
         return view('keggiatan.listKeggiatan', compact('keggiatan'));
     }
   
 
     public function viewUpdate($id_kegiatan){
-        $keggiatan = keggiatan::all();
-        $organisasi = keggiatan::findOrFail($id_kegiatan);
+        $keggiatan = Kegiatan::all();
+        $organisasi = Kegiatan::findOrFail($id_kegiatan);
         return view('keggiatan.update', compact('organisasi','keggiatan'));
     }
   
