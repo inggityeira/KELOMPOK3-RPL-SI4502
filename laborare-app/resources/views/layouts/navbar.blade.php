@@ -4,7 +4,7 @@
 @endphp
 
 <nav class="navbar navbar-expand-lg bg-transparent position-relative" style="margin-right: 100px; margin-bottom: -2%; height:100px;">
-    <a href="/home"><h2><img src="/img/LOGO.png" alt="Laborare" style=" width:100%;"></h2></a>
+    <a href="/home"><h2><img src="/img/LOGO.png" alt="Laborare" style=" width:80%;"></h2></a>
     <ul class="navbar-nav position-absolute top-10 " style="font-size: 18px;  margin-left:350px; margin-top:-30px; letter-spacing:5px;">
         <li class="nav-item">
             <a class="{{ Request::is('home*') ? 'nav-link active' : 'nav-link' }} mx-5" aria-current="page" href="/home" style="color: white;"><strong>BERANDA</strong></a>

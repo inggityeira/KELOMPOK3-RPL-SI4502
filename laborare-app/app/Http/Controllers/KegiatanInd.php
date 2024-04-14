@@ -7,13 +7,23 @@ use Illuminate\Http\Request;
 
 class KegiatanInd extends Controller
 {
-    public function listkegiatan(Request $request){
+    public function listkegiatanInd(Request $request){
+        $kegiatan = Kegiatan::query();
+    
         if ($request->has('search')){
-            $kegiatan = Kegiatan::where('nama_kegiatan', 'LIKE', '%' .$request->search.'%')->paginate(6);
-        }else{
-            $kegiatan = Kegiatan::paginate(6);
+            $kegiatan->where('nama_kegiatan', 'LIKE', '%' .$request->search.'%');
         }
-
+    
+        if ($request->has('kategori') && $request->kategori != 'Semua'){
+            $kegiatan->where('kategori_kegiatan', $request->kategori);
+        }
+    
+        $kegiatan = $kegiatan->paginate(6)->appends(request()->query());
+    
         return view('kegiatan-ind.listkegiatan', compact('kegiatan'));
     }
+    
+    
+    
+    
 }

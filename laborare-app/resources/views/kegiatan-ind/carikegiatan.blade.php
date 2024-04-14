@@ -11,7 +11,7 @@
 <div style="margin-top:100px; margin-left:550px; height:200px;">
     <form>
         <div class="d-flex">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" style="width: 400px; border-radius: 0px;">
+            <input class="form-control me-2" type="search" placeholder="Cari" aria-label="Search" style="width: 400px; border-radius: 0px;">
             <button class="btn" type="submit" style="background-color:#D9D9D9; margin-left:-8px; border-radius: 0px;"><img src="img/komponen/cari.png" alt="Cari" width="30px"></button>
         </div>
         <div class="mt-2 d-flex" style="width: 300px; margin-left:85px;">
