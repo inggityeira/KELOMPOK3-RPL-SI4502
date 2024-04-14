@@ -39,16 +39,20 @@ class kegiatanController extends Controller
             return back()->with('failed', 'Something wrong.');
         }
         }
+  
     public function openList(){
         $keggiatan = keggiatan::all();
 
         return view('keggiatan.listKeggiatan', compact('keggiatan'));
     }
+  
+
     public function viewUpdate($id_kegiatan){
         $keggiatan = keggiatan::all();
         $organisasi = keggiatan::findOrFail($id_kegiatan);
         return view('keggiatan.update', compact('organisasi','keggiatan'));
     }
+  
     public function update(Request $request, $id_kegiatan)
     {
         $keggiatan = kegiatan::findOrFail($id_kegiatan);
@@ -66,6 +70,7 @@ class kegiatanController extends Controller
 
         return redirect()->route('kegiatan.kegiatan')->with('Success','Data updated successfully');
     }
+  
     public function delete(Request $request, $id_kegiatan)
     {
         $keggiatan = kegiatan::findOrFail($id_kegiatan);
@@ -73,5 +78,7 @@ class kegiatanController extends Controller
 
         return redirect()->route('kegiatan.kegiatan')->with('Success','Data deleted successfully.');
     }
-    }
+  
+}
+
 

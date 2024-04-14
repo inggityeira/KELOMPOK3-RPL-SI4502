@@ -41,3 +41,9 @@
     background-color: rgba(0, 0, 0, 0.6); /* Warna latar belakang dengan opacity 60% */
     z-index: 0; /* Mengatur z-index agar berada di bawah teks */
 }
+
+.pagination-container .pagination .page-link {
+    color: white;
+    background-color: black;
+    border-color: white;
+}

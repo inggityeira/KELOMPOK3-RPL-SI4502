@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use auth;
+use App\Models\User;
 use App\Models\Kegiatan;
 use Illuminate\Http\Request;
 
@@ -14,14 +16,17 @@ class halamanController extends Controller
     }
 
     public function detailkegiatanInd($id_kegiatan)
-    { 
+    {
         $kegiatan = Kegiatan::find($id_kegiatan);
         return view('kegiatan-ind.detailkegiatan', ['kegiatan' => $kegiatan]);
     }
 
     public function listkegiatanInd()
     {
-        return view('kegiatan-ind.listkegiatan');
+        $getKegiatan = Kegiatan::paginate(6);
+        return view('kegiatan-ind.listkegiatan', [
+            'kegiatan' => $getKegiatan
+        ]);
     }
 
     // kegiatan organisasi
