@@ -44,5 +44,8 @@ class kegiatanController extends Controller
 
         return view('keggiatan.listKeggiatan', compact('keggiatan'));
     }
-    }
+
+
+    
+}
 

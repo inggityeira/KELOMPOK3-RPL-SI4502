@@ -35,7 +35,6 @@ Route::middleware(['AuthCheck', 'organisasi'])->group(function () {
     Route::get('/listbaru-Org', [halamanController::class, 'listbaruOrg']);
     Route::get('/editkegiatan-Org', [halamanController::class, 'editkegiatanOrg']);
     Route::get('/kegiatanbaru-Org', [halamanController::class, 'kegiatanbaruOrg']);
-    Route:: get('/detailkegiatan-Ind/{id}', [halamanController::class, 'detailkegiatanInd']);
     // profil organisasi
     Route::get('/profil-Org', [Organisasi::class, 'index'])->name('profil-organisasi');
     Route::get('/editprofil-Org/{id}', [Organisasi::class, 'edit'])->name('edit-organisasi');
@@ -51,7 +50,7 @@ Route::middleware(['AuthCheck', 'individu'])->group(function () {
     // kegiatan individu
     Route::get('/carikegiatan', [halamanController::class, 'carikegiatan']);
     Route::get('/listkegiatan-Ind', [halamanController::class, 'listkegiatanInd']);
-    Route::get('/detailkegiatan-Ind', [halamanController::class, 'detailkegiatanInd']);
+    Route:: get('/detailkegiatan-Ind/{id}', [halamanController::class, 'detailkegiatanInd'])->name('detailkegiatan-Ind');
     // profil individu
     Route::get('/profil-Ind', [halamanController::class, 'profilInd']);
     Route::get('/editprofil-Ind', [halamanController::class, 'editprofilInd']);
