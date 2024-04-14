@@ -20,7 +20,7 @@
   </style>
   <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
       <ol class="breadcrumb">
-          <li class="breadcrumb-item active"><a href="{{'listkegiatan-Ind'}}" style="color:white; font-size:20px; text-decoration: underline; letter-spacing:1px;"><strong>Kegiatan</strong></a></li>
+          <li class="breadcrumb-item active"><a href="{{'listkegiatan-Ind'}}" style="font-size:18px; color:white; font-size:20px; text-decoration: underline; letter-spacing:1px;"><strong>Kegiatan</strong></a></li>
       </ol>
   </nav>
 </div>

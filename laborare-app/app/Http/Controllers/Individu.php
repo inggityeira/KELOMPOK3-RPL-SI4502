@@ -6,24 +6,17 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
-class Organisasi extends Controller
+class Individu extends Controller
 {
-    // Halaman Profil
-    public function index()
-    {
-        return view('profil.profilorganisasi');
-    }
-
     // Halaman edit profil
-    public function edit($id)
+    public function editprofilInd($id)
     {
         $user = User::find($id);
-        return view('profil.editorganisasi', ['user' => $user]);
+        return view('profil.editindividu', ['user' => $user]);
     }
 
-    public function update(Request $request, $id_user)
+    public function storeprofilInd(Request $request, $id_user)
     {
-
         // Cari pengguna berdasarkan id_user
         $user = User::find($id_user);
 
@@ -31,9 +24,9 @@ class Organisasi extends Controller
         $user->nama_user = $request->nama_user ?? $user->nama_user;
         $user->alamat_user = $request->alamat_user ?? $user->alamat_user;
         $user->nomor_telepon = $request->nomor_telepon ?? $user->nomor_telepon;
-        $user->penanggung_jawab = $request->penanggung_jawab ?? $user->penanggung_jawab;
         $user->email = $request->email ?? $user->email;
-        $user->situs_web = $request->situs_web ?? $user->situs_web;
+        $user->usia_user = $request->usia_user ?? $user->usia_user;
+        $user->jenis_kelamin = $request->jenis_kelamin ?? $user->jenis_kelamin;
 
         if ($request->hasFile('foto_profil')) {
             $request->file('foto_profil')->move('fotoprofil/', $request->file('foto_profil')->getClientOriginalName());
@@ -43,6 +36,8 @@ class Organisasi extends Controller
         // Simpan perubahan
         $user->save();
 
-        return redirect()->route('profil-organisasi');
+        return redirect()->route('profil-individu');
+
     }
+
 }

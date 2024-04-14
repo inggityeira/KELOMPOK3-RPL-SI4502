@@ -50,32 +50,6 @@ class halamanController extends Controller
         return view('profil.profilindividu');
     }
 
-    public function editprofilInd()
-    {
-        return view('profil.editindividu');
-    }
-
-    public function storeprofilInd(Request $request){
-       
-
-        $loginuser = \App\Models\User::where('id_user', session('loginId'))->first();
-        $id = $loginuser->id_user;
-
-        $user = User::find($id);
-
-        $user->nama_user = $request->nama;
-        $user->alamat_user = $request->alamat;
-        $user->email = $request->email;
-        $user->nomor_telepon = $request->no;
-        $user->usia_user = $request->usia;
-        $user->jenis_kelamin = $request->jenis_kelamin;
-
-        $user->save();
-
-        return redirect()->back()->with('success', 'Profil berhasil diperbarui!');
-        
-       
-    }
         // donasi individu
     public function listdonasiInd()
     {
