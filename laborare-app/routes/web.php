@@ -54,6 +54,7 @@ Route::middleware(['AuthCheck', 'individu'])->group(function () {
     // profil individu
     Route::get('/profil-Ind', [halamanController::class, 'profilInd']);
     Route::get('/editprofil-Ind', [halamanController::class, 'editprofilInd']);
+    Route::post('/editprofil-Ind', [halamanController::class, 'storeprofilInd'])->name('editprofil-Ind');
     // donasi individu
     Route::get('/listdonasi-Ind', [halamanController::class, 'listdonasiInd']);
     // poin
