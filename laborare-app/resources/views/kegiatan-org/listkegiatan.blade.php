@@ -4,203 +4,88 @@
 
 @push('css')
     {{-- ISI CSS KALIAN, BISA EKSTERNAL/INTERNAL --}}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kegiatan</title>
-<style>
-  body { 
-    font-family: Arial, sans-serif; 
-  }
+    
+    <style>
+      .kegiatan-banner{
+        height:250px;
+      }
+      .kegiatan-banner img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+      }
+      .judul{
+        font-size:25px;
+        margin-top: 40px;
+        margin-left:130px;
+      }
+      .pagination-container .pagination .page-link {
+        color: white;
+        background-color: black;
+        border-color: white;
+      }
+    </style>
 
-  .activity { 
-    margin-bottom: 20px; 
-  }
-
-  .activity-header { 
-    font-size: 24px; 
-    font-weight: bold; 
-    margin-bottom: 10px; 
-  }
-
-  .activity-list {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-  }
-
-  .activity-item {
-    margin-bottom: 10px;
-    list-style-type: none;
-    background-color: white;
-    color: black;
-    font-weight: bold;
-  }
-
-  .activity-item img { 
-    width: 100%; 
-    height: auto; 
-    border-bottom: 1px solid #ddd; 
-  }
-
-  .activity-item h5,
-  .activity-item p {
-    margin: 0;
-    font-weight: bold;
-    float: left; /* Mengatur nama dan tanggal ke kiri */
-  }
-
-  .activity-item button {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    width: 30%;
-    height: 40%;
-    float: right; /* Mengatur tombol ke kanan */
-    border-radius: 50px; /* Menambahkan border radius */
-    margin-top: 5px;
-    color: white;
-    background-color: black;
-  }
-
-  .activity-item button:hover {
-    background-color: #0056b3;
-  }
-
-  .sidebar { 
-    float: right; 
-    width: 30%; 
-  }
-
-  .sidebar img { 
-    width: 100%; 
-    height: auto; 
-    margin-bottom: 10px; 
-  }
-
-  .row-image img {
-    width: 100%; 
-    height: 10%; 
-    margin-bottom: 50px;
-    object-fit: cover;
-  }
-  .desc {
-    display: flex;
-    justify-content: space-between; /* Mengatur jarak antara nama dan tombol */
-    align-items: center; /* Mengatur item secara vertikal */
-    margin-bottom: 10px;
-  }
-  .activity h3{
-    font-weight: bolder;
-    margin-left: 30px;
-  }
-  .detail-kegiatan{
-    display: flex;
-    justify-content: space-between; /* Mengatur jarak antara judul dan tombol */
-    align-items: center; /* Mengatur item secara vertikal */
-    margin-bottom: 20px;
-  }
-  .detail-kegiatan button{
-    font-weight: bold;
-    padding: 5px;
-  }
-</style>
-
-
-
-
-</head>
-<body>
 @endpush
 
 @section('content')
 {{-- ISI KONTEN KALIAN DIBAWAH INI --}}
-<div class="main-content">
-  <div class="activity">
-    <div class="activity-header">Kegiatan</div>
-    <div class="row-image">
-      <img src="{{url('/img/Mask group.jpg')}}" alt="">
+
+{{-- Breadscrumb --}}
+<div style="margin-top:25px; margin-left:50px;">
+  <style>
+    .breadcrumb-item+.breadcrumb-item::before {
+      color: white;
+      font-size: 20px;
+    }
+  </style>
+  <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+      <ol class="breadcrumb">
+          <li class="breadcrumb-item active"><a href="/listbaru-Org" style="font-size:18px; color:white; font-size:20px; text-decoration: underline; letter-spacing:1px;"><strong>Kegiatan</strong></a></li>
+      </ol>
+  </nav>
+</div>
+
+{{-- Banner --}}
+<div class="kegiatan-banner">
+  <img src="{{url('/img/Mask group.jpg')}}" class="img-fluid" alt="Kegiatan">
+</div>
+
+{{-- Judul --}}
+<div>
+  <h1 class="judul"><strong>DAFTAR KEGIATAN</strong></h1>
+</div>
+
+{{-- Tombol Tambah Kegiatan --}}
+<div class="text-end">
+  <a href="/kegiatanbaru-Org" class="btn btn-light fw-bolder" style="font-size:18px; margin-top:-70px; margin-right:130px;">+ Kegiatan</a>
+</div>
+
+{{-- List Kegiatan dari Database --}}
+<div class="p-5" style="margin-top:-30px;">
+  <div class="container d-flex justify-content-center">
+    <div class="row centered" style="flex-wrap: wrap; gap: 20px; justify-content: center;">
+      @foreach ($kegiatan->items() as $key => $item)
+
+        <div class="card col-md-6 position-relative mb-4" style="width: 300px; {{ $key == 0 && $kegiatan->count() == 1 ? 'margin-left: -320px;' : '' }} padding: 0; margin: 0; border-radius: 0px;">
+          <img src="{{asset('sampulkegiatan/'.$item->sampul_kegiatan)}}" class="card-img-top" alt="{{$item->nama_kegiatan}}" style="height: 180px; width: 100%; object-fit: cover; padding: 0; margin: 0;">
+          <div class="card-body">
+            <h5 class="card-title"><strong>{{$item->nama_kegiatan}}</strong></h5>
+            <p class="card-text"><strong>{{$item->tanggal_kegiatan}}</strong></p>
+            <a href="#" class="btn" style="float: right; background-color:black; margin-top:-30px; color:white; width:100px; border-radius: 20px;">Detail</a>
+          </div>
+        </div>
+      
+      @endforeach
     </div>
-    <div class="detail-kegiatan">
-    <h3>
-      Daftar Kegiatan
-    </h3>
-    <button> + Kegiatan</button>
-    </div>
-    <ul class="activity-list">
-      <li class="activity-item">
-        <img src="{{url('/img/1.jpg')}}" alt="Garda Muda Berbakti">
-        <div class="desc">
-        <div class="detail">
-        <h5>Garda Muda Berbakti</h5>
-        <p>1 April - 15 Mei 2024</p>
-        </div>
-        <button>Detail</button>
-        </div>
-      </li>
-      <li class="activity-item">
-        <img src="{{url('/img/2.jpg')}}" alt="Garda Muda Berbakti">
-        <div class="desc">
-        <div class="detail">
-        <h5>Garda Muda Berkibar</h5>
-        <p>1 April - 15 Mei 2024</p>
-        </div>
-        <button>Detail</button>
-        </div>
-      </li>
-      <li class="activity-item">
-        <img src="{{url('/img/3.jpg')}}" alt="Mari Berbagi">
-        <div class="desc">
-        <div class="detail">
-        <h5>Mari Berbagi</h5>
-        <p>16 Mei - 1 Juni 2024</p>
-        </div>
-        <button>Detail</button>
-        </div>
-      </li>
-      <li class="activity-item">
-        <img src="{{url('/img/4.jpg')}}" alt="Generasi Muda Maju">
-        <div class="desc">
-        <div class="detail">
-        <h5>Generasi Muda Maju</h5>
-        <p>1 Juli - 18 Agustus 2024</p>
-        </div>
-        <button>Detail</button>
-        </div>
-      </li>
-      <li class="activity-item">
-        <img src="{{url('/img/5.jpg')}}" alt="Garda Muda Berbakti">
-        <div class="desc">
-        <div class="detail">
-        <h5>Garda Muda Berbakti</h5>
-        <p>1 April - 15 Mei 2024</p>
-        </div>
-        <button>Detail</button>
-        </div>
-      </li>
-      <li class="activity-item">
-        <img src="{{url('/img/6.jpg')}}" alt="Garda Muda Berbakti">
-        <div class="desc">
-        <div class="detail">
-        <h5>Garda Muda Berbakti</h5>
-        <p>1 April - 15 Mei 2024</p>
-        </div>
-        <button>Detail</button>
-        </div>
-      </li>
-      <!-- Repeat for other activities -->
-    </ul>
   </div>
 </div>
 
-<div class="sidebar">
-  <!-- Repeat for other thumbnails -->
+{{-- Pagination --}}
+<div class="pagination-container d-flex justify-content-center">
+  {{ $kegiatan->links('pagination::bootstrap-4') }}
 </div>
 
-</body>
-</html>
+<br>
 @endsection

@@ -68,25 +68,24 @@
   <div class="container d-flex justify-content-center">
     <div class="row centered" style="flex-wrap: wrap;">
         @foreach ($kegiatan->items() as $key => $item)
-            @php
-                $colClass = $kegiatan->count() < 3 ? 'col-md-6' : 'col-md-4';
-                $marginLeftClass = $kegiatan->count() == 1 ? 'margin-left: -30px;' : '';
-            @endphp
-            <div class="{{ $colClass }} position-relative mb-4" style="max-width: 360px; {{ $key == 0 && $kegiatan->count() == 1 ? 'margin-left: -320px;' : '' }}">
-                <a href="{{'detailkegiatan-Ind', $item->id_kegiatan}}">
+
+            <div class="col-md-6 position-relative mb-4" style="max-width: 360px; {{ $key == 0 && $kegiatan->count() == 1 ? 'margin-left: -320px;' : '' }}">
+                <a href="{{ route('detailkegiatan-Ind', $item->id_kegiatan) }}">
                     <img src="{{asset('sampulkegiatan/'.$item->sampul_kegiatan)}}" alt="{{$item->nama_kegiatan}}" style=" width:340px; height:262px;">
                     <div class="fill-overlay">
                       <p class="card-text fw-bolder text-center text-white" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width:100%; font-size:20px; weight: bold;">{{$item->nama_kegiatan}}</p>
                     </div>
                 </a>
             </div>
+
         @endforeach
+    
     </div>
   </div>
 </div>
 
 
-
+{{-- Pagination --}}
   <div class="pagination-container d-flex justify-content-center">
     {{ $kegiatan->links('pagination::bootstrap-4') }}
   </div>
