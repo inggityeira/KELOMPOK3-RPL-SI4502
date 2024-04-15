@@ -42,9 +42,10 @@ class kegiatanController extends Controller
         }
   
     public function openList(){
-        $keggiatan = Kegiatan::all();
+        $kegiatan = Kegiatan::query();
+        $kegiatan = $kegiatan->paginate(8)->appends(request()->query());
 
-        return view('keggiatan.listKeggiatan', compact('keggiatan'));
+        return view('kegiatan-org.listkegiatan', compact('kegiatan'));
     }
   
 

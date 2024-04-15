@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthManager;
 use App\Http\Controllers\halamanController;
 use App\Http\Controllers\Individu;
+use App\Http\Controllers\kegiatanController;
 use App\Http\Controllers\KegiatanInd;
 use App\Http\Controllers\Organisasi;
 use Illuminate\Support\Facades\Route;
@@ -34,7 +35,7 @@ Route::get('/home', [AuthManager::class, 'home'])->middleware('AuthCheck');
 // ORGANISASI
 Route::middleware(['AuthCheck', 'organisasi'])->group(function () {
     // kegiatan organisasi
-    Route::get('/listbaru-Org', [halamanController::class, 'listbaruOrg']);
+    Route::get('/listbaru-Org', [kegiatanController::class, 'openList'])->name('listkegiatan-Org');
     Route::get('/editkegiatan-Org', [halamanController::class, 'editkegiatanOrg']);
     Route::get('/kegiatanbaru-Org', [halamanController::class, 'kegiatanbaruOrg']);
 
