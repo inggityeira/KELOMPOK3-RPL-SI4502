@@ -4,7 +4,7 @@
 
 @push('css')
     {{-- ISI CSS KALIAN, BISA EKSTERNAL/INTERNAL --}}
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -57,7 +57,20 @@
   .button-danger {
     background-color: #d9534f;
   }
+  .container .image{
+    text-align: center;
+  }
+  .class-button{
+    display: flex;
+    justify-content: flex-end; 
+  }
+  .class-button button{
+    width: 20%;
+    margin: 5px;
+    justify-self: end;
+  }
 </style>
+
 </head>
 <body>
 @endpush
@@ -70,6 +83,9 @@ DETAIL KEGIATAN
 </div>
 
 <div class="container">
+  <div class="image">
+  <img src="{{url('/img/1.jpg')}}" alt="">
+  </div>
   <h2>DETAIL KEGIATAN</h2>
   <div class="form-group">
     <label for="activityName">Nama Kegiatan</label>
@@ -99,9 +115,11 @@ DETAIL KEGIATAN
     <label for="activityDescription">Deskripsi Kegiatan</label>
     <textarea id="activityDescription" name="activityDescription"></textarea>
   </div>
+  <div class="class-button">
   <button type="submit">Sukarelawan</button>
   <button type="button" class="button-secondary">Edit</button>
   <button type="button" class="button-danger">Hapus</button>
+  </div>
 </div>
 
 </body>
