@@ -38,6 +38,7 @@ Route::middleware(['AuthCheck', 'organisasi'])->group(function () {
     Route::get('/listbaru-Org', [kegiatanController::class, 'openList'])->name('listkegiatan-Org');
     Route::get('/editkegiatan-Org', [halamanController::class, 'editkegiatanOrg']);
     Route::get('/kegiatanbaru-Org', [halamanController::class, 'kegiatanbaruOrg']);
+    Route::post('/tambahkegiatan', [kegiatanController::class, 'kegiatan'])->name('tambahkegiatan');
 
     // profil organisasi
     Route::get('/profil-Org', [Organisasi::class, 'index'])->name('profil-organisasi');

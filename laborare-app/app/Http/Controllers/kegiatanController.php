@@ -10,37 +10,31 @@ class kegiatanController extends Controller
     public function kegiatan(Request $request)
     {
         $request->validate([
-            'namaKegiatan'=>'reuired|not_in:0',
-            'tanggalKegiatan'=>'required',
-            'sampulKegiatan'=>'required',
-            'statusKegiatan'=>'required',
-            'kategoriKegiatan'=>'required',
-            'sampulKegiatan'=>'required',
-            'deskripsiKegiatan'=>'required',
-            'noidKegiatan'=>'required',
-            'buatKegiatan'=>'required',
-            'editKegiatan'=>'required'
+            'activityName'=>'required',
+            'activityDate' => 'required|date',
+            'activityCover'=>'required',
+            'activityStatus'=>'required',
+            'activityCategory'=>'required',
+            'activityDescription'=>'required',
         ]);
 
         $kegiatan = new Kegiatan();
-        $kegiatan->id_kegiatan = $request->noidKegiatan;
-        $kegiatan->nama_kegiatan = $request->namaKegiatan;
-        $kegiatan->deskripsi_kegiatan = $request->deskripsiKegiatan;
-        $kegiatan->tanggal_kegiatan = $request->tanggalKegiatan;
-        $kegiatan->kategori_kegiatan = $request->kategoriKegiatan;
-        $kegiatan->sampul_kegiatan = $request->sampulKegiatan;
-        $kegiatan->status_kegiatan = $request->statusKegiatan;
-        $kegiatan->created_at = $request->buatKegiatan;
-        $kegiatan->updated_at = $request->editKegiatan;
-
+        $kegiatan->nama_kegiatan = $request->activityName;
+        $kegiatan->deskripsi_kegiatan = $request->activityDescription;
+        $kegiatan->tanggal_kegiatan = $request->activityDate;
+        $kegiatan->kategori_kegiatan = $request->activityCategory;
+        $kegiatan->status_kegiatan = $request->activityStatus;
+        if ($request->hasFile('activityCover')) {
+            $request->file('activityCover')->move('sampulkegiatan/', $request->file('activityCover')->getClientOriginalName());
+            $kegiatan->sampul_kegiatan = $request->file('activityCover')->getClientOriginalName();
         $new = $kegiatan->save();
         if ($new){
-            return back()->with('success', 'Data saved successfully!');
+            return back()->with('success', 'Data berhasil ditambahkan!');
         }else{
-            return back()->with('failed', 'Something wrong.');
+            return back()->with('failed', 'Data gagal ditambahkan');
         }
         }
-  
+    }
     public function openList(){
         $kegiatan = Kegiatan::query();
         $kegiatan = $kegiatan->paginate(8)->appends(request()->query());
