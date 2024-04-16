@@ -18,6 +18,13 @@
         .container {
             width: 80%;
             margin: 0 auto;
+            background-color: #000;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        .containerbawah {
+            width: 80%;
+            margin: 0 auto;
             background-color: #ddd;
             padding: 20px;
             border-radius: 5px;
@@ -48,7 +55,7 @@
 {{-- ISI KONTEN KALIAN DIBAWAH INI --}}
 KEGIATAN BARU
 <body>
-    <div class="container">
+    <div class="containerbawah">
         <h1>TAMBAH KEGIATAN</h1>
         <form>
             <label for="activityName">Nama Kegiatan</label>
