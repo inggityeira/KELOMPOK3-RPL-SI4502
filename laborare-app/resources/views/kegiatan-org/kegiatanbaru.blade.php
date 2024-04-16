@@ -11,7 +11,7 @@
     <title>Add Activity</title>
     <style>
         body {
-            background-color: #333;
+            background-color: #000;
             color: #000;
             font-family: Arial, sans-serif;
         }
