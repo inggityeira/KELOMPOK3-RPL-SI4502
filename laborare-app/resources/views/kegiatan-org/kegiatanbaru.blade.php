@@ -11,14 +11,21 @@
     <title>Add Activity</title>
     <style>
         body {
-            background-color: #333;
-            color: #fff;
+            background-color: #000;
+            color: #000;
             font-family: Arial, sans-serif;
         }
         .container {
             width: 80%;
             margin: 0 auto;
-            background-color: #444;
+            background-color: #000;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        .containerbawah {
+            width: 80%;
+            margin: 0 auto;
+            background-color: #ddd;
             padding: 20px;
             border-radius: 5px;
         }
@@ -48,7 +55,7 @@
 {{-- ISI KONTEN KALIAN DIBAWAH INI --}}
 KEGIATAN BARU
 <body>
-    <div class="container">
+    <div class="containerbawah">
         <h1>TAMBAH KEGIATAN</h1>
         <form>
             <label for="activityName">Nama Kegiatan</label>
