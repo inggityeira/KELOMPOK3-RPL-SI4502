@@ -57,32 +57,45 @@ KEGIATAN BARU
 <body>
     <div class="containerbawah">
         <h1>TAMBAH KEGIATAN</h1>
-        <form>
+        <form action="{{route('tambahkegiatan')}}" method="POST">
+        @if (session('success'))
+    <div class="alert alert-success">
+                        {{ session('success') }}
+    </div>
+                @endif
+        @csrf
             <label for="activityName">Nama Kegiatan</label>
             <input type="text" id="activityName" name="activityName">
+            <span class="text-danger">@error('activityName') {{$message}} @enderror</span>
 
             <label for="activityDate">Tanggal Kegiatan</label>
             <input type="date" id="activityDate" name="activityDate">
+            <span class="text-danger">@error('activityDate') {{$message}} @enderror</span>
 
             <label for="activityCover">Sampul Kegiatan</label>
             <input type="file" id="activityCover" name="activityCover">
+            <span class="text-danger">@error('activityCover') {{$message}} @enderror</span>
 
             <label for="activityStatus">Status Kegiatan</label>
             <select id="activityStatus" name="activityStatus">
-                <option value="active">Active</option>
-                <option value="inactive">Inactive</option>
+                <option value="Belum">Belum</option>
+                <option value="Berlajan">Berjalan</option>
+                <option value="Selesai">Selesai</option>
             </select>
+            <span class="text-danger">@error('activityStatus') {{$message}} @enderror</span>
 
             <label for="activityCategory">Kategori Kegiatan</label>
             <select id="activityCategory" name="activityCategory">
-                <option value="category1">Pendidikan</option>
-                <option value="category2">Lingkungan</option>
-                <option value="category3">Sosial</option>
-                <option value="category4">Kesehatan</option>
+                <option value="Pendidikan">Pendidikan</option>
+                <option value="Lingkungan">Lingkungan</option>
+                <option value="Sosial">Sosial</option>
+                <option value="Kesehatan">Kesehatan</option>
             </select>
+            <span class="text-danger">@error('activityCategory') {{$message}} @enderror</span>
 
             <label for="activityDescription">Deskripsi Kegiatan</label>
             <textarea id="activityDescription" name="activityDescription"></textarea>
+            <span class="text-danger">@error('activityDescription') {{$message}} @enderror</span>
 
             <button type="submit">Tambah</button>
         </form>
