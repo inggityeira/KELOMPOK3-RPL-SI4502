@@ -12,7 +12,7 @@
     <style>
         body {
             background-color: #333;
-            color: #fff;
+            color: #000;
             font-family: Arial, sans-serif;
         }
         .container {
