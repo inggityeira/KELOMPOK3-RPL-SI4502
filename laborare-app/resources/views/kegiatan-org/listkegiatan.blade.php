@@ -73,7 +73,7 @@
           <div class="card-body">
             <h5 class="card-title"><strong>{{$item->nama_kegiatan}}</strong></h5>
             <p class="card-text"><strong>{{$item->tanggal_kegiatan}}</strong></p>
-            <a href="#" class="btn" style="float: right; background-color:black; margin-top:-30px; color:white; width:100px; border-radius: 20px;">Detail</a>
+            <a href="{{ route('detailkegiatan-Org', $item->id_kegiatan) }}" class="btn" style="float: right; background-color:black; margin-top:-30px; color:white; width:100px; border-radius: 20px;">Detail</a>
           </div>
         </div>
       

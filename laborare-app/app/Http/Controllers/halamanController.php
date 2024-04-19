@@ -24,14 +24,16 @@ class halamanController extends Controller
     }
 
     // kegiatan organisasi
-    public function detailkegiatanOrg()
+    public function detailkegiatanOrg($id_kegiatan)
     {
-        return view('kegiatan-org.detailkegiatan');
+        $kegiatan = Kegiatan::find($id_kegiatan);
+        return view('kegiatan-org.detailkegiatan', ['kegiatan' => $kegiatan]);
     }
 
-    public function editkegiatanOrg()
+    public function editkegiatanOrg($id_kegiatan)
     {
-        return view('kegiatan-org.editkegiatan');
+        $kegiatan = Kegiatan::find($id_kegiatan);
+        return view('kegiatan-org.editkegiatan', ['kegiatan' => $kegiatan]);
     }
 
     public function kegiatanbaruOrg()

@@ -11,9 +11,7 @@
     <title>Add Activity</title>
     <style>
         body {
-            background-color: #000;
             color: #000;
-            font-family: Arial, sans-serif;
         }
         .container {
             width: 80%;
@@ -23,11 +21,11 @@
             border-radius: 5px;
         }
         .containerbawah {
-            width: 80%;
+            width: 70%;
             margin: 0 auto;
-            background-color: #ddd;
+            background-color: white;
             padding: 20px;
-            border-radius: 5px;
+            border-radius: 15px;
         }
         input, select, textarea {
             width: 100%;
@@ -37,15 +35,16 @@
             border: none;
         }
         button {
-            background-color: #5cb85c;
             color: white;
             padding: 10px 20px;
             border: none;
             border-radius: 5px;
-            cursor: pointer;
         }
-        button:hover {
-            background-color: #4cae4c;
+        .judul{
+            font-size:25px;
+            color: white;
+            padding: 5px;
+            margin-bottom: 30px;
         }
     </style>
 </head>
@@ -53,53 +52,88 @@
 
 @section('content')
 {{-- ISI KONTEN KALIAN DIBAWAH INI --}}
-KEGIATAN BARU
-<body>
-    <div class="containerbawah">
-        <h1>TAMBAH KEGIATAN</h1>
-        <form action="{{route('tambahkegiatan')}}" method="POST">
-        @if (session('success'))
-    <div class="alert alert-success">
-                        {{ session('success') }}
-    </div>
-                @endif
-        @csrf
-            <label for="activityName">Nama Kegiatan</label>
-            <input type="text" id="activityName" name="activityName">
+
+{{-- Breadscrumb --}}
+<div style="margin-top:30px; margin-left:50px;">
+    <style>
+        .breadcrumb-item+.breadcrumb-item::before {
+        color: white;
+        font-size: 20px;
+        }
+    </style>
+    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item active"><a href="/listbaru-Org" style="font-size:18px; color:white; font-size:20px; text-decoration: none; letter-spacing:1px;"><strong>Kegiatan</strong></a></li>
+            <li class="breadcrumb-item active"><a href="/kegiatanbaru-Org" style="font-size:18px; color:white; font-size:20px; text-decoration: underline; letter-spacing:1px;"><strong>Kegiatan Baru</strong></a></li>
+        </ol>
+    </nav>
+</div>
+
+{{-- Judul --}}
+<div class="d-flex justify-content-center">
+    <h1 class="judul"><strong>TAMBAH KEGIATAN</strong></h1>
+</div>
+
+{{-- Form Kegiatan Baru --}}
+<div class="containerbawah">
+    <form class="row g-2" action="{{route('tambahkegiatan')}}" method="POST" enctype="multipart/form-data">
+    @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
+
+    @csrf
+
+        <div class="col-12">
+            <label for="activityName"><strong>Nama Kegiatan</strong></label>
+            <input type="text" id="activityName" name="activityName" value="{{old('activityName')}}" style="background-color: #CBCBCB;">
             <span class="text-danger">@error('activityName') {{$message}} @enderror</span>
+        </div>
 
-            <label for="activityDate">Tanggal Kegiatan</label>
-            <input type="date" id="activityDate" name="activityDate">
+        <div class="col-12">
+            <label for="activityDate"><strong>Tanggal Kegiatan</strong></label>
+            <input type="date" id="activityDate" name="activityDate" style="background-color: #CBCBCB;" value="{{old('activityDate')}}">
             <span class="text-danger">@error('activityDate') {{$message}} @enderror</span>
+        </div>
 
-            <label for="activityCover">Sampul Kegiatan</label>
-            <input type="file" id="activityCover" name="activityCover">
+        <div class="col-12">
+            <label for="activityCover"><strong>Sampul Kegiatan</strong></label>
+            <input type="file" id="activityCover" name="activityCover" style="background-color: #CBCBCB;">
             <span class="text-danger">@error('activityCover') {{$message}} @enderror</span>
+        </div>
 
-            <label for="activityStatus">Status Kegiatan</label>
-            <select id="activityStatus" name="activityStatus">
+        <div class="col-12">
+            <label for="activityStatus"><strong>Status Kegiatan</strong></label>
+            <select id="activityStatus" name="activityStatus" style="background-color: #CBCBCB;">
                 <option value="Belum">Belum</option>
                 <option value="Berlajan">Berjalan</option>
                 <option value="Selesai">Selesai</option>
             </select>
             <span class="text-danger">@error('activityStatus') {{$message}} @enderror</span>
+        </div>
 
-            <label for="activityCategory">Kategori Kegiatan</label>
-            <select id="activityCategory" name="activityCategory">
+        <div class="col-12">
+            <label for="activityCategory"><strong>Kategori Kegiatan</strong></label>
+            <select id="activityCategory" name="activityCategory" style="background-color: #CBCBCB;">
                 <option value="Pendidikan">Pendidikan</option>
                 <option value="Lingkungan">Lingkungan</option>
                 <option value="Sosial">Sosial</option>
                 <option value="Kesehatan">Kesehatan</option>
             </select>
             <span class="text-danger">@error('activityCategory') {{$message}} @enderror</span>
+        </div>
 
-            <label for="activityDescription">Deskripsi Kegiatan</label>
-            <textarea id="activityDescription" name="activityDescription"></textarea>
+        <div class="col-12">
+            <label for="activityDescription"><strong>Deskripsi Kegiatan</strong></label>
+            <textarea id="activityDescription" name="activityDescription" style="background-color: #CBCBCB;"></textarea>
             <span class="text-danger">@error('activityDescription') {{$message}} @enderror</span>
+        </div>
 
-            <button type="submit">Tambah</button>
-        </form>
-    </div>
-</body>
-</html>
+        <div class="col-12">
+            <button type="submit" style="float: right; background-color:black; color:white; width:150px;"><strong>Tambah</strong></button>
+        </div>
+    </form>
+</div>
+
 @endsection
