@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Kegiatan;
 use Illuminate\Http\Request;
 
+// Controller khusus role Organisasi
 class kegiatanController extends Controller
 {
+    // Membuat kegiatan baru
     public function kegiatan(Request $request)
     {
         $request->validate([
@@ -29,12 +31,14 @@ class kegiatanController extends Controller
             $kegiatan->sampul_kegiatan = $request->file('activityCover')->getClientOriginalName();
         $new = $kegiatan->save();
         if ($new){
-            return back()->with('success', 'Data berhasil ditambahkan!');
+            return back()->with('success', 'Kegiatan berhasil ditambahkan!');
         }else{
-            return back()->with('failed', 'Data gagal ditambahkan');
+            return back()->with('failed', 'Kegiatan gagal ditambahkan');
         }
         }
     }
+
+    // Membuka halaman list kegiatan
     public function openList(){
         $kegiatan = Kegiatan::query();
         $kegiatan = $kegiatan->paginate(8)->appends(request()->query());
@@ -42,37 +46,37 @@ class kegiatanController extends Controller
         return view('kegiatan-org.listkegiatan', compact('kegiatan'));
     }
   
-
-    public function viewUpdate($id_kegiatan){
-        $keggiatan = Kegiatan::all();
-        $organisasi = Kegiatan::findOrFail($id_kegiatan);
-        return view('keggiatan.update', compact('organisasi','keggiatan'));
-    }
-  
+    // Melakukan update data kegiatan
     public function update(Request $request, $id_kegiatan)
     {
-        $keggiatan = kegiatan::findOrFail($id_kegiatan);
-        $keggiatan->update([
-           'id_kegiatan' => $request->id_kegiatan,
-           'nama_kegiatan' => $request->nama_kegiatan,
-           'deskripsi_kegiatan' => $request->deskripsi_kegiatan,
-           'tanggal_kegiatan' => $request->tanggal_kegiatan,
-           'kategori_kegiatan' => $request->kategori_kegiatan,
-           'sampul_kegiatan' => $request->sampul_kegiatan,
-           'status_kegiatan' => $request->status_kegiatan,
-           'created_at' => $request->created_at,
-           'updated_at' => $request->updated_at,
-        ]);
+        $kegiatan = Kegiatan::find($id_kegiatan);
+        $kegiatan->nama_kegiatan = $request->activityName ?? $kegiatan->nama_kegiatan;
+        $kegiatan->deskripsi_kegiatan = $request->activityDescription ?? $kegiatan->deskripsi_kegiatan;
+        $kegiatan->tanggal_kegiatan = $request->activityDate ?? $kegiatan->tanggal_kegiatan;
+        $kegiatan->kategori_kegiatan = $request->activityCategory ?? $kegiatan->kategori_kegiatan;
+        $kegiatan->status_kegiatan = $request->activityStatus ?? $kegiatan->status_kegiatan;
 
-        return redirect()->route('kegiatan.kegiatan')->with('Success','Data updated successfully');
+        if ($request->hasFile('activityCover')) {
+            $request->file('activityCover')->move('sampulkegiatan/', $request->file('activityCover')->getClientOriginalName());
+            $kegiatan->sampul_kegiatan = $request->file('activityCover')->getClientOriginalName();
+        }
+        $update = $kegiatan->save();
+
+        if ($update){
+            return back()->with('success', 'Kegiatan berhasil diperbarui!');
+        }else{
+            return back()->with('failed', 'Kegiatan gagal diperbarui');
+        }
+        
     }
   
-    public function delete(Request $request, $id_kegiatan)
+    // Melakukan delete kegiatan
+    public function hapus($id_kegiatan)
     {
-        $keggiatan = kegiatan::findOrFail($id_kegiatan);
-        $keggiatan->delete();
+        $kegiatan = Kegiatan::find($id_kegiatan);
+        $kegiatan->delete();
 
-        return redirect()->route('kegiatan.kegiatan')->with('Success','Data deleted successfully.');
+        return redirect()->route('listkegiatan-Org');
     }
   
 }

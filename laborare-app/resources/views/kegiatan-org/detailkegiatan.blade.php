@@ -4,30 +4,16 @@
 
 @push('css')
     {{-- ISI CSS KALIAN, BISA EKSTERNAL/INTERNAL --}}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Detail Kegiatan</title>
 <style>
   body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    color: #333;
-    margin: 0;
-    padding: 20px;
+    color: #000;
   }
-  .breadcrumb {
-    color: #555;
-    margin-bottom: 20px;
-  }
-  .container {
-    background-color: #fff;
-    border-radius: 8px;
+  .containerutama {
+    width: 70%;
+    margin: 0 auto;
+    background-color: white;
     padding: 20px;
-    max-width: 600px;
-    margin: auto;
+    border-radius: 15px;
   }
   .form-group {
     margin-bottom: 15px;
@@ -36,7 +22,7 @@
     display: block;
     margin-bottom: 5px;
   }
-  input, select, textarea, button {
+  .isi{
     width: 100%;
     padding: 10px;
     margin-top: 5px;
@@ -44,84 +30,89 @@
     border-radius: 4px;
     box-sizing: border-box;
   }
-  button {
-    background-color: #5cb85c;
-    color: white;
-    border: none;
-    cursor: pointer;
-    margin-top: 10px;
-  }
-  .button-secondary {
-    background-color: #337ab7;
-  }
-  .button-danger {
-    background-color: #d9534f;
-  }
-  .container .image{
+  .containerutama .image{
     text-align: center;
   }
-  .class-button{
-    display: flex;
-    justify-content: flex-end; 
+  .class-button {
+    text-align: right;
   }
-  .class-button button{
-    width: 20%;
-    margin: 5px;
-    justify-self: end;
+  .judul{
+    font-size:25px;
+    color: white;
+    padding: 5px;
+    margin-bottom: 30px;
   }
 </style>
-
-</head>
-<body>
 @endpush
 
 @section('content')
 {{-- ISI KONTEN KALIAN DIBAWAH INI --}}
-DETAIL KEGIATAN
-<div class="breadcrumb">
-  Kegiatan > Detail Kegiatan
+
+{{-- Breadscrumb --}}
+<div style="margin-top:30px; margin-left:50px;">
+  <style>
+    .breadcrumb-item+.breadcrumb-item::before {
+      color: white;
+      font-size: 20px;
+    }
+  </style>
+  <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+      <ol class="breadcrumb">
+          <li class="breadcrumb-item active"><a href="/listbaru-Org" style="font-size:18px; color:white; font-size:20px; text-decoration: none; letter-spacing:1px;"><strong>Kegiatan</strong></a></li>
+          <li class="breadcrumb-item active" ><a href="{{ url()->current() }}" style="font-size:18px; color:white; font-size:20px; text-decoration: underline; letter-spacing:1px;"><strong>Detail Kegiatan</strong></a></li>
+      </ol>
+  </nav>
 </div>
 
-<div class="container">
+{{-- Judul --}}
+<div class="d-flex justify-content-center">
+  <h1 class="judul"><strong>DETAIL KEGIATAN</strong></h1>
+</div>
+
+{{-- Informasi Detail Kegiatan --}}
+<div class="containerutama">
+  {{-- Sampul Kegiatan --}}
   <div class="image">
-  <img src="{{url('/img/1.jpg')}}" alt="">
+    <img src="{{ asset('sampulkegiatan/' . $kegiatan->sampul_kegiatan) }}" alt="{{ $kegiatan->nama_kegiatan }}" height="200px" >
   </div>
-  <h2>DETAIL KEGIATAN</h2>
-  <div class="form-group">
-    <label for="activityName">Nama Kegiatan</label>
-    <input type="text" id="activityName" name="activityName">
-  </div>
-  <div class="form-group">
-    <label for="activityDate">Tanggal Kegiatan</label>
-    <input type="date" id="activityDate" name="activityDate">
-  </div>
-  <div class="form-group">
-    <label for="activityStatus">Status Kegiatan</label>
-    <select id="activityStatus" name="activityStatus">
-      <option value="active">Active</option>
-      <option value="inactive">Inactive</option>
-    </select>
-  </div>
-  <div class="form-group">
-    <label for="activityCategory">Kategori Kegiatan</label>
-    <select id="activityCategory" name="activityCategory">
-      <option value="category1">Pendidikan</option>
-      <option value="category2">Lingkungan</option>
-      <option value="category3">Sosial</option>
-      <option value="category4">Kesehatan</option>
-    </select>
-  </div>
-  <div class="form-group">
-    <label for="activityDescription">Deskripsi Kegiatan</label>
-    <textarea id="activityDescription" name="activityDescription"></textarea>
-  </div>
-  <div class="class-button">
-  <button type="submit">Sukarelawan</button>
-  <button type="button" class="button-secondary">Edit</button>
-  <button type="button" class="button-danger">Hapus</button>
-  </div>
+
+  <div class="row g-2">
+
+        <div class="col-12">
+            <label for="activityName"><strong>Nama Kegiatan</strong></label>
+            <p class="isi" style="background-color: #CBCBCB;">{{ $kegiatan->nama_kegiatan }}</p>
+        </div>
+
+        <div class="col-12">
+            <label for="activityDate"><strong>Tanggal Kegiatan</strong></label>
+            <p class="isi" style="background-color: #CBCBCB;">{{ $kegiatan->tanggal_kegiatan }}</p>
+        </div>
+
+        <div class="col-12">
+            <label for="activityStatus"><strong>Status Kegiatan</strong></label>
+            <p class="isi" style="background-color: #CBCBCB;">{{ $kegiatan->status_kegiatan }}</p>
+        </div>
+
+        <div class="col-12">
+            <label for="activityCategory"><strong>Kategori Kegiatan</strong></label>
+            <p class="isi" style="background-color: #CBCBCB;">{{ $kegiatan->kategori_kegiatan }}</p>
+        </div>
+
+        <div class="col-12">
+            <label for="activityDescription"><strong>Deskripsi Kegiatan</strong></label>
+            <p class="isi" style="background-color: #CBCBCB;">{{ $kegiatan->deskripsi_kegiatan }}</p>
+        </div>
+
+        <div class="class-button">
+          <a href="/listsukarelawan" class="btn btn-outline-dark px-4" style="border: 3px solid;"><strong>Sukarelawan</strong></a>
+          <a href="{{ route('editkegiatan-Org', ['id' => $kegiatan->id_kegiatan]) }}" class="btn" style="background-color:black; color:white; width:150px;">Edit</a>
+          <form action="{{ route('hapuskegiatan', $kegiatan->id_kegiatan) }}" method="POST" style="display: inline-block;">
+              @csrf
+              <button type="submit" class="btn btn-danger px-5" onclick="return confirm('Ada yakin ingin menghapus kegiatan ini?')">Hapus</button>
+          </form>
+      </div>
+      
+      </div>
 </div>
 
-</body>
-</html>
 @endsection

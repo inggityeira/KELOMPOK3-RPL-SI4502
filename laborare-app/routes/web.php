@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthManager;
 use App\Http\Controllers\halamanController;
 use App\Http\Controllers\Individu;
+use App\Http\Controllers\KegiatanBaruController;
 use App\Http\Controllers\kegiatanController;
 use App\Http\Controllers\KegiatanInd;
 use App\Http\Controllers\Organisasi;
@@ -36,9 +37,12 @@ Route::get('/home', [AuthManager::class, 'home'])->middleware('AuthCheck');
 Route::middleware(['AuthCheck', 'organisasi'])->group(function () {
     // kegiatan organisasi
     Route::get('/listbaru-Org', [kegiatanController::class, 'openList'])->name('listkegiatan-Org');
-    Route::get('/editkegiatan-Org', [halamanController::class, 'editkegiatanOrg']);
+    Route::get('/detailkegiatan-Org/{id}', [halamanController::class, 'detailkegiatanOrg'])->name('detailkegiatan-Org');
     Route::get('/kegiatanbaru-Org', [halamanController::class, 'kegiatanbaruOrg']);
+    Route::get('/editkegiatan-Org/{id}', [halamanController::class, 'editkegiatanOrg'])->name('editkegiatan-Org');
+    Route::post('/updatekegiatan/{id}', [kegiatanController::class, 'update'])->name('updatekegiatan');
     Route::post('/tambahkegiatan', [kegiatanController::class, 'kegiatan'])->name('tambahkegiatan');
+    Route::post('/hapuskegiatan/{id}', [kegiatanController::class, 'hapus'])->name('hapuskegiatan');
 
     // profil organisasi
     Route::get('/profil-Org', [Organisasi::class, 'index'])->name('profil-organisasi');
