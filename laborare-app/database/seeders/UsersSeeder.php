@@ -38,10 +38,11 @@ class UsersSeeder extends Seeder
                     'penanggung_jawab'=>'Maniza Zaman',
                     'situs_web'=>'https://www.unicef.org/indonesia/id'
                 ],
+
             ];
 
-            foreach ($userData as $key =>$val){
-                User::create($val);
+            foreach ($userData as $val){
+                User::insert($val);
             }
         }
     }
