@@ -29,7 +29,7 @@ class kegiatanController extends Controller
             $kegiatan->sampul_kegiatan = $request->file('activityCover')->getClientOriginalName();
         $new = $kegiatan->save();
         if ($new){
-            return back()->with('success', 'Data berhasil ditambahkan!');
+            return view()->with('success', 'Data berhasil ditambahkan!');
         }else{
             return back()->with('failed', 'Data gagal ditambahkan');
         }
