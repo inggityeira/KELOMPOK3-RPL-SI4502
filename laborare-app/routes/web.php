@@ -54,13 +54,18 @@ Route::middleware(['AuthCheck', 'organisasi'])->group(function () {
 
     // rekruitasi
     Route::get('/listsukarelawan', [halamanController::class, 'listsukarelawan']);
+    Route::get('/detailsukarelawan', [halamanController::class, 'detailsukarelawan']);
+    Route::get('/rekrutsukarelawan', [halamanController::class, 'rekrutsukarelawan']);
 });
 
 // INDIVIDU
 Route::middleware(['AuthCheck', 'individu'])->group(function () {
     // kegiatan individu
     Route::get('/listkegiatan-Ind', [KegiatanInd::class, 'listkegiatanInd'])->name('listkegiatan-Ind');
-    Route:: get('/detailkegiatan-Ind/{id}', [halamanController::class, 'detailkegiatanInd'])->name('detailkegiatan-Ind');
+    Route::get('/detailkegiatan-Ind/{id}', [halamanController::class, 'detailkegiatanInd'])->name('detailkegiatan-Ind');
+    Route::get('/daftarkegiatan', [halamanController::class, 'daftarkegiatan']);
+    Route::get('/progresskegiatan', [halamanController::class, 'progresskegiatan']);
+    Route::get('/sertifikatkegiatan', [halamanController::class, 'sertifikatkegiatan']);
 
     // profil individu
     Route::get('/profil-Ind', [halamanController::class, 'profilInd'])->name('profil-individu');

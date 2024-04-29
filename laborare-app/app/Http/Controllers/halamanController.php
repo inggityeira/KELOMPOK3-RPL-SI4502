@@ -12,9 +12,19 @@ use Illuminate\Support\Facades\Storage;
 class halamanController extends Controller
 {
     // kegiatan individu
-    public function carikegiatan()
+    public function daftarkegiatan()
     {
-        return view('kegiatan-ind.carikegiatan');
+        return view('kegiatan-ind.daftar');
+    }
+    
+    public function progresskegiatan()
+    {
+        return view('kegiatan-ind.progress');
+    }
+
+    public function sertifikatkegiatan()
+    {
+        return view('kegiatan-ind.sertifikat');
     }
 
     public function detailkegiatanInd($id_kegiatan)
@@ -74,5 +84,15 @@ class halamanController extends Controller
     public function listsukarelawan()
     {
         return view('rekruitasi.listsukarelawan');
+    }
+
+    public function detailsukarelawan()
+    {
+        return view('rekruitasi.detailsukarelawan');
+    }
+
+    public function rekrutsukarelawan()
+    {
+        return view('rekruitasi.rekrut');
     }
 }
