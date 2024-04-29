@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthManager;
 use App\Http\Controllers\halamanController;
 use App\Http\Controllers\Individu;
+use App\Http\Controllers\KegiatanBaruController;
 use App\Http\Controllers\kegiatanController;
 use App\Http\Controllers\KegiatanInd;
 use App\Http\Controllers\Organisasi;
@@ -36,9 +37,12 @@ Route::get('/home', [AuthManager::class, 'home'])->middleware('AuthCheck');
 Route::middleware(['AuthCheck', 'organisasi'])->group(function () {
     // kegiatan organisasi
     Route::get('/listbaru-Org', [kegiatanController::class, 'openList'])->name('listkegiatan-Org');
-    Route::get('/editkegiatan-Org', [halamanController::class, 'editkegiatanOrg']);
+    Route::get('/detailkegiatan-Org/{id}', [halamanController::class, 'detailkegiatanOrg'])->name('detailkegiatan-Org');
     Route::get('/kegiatanbaru-Org', [halamanController::class, 'kegiatanbaruOrg']);
+    Route::get('/editkegiatan-Org/{id}', [halamanController::class, 'editkegiatanOrg'])->name('editkegiatan-Org');
+    Route::post('/updatekegiatan/{id}', [kegiatanController::class, 'update'])->name('updatekegiatan');
     Route::post('/tambahkegiatan', [kegiatanController::class, 'kegiatan'])->name('tambahkegiatan');
+    Route::post('/hapuskegiatan/{id}', [kegiatanController::class, 'hapus'])->name('hapuskegiatan');
 
     // profil organisasi
     Route::get('/profil-Org', [Organisasi::class, 'index'])->name('profil-organisasi');
@@ -50,13 +54,18 @@ Route::middleware(['AuthCheck', 'organisasi'])->group(function () {
 
     // rekruitasi
     Route::get('/listsukarelawan', [halamanController::class, 'listsukarelawan']);
+    Route::get('/detailsukarelawan', [halamanController::class, 'detailsukarelawan']);
+    Route::get('/rekrutsukarelawan', [halamanController::class, 'rekrutsukarelawan']);
 });
 
 // INDIVIDU
 Route::middleware(['AuthCheck', 'individu'])->group(function () {
     // kegiatan individu
     Route::get('/listkegiatan-Ind', [KegiatanInd::class, 'listkegiatanInd'])->name('listkegiatan-Ind');
-    Route:: get('/detailkegiatan-Ind/{id}', [halamanController::class, 'detailkegiatanInd'])->name('detailkegiatan-Ind');
+    Route::get('/detailkegiatan-Ind/{id}', [halamanController::class, 'detailkegiatanInd'])->name('detailkegiatan-Ind');
+    Route::get('/daftarkegiatan', [halamanController::class, 'daftarkegiatan']);
+    Route::get('/progresskegiatan', [halamanController::class, 'progresskegiatan']);
+    Route::get('/sertifikatkegiatan', [halamanController::class, 'sertifikatkegiatan']);
 
     // profil individu
     Route::get('/profil-Ind', [halamanController::class, 'profilInd'])->name('profil-individu');
