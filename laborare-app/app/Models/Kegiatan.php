@@ -21,5 +21,10 @@ class Kegiatan extends Model
         'sampul_kegiatan',
         'status_kegiatan'
     ];
+
+    public function sukarelawan()
+    {
+        return $this->hasMany(Sukarelawan::class);
+    }
 }
 
