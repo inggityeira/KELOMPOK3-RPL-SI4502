@@ -78,6 +78,17 @@ class kegiatanController extends Controller
 
         return redirect()->route('listkegiatan-Org');
     }
+
+    // Membuka halaman lapor sukarelawan
+    public function laporsukarelawan($id_kegiatan)
+    {
+        // return view('kegiatan-org.lapor');
+        $kegiatan = Kegiatan::find($id_kegiatan);
+
+        return view('kegiatan-org.lapor', ['kegiatan' => $kegiatan]);
+    }
+
+
   
 }
 
