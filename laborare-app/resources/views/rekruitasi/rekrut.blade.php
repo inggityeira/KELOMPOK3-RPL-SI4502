@@ -68,11 +68,10 @@
                 </select>
             </div>
         </div>
-        <div class="form-group center-button mt-4">
-                <a href="/rekrutsukarelawan" class="btn btn-outline-light px-4"><strong>Rekrut</strong></a>
-            </div>
-    </form>
-</div>
+        <div class="form-group center-button mt-4" style="display: flex; justify-content: center;">
+            <a href="/listsukarelawan" class="btn px-4" style="background-color: white; color: black;"><strong>Selesai</strong></a>
+        </div>
+
 
 
 
