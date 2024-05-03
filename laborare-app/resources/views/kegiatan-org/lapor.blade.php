@@ -11,6 +11,14 @@
             padding: 5px;
             margin-bottom: 30px;
         }
+
+        .sukarelawan{
+            text-align: center;
+        }
+
+        .identitas{
+            text-align: justify;
+        }
     </style>
 @endpush
 
@@ -40,25 +48,33 @@
 </div>
 
 {{-- Tabel Sukarelawan --}}
-<div class="d-flex justify-content-center" style="padding-right: 100px; padding-left: 100px;">
-    <table class="table-striped table">
+<div class="d-flex justify-content-center" style="padding-right: 150px; padding-left: 150px;">
+    <table class="table-striped table-dark table">
         <thead>
             <tr>
-                <th>FOTO</th>
-                <th>SUKARELAWAN</th>
-                <th>NO TELEPON</th>
-                <th>KONTAK WALI</th>
-                <th>AKSI</th>
+                <th class="sukarelawan" rowspan="2">SUKARELAWAN</th>
+                <th class="sukarelawan" rowspan="2">NO TELEPON</th>
+                <th class="sukarelawan" rowspan="2">KONTAK WALI</th>
+                <th class="sukarelawan" rowspan="2">AKSI</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td><img src="pasfoto/David.jpg" alt=""></td>
-                <td>Nama Lengkap</td>
-                <td>628123456789</td>
-                <td>628123456789</td>
-                <td><a href="">LAPORKAN</a></td>
-            </tr>
+            @foreach ($sukarelawan as $people)
+                <tr>
+                    <td class="identitas">
+                        <img src="{{asset('pasfoto/'.$people->pas_foto)}}" alt="" width="100px" style="margin-right: 20px;"> {{ $people->user->nama_user }}
+                    </td>
+                    <td class="sukarelawan py-4">
+                        {{$people->notelpon_sukarelawan}}
+                    </td>
+                    <td class="sukarelawan py-4">
+                        {{$people->kontak_wali}}
+                    </td>
+                    <td class="sukarelawan py-4">
+                        <a href="" class="btn" style="background-color: #4AFF47; color:white;"><strong>LAPORKAN</strong></a>
+                    </td>
+                </tr>
+            @endforeach
         </tbody>
     </table>
 </div>

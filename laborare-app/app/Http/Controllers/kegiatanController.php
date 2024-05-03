@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Kegiatan;
+use App\Models\Sukarelawan;
 use Illuminate\Http\Request;
 
 // Controller khusus role Organisasi
@@ -82,10 +83,10 @@ class kegiatanController extends Controller
     // Membuka halaman lapor sukarelawan
     public function laporsukarelawan($id_kegiatan)
     {
-        // return view('kegiatan-org.lapor');
         $kegiatan = Kegiatan::find($id_kegiatan);
+        $sukarelawan = Sukarelawan::where('id_kegiatan', $id_kegiatan)->get();
 
-        return view('kegiatan-org.lapor', ['kegiatan' => $kegiatan]);
+        return view('kegiatan-org.lapor', ['kegiatan' => $kegiatan, 'sukarelawan' => $sukarelawan]);
     }
 
 
