@@ -16,7 +16,7 @@ class halamanController extends Controller
     {
         return view('kegiatan-ind.daftar');
     }
-    
+
     public function progresskegiatan()
     {
         return view('kegiatan-ind.progress');
