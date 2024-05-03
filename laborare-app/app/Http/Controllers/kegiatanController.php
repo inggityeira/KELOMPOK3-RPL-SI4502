@@ -80,13 +80,22 @@ class kegiatanController extends Controller
         return redirect()->route('listkegiatan-Org');
     }
 
-    // Membuka halaman lapor sukarelawan
+    // Membuka halaman List sukarelawan setiap kegiatan
     public function laporsukarelawan($id_kegiatan)
     {
         $kegiatan = Kegiatan::find($id_kegiatan);
         $sukarelawan = Sukarelawan::where('id_kegiatan', $id_kegiatan)->get();
 
-        return view('kegiatan-org.lapor', ['kegiatan' => $kegiatan, 'sukarelawan' => $sukarelawan]);
+        return view('kegiatan-org.listsukarelawan', ['kegiatan' => $kegiatan, 'sukarelawan' => $sukarelawan]);
+    }
+
+    // Membuka halaman Form laporan sukarelawan
+    public function formlaporan($id_kegiatan, $id)
+    {
+        $kegiatan = Kegiatan::find($id_kegiatan);
+        $sukarelawan = Sukarelawan::find($id);
+        
+        return view('kegiatan-org.formlapor', ['sukarelawan' => $sukarelawan, 'kegiatan' => $kegiatan]);
     }
 
 
