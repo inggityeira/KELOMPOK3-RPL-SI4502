@@ -83,7 +83,9 @@ class halamanController extends Controller
     // rekruitasi
     public function listsukarelawan()
     {
-        return view('rekruitasi.listsukarelawan');
+        return view('rekruitasi.listsukarelawan', [ 
+            'sukarelawan' => Sukarelawan::all(),
+        ]);
     }
 
     public function detailsukarelawan()
