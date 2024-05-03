@@ -41,6 +41,7 @@ Route::middleware(['AuthCheck', 'organisasi'])->group(function () {
     Route::get('/kegiatanbaru-Org', [halamanController::class, 'kegiatanbaruOrg']);
     Route::get('/editkegiatan-Org/{id}', [halamanController::class, 'editkegiatanOrg'])->name('editkegiatan-Org');
     Route::get('/laporsukarelawan-Org/{id}', [kegiatanController::class, 'laporsukarelawan'])->name('laporsukarelawan-Org');
+    Route::get('/formlapor/{id_kegiatan}/{id}', [kegiatanController::class, 'formlaporan'])->name('formlaporan-Org');
     Route::post('/updatekegiatan/{id}', [kegiatanController::class, 'update'])->name('updatekegiatan');
     Route::post('/tambahkegiatan', [kegiatanController::class, 'kegiatan'])->name('tambahkegiatan');
     Route::post('/hapuskegiatan/{id}', [kegiatanController::class, 'hapus'])->name('hapuskegiatan');

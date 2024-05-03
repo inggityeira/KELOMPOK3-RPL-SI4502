@@ -71,8 +71,10 @@
                         {{$people->kontak_wali}}
                     </td>
                     <td class="sukarelawan py-4">
-                        <a href="" class="btn" style="background-color: #4AFF47; color:white;"><strong>LAPORKAN</strong></a>
-                    </td>
+                        <a href="{{ route('formlaporan-Org', ['id_kegiatan' => $people->id_kegiatan, 'id' => $people->id_sukarelawan]) }}" class="btn" style="background-color: #4AFF47; color:white;">
+                            <strong>LAPORKAN</strong>
+                        </a>
+                    </td>                    
                 </tr>
             @endforeach
         </tbody>
