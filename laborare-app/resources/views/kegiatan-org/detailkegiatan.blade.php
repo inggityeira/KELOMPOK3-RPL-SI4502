@@ -5,9 +5,9 @@
 @push('css')
     {{-- ISI CSS KALIAN, BISA EKSTERNAL/INTERNAL --}}
 <style>
-  body {
-    color: #000;
-  }
+    body {
+      color: #000;
+    }
   .containerutama {
     width: 70%;
     margin: 0 auto;
@@ -104,7 +104,7 @@
         </div>
 
         <div class="class-button">
-          <a href="/listsukarelawan" class="btn btn-outline-dark px-4" style="border: 3px solid;"><strong>Sukarelawan</strong></a>
+          <a href="{{ route('laporsukarelawan-Org', ['id' => $kegiatan->id_kegiatan]) }}" class="btn btn-outline-dark px-4" style="border: 3px solid;"><strong>Sukarelawan</strong></a>
           <a href="{{ route('editkegiatan-Org', ['id' => $kegiatan->id_kegiatan]) }}" class="btn" style="background-color:black; color:white; width:150px;">Edit</a>
           <form action="{{ route('hapuskegiatan', $kegiatan->id_kegiatan) }}" method="POST" style="display: inline-block;">
               @csrf
