@@ -7,6 +7,7 @@ use App\Http\Controllers\KegiatanBaruController;
 use App\Http\Controllers\kegiatanController;
 use App\Http\Controllers\KegiatanInd;
 use App\Http\Controllers\Organisasi;
+use App\Http\Controllers\rekruitasi;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -57,7 +58,10 @@ Route::middleware(['AuthCheck', 'organisasi'])->group(function () {
     // rekruitasi
     Route::get('/listsukarelawan', [halamanController::class, 'listsukarelawan']);
     Route::get('/detailsukarelawan', [halamanController::class, 'detailsukarelawan']);
-    Route::get('/rekrutsukarelawan', [halamanController::class, 'rekrutsukarelawan']);
+    Route::get('/rekrutsukarelawan/{id}', [halamanController::class, 'rekrutsukarelawan']);
+    Route::put('/rekrutsukarelawan/{id}', [rekruitasi::class, 'rekrutsukarelawan'])->name('rekrut-sukarelawan');
+
+
 });
 
 // INDIVIDU
@@ -76,7 +80,7 @@ Route::middleware(['AuthCheck', 'individu'])->group(function () {
 
     // donasi individu
     Route::get('/listdonasi-Ind', [halamanController::class, 'listdonasiInd']);
-    
+
     // poin
     Route::get('/jumlahpoin', [halamanController::class, 'jumlahpoin']);
 });

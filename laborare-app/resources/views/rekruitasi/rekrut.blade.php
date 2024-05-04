@@ -8,9 +8,6 @@
 
 @section('content')
 {{-- ISI KONTEN KALIAN DIBAWAH INI --}}
-@php
-    $user = \App\Models\User::where('id_user', session('loginId'))->first();
-@endphp
 
 {{-- Breadscrumb --}}
 <div style="margin-top:30px; margin-left:50px;">
@@ -28,13 +25,10 @@
     </nav>
 </div>
 
-<div class="d-flex flex-column align-items-center  text-center" >
+<div class="d-flex flex-column align-items-center  text-center mb-5" >
     {{-- Foto Profil --}}
-    @if($user->foto_profil != null)
-            <img src="{{asset('fotoprofil/'.$user->foto_profil)}}" alt="Profile" style="border-radius: 50%; width: 250px; height: 250px;">
-        @else
-            <img src="{{asset('fotoprofil/kosong.png')}}" alt="Profile" style="border-radius: 50%; width: 250px; height: 250px;">
-    @endif
+        <img src="{{asset('pasfoto/'.$sukarelawan->pas_foto)}}" alt="Profile" class="img-fluid"  style="border-radius: 5%;
+        overflow: hidden;">
 
     {{-- Nama dan Alamat --}}
 
@@ -42,41 +36,43 @@
 
 {{-- Detail Profil --}}
 <div class="container d-flex justify-content-center">
-    <form style="width: 55%">
+    <form style="width: 55%" method="post" action="{{ route('rekrut-sukarelawan', ['id' => $sukarelawan->id_sukarelawan]) }}">
+        @csrf
+        @method('put')
         <div class="mb-2">
             <label for="nama">Nama Lengkap</label>
-            <div class=""><input type="text" class="card p-2" style="width: 100%; padding: 8px;"></div>
+            <div class=""><input type="text" class="card p-2" style="width: 100%; padding: 8px;" value="{{$sukarelawan->id_sukarelawan}}"></div>
         </div>
         <div class="mb-2">
             <label for="kegiatan">Kegiatan</label>
             <div class="">
-                <select class="card p-2" style="width: 100%; padding: 8px;">
-                    <option value="meeting">Meeting</option>
-                    <option value="presentasi">Presentasi</option>
-                    <option value="training">Training</option>
-                    <option value="lainnya">Lainnya</option>
+                <select name="kegiatan_sukarelawan" class="card p-2" style="width: 100%; padding: 8px;">
+                    @if($kegiatan)
+                        <option value="{{$kegiatan->id_kegiatan}}">{{$kegiatan->nama_kegiatan}}</option>
+                    @endif
+                    @foreach($semuaKegiatan as $kg)
+                        @if(!$kegiatan || $kg->id_kegiatan != $kegiatan->id_kegiatan)
+                            <option value="{{$kg->id_kegiatan}}">{{$kg->nama_kegiatan}}</option>
+                        @endif
+                    @endforeach
                 </select>
             </div>
         </div>
         <div class="mb-2">
-            <label for="status">Status Penerimaan</label>
-            <div class="">
-                <select class="card p-2" style="width: 100%; padding: 8px;">
-                    <option value="diterima">Diterima</option>
-                    <option value="ditolak">Ditolak</option>
-                    <option value="menunggu">Menunggu</option>
+            <label for="status_sukarelawan">Status Penerimaan</label>
+            <div>
+                <select name="status_sukarelawan" class="card p-2" style="width: 100%; padding: 8px;">
+                    <option value="Tidak Diterima" {{ $sukarelawan->status_sukarelawan === 'Tidak Diterima' ? 'selected' : '' }}>Tidak Diterima</option>
+                    <option value="Diterima" {{ $sukarelawan->status_sukarelawan === 'Diterima' ? 'selected' : '' }}>Diterima</option>
+                    <option value="Selesai" {{ $sukarelawan->status_sukarelawan === 'Selesai' ? 'selected' : '' }}>Selesai</option>
                 </select>
             </div>
         </div>
+
         <div class="form-group center-button mt-4" style="display: flex; justify-content: center;">
-            <a href="/listsukarelawan" class="btn px-4" style="background-color: white; color: black;"><strong>Selesai</strong></a>
+            <button type="submit" class="btn px-4" style="background-color: white; color: black;"><strong>Selesai</strong></button>
         </div>
-
-
-
-
-
-
+    </form>
 
 
 

@@ -6,14 +6,17 @@ use App\Models\Sukarelawan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
-class Organisasi extends Controller
+class rekruitasi extends Controller
 {
     // Halaman Rekruitasi
-    public function rekrutsukarelawan()
-    {
-        $sukarelawan = Sukarelawan::find();
-        return view('rekruitasi.rekrut', ['sukarelawan' => $sukarelawan]);
-    }
+    public function rekrutsukarelawan(Request $request,$id){
+        $sukarelawan = Sukarelawan::find($id);
+        $sukarelawan->id_kegiatan = $request->kegiatan_sukarelawan;
+        $sukarelawan->status_sukarelawan = $request->status_sukarelawan;
+        $sukarelawan->save();
+
+        return back();
+}
 
     // // Halaman edit profil
     // public function edit($id)
