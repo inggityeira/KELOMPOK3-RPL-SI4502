@@ -84,7 +84,7 @@ class halamanController extends Controller
     // rekruitasi
     public function listsukarelawan()
     {
-        return view('rekruitasi.listsukarelawan', [ 
+        return view('rekruitasi.listsukarelawan', [
             'sukarelawan' => Sukarelawan::all(),
         ]);
     }
@@ -94,8 +94,16 @@ class halamanController extends Controller
         return view('rekruitasi.detailsukarelawan');
     }
 
-    public function rekrutsukarelawan()
+    public function rekrutsukarelawan($id)
     {
-        return view('rekruitasi.rekrut');
+        $sukarelawan = Sukarelawan::findOrFail($id);
+        $kegiatan = Kegiatan::find($sukarelawan->id_kegiatan);
+        $semuaKegiatan = Kegiatan::all();
+
+        return view('rekruitasi.rekrut', [
+            'sukarelawan' => $sukarelawan,
+            'kegiatan' => $kegiatan,
+            'semuaKegiatan' => $semuaKegiatan,
+        ]);
     }
 }
