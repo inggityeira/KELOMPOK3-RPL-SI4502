@@ -93,7 +93,7 @@ class halamanController extends Controller
     {
         $sukarelawan = Sukarelawan::findOrFail($id);
         return view('rekruitasi.detailsukarelawan',[
-            'sukarelawan' => $sukarelawan
+            'sukarelawan' => $sukarelawan,
         ]);
     }
 
