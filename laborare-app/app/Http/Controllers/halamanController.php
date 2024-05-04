@@ -89,9 +89,12 @@ class halamanController extends Controller
         ]);
     }
 
-    public function detailsukarelawan()
+    public function detailsukarelawan($id)
     {
-        return view('rekruitasi.detailsukarelawan');
+        $sukarelawan = Sukarelawan::findOrFail($id);
+        return view('rekruitasi.detailsukarelawan',[
+            'sukarelawan' => $sukarelawan
+        ]);
     }
 
     public function rekrutsukarelawan()
