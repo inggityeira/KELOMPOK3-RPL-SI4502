@@ -57,7 +57,7 @@ Route::middleware(['AuthCheck', 'organisasi'])->group(function () {
 
     // rekruitasi
     Route::get('/listsukarelawan', [halamanController::class, 'listsukarelawan']);
-    Route::get('/detailsukarelawan', [halamanController::class, 'detailsukarelawan']);
+    Route::get('/detailsukarelawan/{id}', [halamanController::class, 'detailsukarelawan']);
     Route::get('/rekrutsukarelawan/{id}', [halamanController::class, 'rekrutsukarelawan']);
     Route::put('/rekrutsukarelawan/{id}', [rekruitasi::class, 'rekrutsukarelawan'])->name('rekrut-sukarelawan');
 
