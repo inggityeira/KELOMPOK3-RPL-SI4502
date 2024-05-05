@@ -25,12 +25,16 @@
     </nav>
 </div>
 
-<div class="d-flex flex-column align-items-center  text-center mb-5" >
+<div class="d-flex flex-column align-items-center  text-center mb-2" >
     {{-- Foto Profil --}}
         <img src="{{asset('pasfoto/'.$sukarelawan->pas_foto)}}" alt="Profile" class="img-fluid"  style="border-radius: 5%;
         overflow: hidden;">
 
     {{-- Nama dan Alamat --}}
+    <div class="mt-4 text-center", div class="mb-2">
+        <h1 class="fw-bolder text-uppercase" style="font-size: 48px">{{$sukarelawan->user->nama_user}}</h1>
+    </div>
+</div>
 
 </div>
 
@@ -39,10 +43,6 @@
     <form style="width: 55%" method="post" action="{{ route('rekrut-sukarelawan', ['id' => $sukarelawan->id_sukarelawan]) }}">
         @csrf
         @method('put')
-        <div class="mb-2">
-            <label for="nama">Nama Lengkap</label>
-            <div class=""><input type="text" class="card p-2" style="width: 100%; padding: 8px;" value="{{$sukarelawan->id_sukarelawan}}"></div>
-        </div>
         <div class="mb-2">
             <label for="kegiatan">Kegiatan</label>
             <div class="">
