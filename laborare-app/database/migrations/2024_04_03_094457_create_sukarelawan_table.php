@@ -21,8 +21,8 @@ return new class extends Migration
             $table->string('motivasi');
             $table->unsignedBigInteger('id_kegiatan');
             $table->enum('status_sukarelawan', ['Tidak Diterima', 'Diterima', 'Selesai']);
-            $table->string('sertifikat');
-            $table->integer('poin');
+            $table->string('sertifikat')->nullable();
+            $table->integer('poin')->nullable();
 
             $table->foreign('id_user')->references('id_user')->on('users');
             $table->foreign('id_kegiatan')->references('id_kegiatan')->on('kegiatan');
