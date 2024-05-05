@@ -69,7 +69,8 @@ Route::middleware(['AuthCheck', 'individu'])->group(function () {
     // kegiatan individu
     Route::get('/listkegiatan-Ind', [KegiatanInd::class, 'listkegiatanInd'])->name('listkegiatan-Ind');
     Route::get('/detailkegiatan-Ind/{id}', [halamanController::class, 'detailkegiatanInd'])->name('detailkegiatan-Ind');
-    Route::get('/daftarkegiatan', [halamanController::class, 'daftarkegiatan']);
+    Route::get('/daftarkegiatan/{id}', [halamanController::class, 'daftarkegiatan'])->name('daftarkegiatan');
+    Route::post('/daftarkegiatan', [halamanController::class, 'sukarelawanbaru'])->name('sukarelawanbaru');
     Route::get('/progresskegiatan', [halamanController::class, 'progresskegiatan']);
     Route::get('/sertifikatkegiatan', [halamanController::class, 'sertifikatkegiatan']);
 

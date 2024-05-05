@@ -13,9 +13,47 @@ use Illuminate\Support\Facades\Storage;
 class halamanController extends Controller
 {
     // kegiatan individu
-    public function daftarkegiatan()
+    public function daftarkegiatan($id)
     {
-        return view('kegiatan-ind.daftar');
+        $kegiatan = Kegiatan::find($id);
+        $daftarKegiatan = Kegiatan::all();
+        return view('kegiatan-ind.daftar', [
+            'kegiatan' => $kegiatan,
+            'daftarKegiatan' => $daftarKegiatan
+        ]);
+    }
+
+    public function sukarelawanbaru(Request $request)
+    {
+        $sukarelawan = new Sukarelawan();
+        $sukarelawan->id_user = $request->id_user;
+        $sukarelawan->notelpon_sukarelawan = $request->notelpon_sukarelawan;
+        $sukarelawan->kontak_wali = $request->kontak_wali;
+        $sukarelawan->alamat_sukarelawan = $request->alamat_sukarelawan;
+        $sukarelawan->motivasi = $request->motivasi;
+        $sukarelawan->id_kegiatan = $request->id_kegiatan;
+
+        if ($request->hasFile('pas_foto')) {
+            $image = $request->file('pas_foto');
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('pas_foto'), $imageName);
+            $sukarelawan->pas_foto = $imageName;
+        }
+
+        if ($request->hasFile('sertifikat')) {
+            $image = $request->file('sertifikat');
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('sertifikat'), $imageName);
+            $sukarelawan->sertifikat = $imageName;
+        } else {
+            $sukarelawan->sertifikat = '';
+        }
+
+        $sukarelawan->status_sukarelawan = 'Tidak Diterima';
+        $sukarelawan->poin = 0;
+        $sukarelawan->save();
+
+        return redirect()->route('listkegiatan-Ind');
     }
 
     public function progresskegiatan()
