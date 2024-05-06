@@ -123,7 +123,7 @@ class halamanController extends Controller
     public function listsukarelawan()
     {
         return view('rekruitasi.listsukarelawan', [
-            'sukarelawan' => Sukarelawan::all(),
+            'sukarelawan' => Sukarelawan::paginate(8),
         ]);
     }
 
