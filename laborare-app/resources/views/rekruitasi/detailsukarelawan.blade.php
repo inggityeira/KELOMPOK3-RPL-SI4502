@@ -8,16 +8,6 @@
 
 @section('content')
 {{-- ISI KONTEN KALIAN DIBAWAH INI --}}
-@extends('layouts.main')
-
-@section('title', 'LABORARE | REKRUITASI')
-
-@push('css')
-    {{-- ISI CSS KALIAN, BISA EKSTERNAL/INTERNAL --}}
-@endpush
-
-@section('content')
-{{-- ISI KONTEN KALIAN DIBAWAH INI --}}
 <div class="container">
     <div class="row">
         <div class="col-md-6 pt-4">
@@ -47,7 +37,7 @@
                     <textarea rows="5" cols="77">{{$sukarelawan->motivasi}}</textarea>
                 </div>
                 <div class="form-group center-button mt-4" style="display: flex; justify-content: end;">
-                    <button type="submit" class="btn px-4" style="background-color: white; color: black;"><strong>Rekrut</strong></button>
+                    <a href="{{ route('rekrut', ['id' => $sukarelawan->id_sukarelawan]) }}" type="submit" class="btn px-4" style="background-color: white; color: black;"><strong>Rekrut</strong></a>
                 </div>
             </form>
         </div>
