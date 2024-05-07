@@ -11,16 +11,10 @@
 
 {{-- Breadscrumb --}}
 <div style="margin-top:30px; margin-left:50px;">
-    <style>
-      .breadcrumb-item+.breadcrumb-item::before {
-        color: white;
-        font-size: 20px;
-      }
-    </style>
     <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="/listsukarelawan" style="color:white; font-size:20px; text-decoration: underline; letter-spacing:1px; font-size:18px;"><strong>Rekruitasi</strong></a></li>
-            <li class="breadcrumb-item"><a href="" style="color:white; font-size:20px; text-decoration: underline; letter-spacing:1px; font-size:18px;"><strong>Rekrut Sukarelawan</strong></a></li>
+            <li class="breadcrumb-item"><a href="/listsukarelawan" style="color:white; font-size:20px; text-decoration: underline; letter-spacing:1px; font-size:18px;">Rekruitasi</a></li>
+            <li class="breadcrumb-item"><a href="" style="color:white; font-size:20px; text-decoration: underline; letter-spacing:1px; font-size:18px;">Rekrut Sukarelawan</a></li>
         </ol>
     </nav>
 </div>

@@ -27,17 +27,11 @@
 
 {{-- Breadscrumb --}}
 <div style="margin-top:30px; margin-left:50px;">
-    <style>
-        .breadcrumb-item+.breadcrumb-item::before {
-        color: white;
-        font-size: 20px;
-        }
-    </style>
     <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item active"><a href="/listbaru-Org" style="font-size:18px; color:white; font-size:20px; text-decoration: none; letter-spacing:1px;"><strong>Kegiatan</strong></a></li>
-            <li class="breadcrumb-item active" ><a href="{{ route('detailkegiatan-Org', ['id' => $kegiatan->id_kegiatan]) }}" style="font-size:18px; color:white; font-size:20px; text-decoration: none; letter-spacing:1px;"><strong>Detail Kegiatan</strong></a></li>
-            <li class="breadcrumb-item active" ><a href="{{ url()->current() }}" style="font-size:18px; color:white; font-size:20px; text-decoration: underline; letter-spacing:1px;"><strong>Sukarelawan</strong></a></li>
+            <li class="breadcrumb-item active"><a href="/listbaru-Org" style="color:white; font-size:20px; text-decoration: none; letter-spacing:1px;">Kegiatan</a></li>
+            <li class="breadcrumb-item active" ><a href="{{ route('detailkegiatan-Org', ['id' => $kegiatan->id_kegiatan]) }}" style="color:white; font-size:20px; text-decoration: none; letter-spacing:1px;">Detail Kegiatan</a></li>
+            <li class="breadcrumb-item active" ><a href="{{ url()->current() }}" style="color:white; font-size:20px; text-decoration: underline; letter-spacing:1px;">Sukarelawan</a></li>
         </ol>
     </nav>
 </div>
@@ -71,9 +65,13 @@
                         {{$people->kontak_wali}}
                     </td>
                     <td class="sukarelawan py-4">
-                        <a href="{{ route('formlaporan-Org', ['id_kegiatan' => $people->id_kegiatan, 'id' => $people->id_sukarelawan]) }}" class="btn" style="background-color: #4AFF47; color:white;">
-                            <strong>LAPORKAN</strong>
-                        </a>
+                        @if ($people->status_sukarelawan != 'Selesai')
+                            <a href="{{ route('formlaporan-Org', ['id_kegiatan' => $people->id_kegiatan, 'id' => $people->id_sukarelawan]) }}" class="btn" style="background-color: #4A47FF; color:white;">
+                                <strong>LAPORKAN</strong>
+                            </a>
+                        @else
+                            <p style="font-size: 20px; background-color:green;"><strong>Selesai</strong></p>
+                        @endif
                     </td>                    
                 </tr>
             @endforeach
@@ -81,4 +79,5 @@
     </table>
 </div>
 
+<br>
 @endsection

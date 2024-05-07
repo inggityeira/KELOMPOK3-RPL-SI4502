@@ -24,6 +24,12 @@
         .nav-link.active {
             text-decoration: underline;
         }
+        
+        .breadcrumb-item+.breadcrumb-item::before {
+            color: white;
+            font-size: 15px;
+            margin-top:5px;
+        }
     </style>
 
     @stack('css')

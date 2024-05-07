@@ -8,21 +8,12 @@
 
 @section('content')
 {{-- ISI KONTEN KALIAN DIBAWAH INI --}}
-@php
-    $user = \App\Models\User::where('id_user', session('loginId'))->first();
-@endphp
 
 {{-- Breadscrumb --}}
 <div style="margin-top:30px; margin-left:50px;">
-    <style>
-      .breadcrumb-item+.breadcrumb-item::before {
-        color: white;
-        font-size: 20px;
-      }
-    </style>
     <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="/profil-Ind" style="color:white; font-size:20px; text-decoration: underline; letter-spacing:1px; font-size:18px;"><strong>Profil</strong></a></li>
+            <li class="breadcrumb-item"><a href="/profil-Ind" style="color:white; font-size:20px; text-decoration: underline; letter-spacing:1px; font-size:18px;">Profil</a></li>
         </ol>
     </nav>
 </div>
