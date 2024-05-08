@@ -35,6 +35,4 @@ class Sukarelawan extends Model
     {
         return $this->belongsTo(Kegiatan::class, 'id_kegiatan');
     }
-
-
 }

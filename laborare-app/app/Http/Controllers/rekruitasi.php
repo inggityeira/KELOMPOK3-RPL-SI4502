@@ -9,21 +9,15 @@ use Illuminate\Support\Facades\Hash;
 class rekruitasi extends Controller
 {
     // Halaman Rekruitasi
-    public function rekrutsukarelawan(Request $request,$id){
+    public function rekrutsukarelawan(Request $request, $id)
+    {
         $sukarelawan = Sukarelawan::find($id);
         $sukarelawan->id_kegiatan = $request->kegiatan_sukarelawan;
         $sukarelawan->status_sukarelawan = $request->status_sukarelawan;
         $sukarelawan->save();
 
         return back();
-}
-
-    // // Halaman edit profil
-    // public function edit($id)
-    // {
-    //     $user = User::find($id);
-    //     return view('profil.editorganisasi', ['user' => $user]);
-    // }
+    }
 
     public function update(Request $request, $id_sukarelawan)
     {

@@ -7,19 +7,22 @@
 @endpush
 
 @section('content')
-{{-- ISI KONTEN KALIAN DIBAWAH INI --}}
+    {{-- ISI KONTEN KALIAN DIBAWAH INI --}}
 
-{{-- Breadscrumb --}}
-<div style="margin-top:30px; margin-left:50px;">
-    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item active"><a href="/listkegiatan-Ind" style="color:white; font-size:20px; text-decoration: none; letter-spacing:1px;">Kegiatan</a></li>
-            <li class="breadcrumb-item active" ><a href="{{ url()->current() }}" style="color:white; font-size:20px; text-decoration: underline; letter-spacing:1px;">Detail Kegiatan</a></li>
-        </ol>
-    </nav>
-  </div>
+    {{-- Breadscrumb --}}
+    <div style="margin-top:30px; margin-left:50px;">
+        <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item active"><a href="/listkegiatan-Ind"
+                        style="color:white; font-size:20px; text-decoration: none; letter-spacing:1px;">Kegiatan</a></li>
+                <li class="breadcrumb-item active"><a href="{{ url()->current() }}"
+                        style="color:white; font-size:20px; text-decoration: underline; letter-spacing:1px;">Detail
+                        Kegiatan</a></li>
+            </ol>
+        </nav>
+    </div>
 
-  {{-- Konten Utama --}}
+    {{-- Konten Utama --}}
     <div class="container px-5" style="margin-top: 20px;">
         <div class="card bg-white mx-5 border border-0 overflow-hidden">
             <div class="row g-0">
@@ -38,8 +41,7 @@
                         <div class="container mb-4">
                             <div class="container">
                                 <p class="text-white fw-semibold">Deskripsi Kegiatan</p>
-                                <div class="card bg-white border border-0 p-3"
-                                    style="text-align: justify;">
+                                <div class="card bg-white border border-0 p-3" style="text-align: justify;">
                                     {{ $kegiatan->deskripsi_kegiatan }}
                                 </div>
                             </div>
@@ -61,9 +63,10 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="container d-flex justify-content-center my-3">
-                        <a href="{{ route('daftarkegiatan', ['id' => $kegiatan->id_kegiatan]) }}" class="btn btn-lg bg-black text-white fw-semibold px-5">Daftar Sekarang</a>
+                        <a href="{{ route('daftarkegiatan', ['id' => $kegiatan->id_kegiatan]) }}"
+                            class="btn btn-lg bg-black text-white fw-semibold px-5">Daftar Sekarang</a>
                     </div>
                 </div>
             </div>
@@ -71,4 +74,3 @@
     </div>
 
 @endsection
-

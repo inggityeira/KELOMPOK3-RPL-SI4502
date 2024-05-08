@@ -7,7 +7,7 @@
 @endpush
 
 @section('content')
-{{-- ISI KONTEN KALIAN DIBAWAH INI --}}
-LIST DONASI
+    {{-- ISI KONTEN KALIAN DIBAWAH INI --}}
+    LIST DONASI
 
 @endsection

@@ -37,7 +37,5 @@ class Individu extends Controller
         $user->save();
 
         return redirect()->route('profil-individu');
-
     }
-
 }

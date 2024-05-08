@@ -61,8 +61,6 @@ Route::middleware(['AuthCheck', 'organisasi'])->group(function () {
     Route::get('/detailsukarelawan/{id}', [halamanController::class, 'detailsukarelawan'])->name('detail-sukarelawan');
     Route::get('/rekrutsukarelawan/{id}', [halamanController::class, 'rekrutsukarelawan'])->name('rekrut');
     Route::put('/rekrutsukarelawan/{id}', [rekruitasi::class, 'rekrutsukarelawan'])->name('rekrut-sukarelawan');
-
-
 });
 
 // INDIVIDU
@@ -73,7 +71,8 @@ Route::middleware(['AuthCheck', 'individu'])->group(function () {
     Route::get('/daftarkegiatan/{id}', [halamanController::class, 'daftarkegiatan'])->name('daftarkegiatan');
     Route::post('/daftarkegiatan', [halamanController::class, 'sukarelawanbaru'])->name('sukarelawanbaru');
     Route::get('/progresskegiatan', [halamanController::class, 'progresskegiatan'])->name('progresskegiatan');
-    Route::get('/sertifikatkegiatan', [halamanController::class, 'sertifikatkegiatan'])->name('sertifikatkegiatan');
+    Route::get('/sertifikatkegiatan/{id}', [halamanController::class, 'sertifikatkegiatan'])->name('sertifikatkegiatan');
+    Route::get('/downloadsertif/{filename}', [halamanController::class, 'downloadsertif'])->name('download.sertif');
 
 
     // profil individu
