@@ -71,8 +71,9 @@ Route::middleware(['AuthCheck', 'individu'])->group(function () {
     Route::get('/detailkegiatan-Ind/{id}', [halamanController::class, 'detailkegiatanInd'])->name('detailkegiatan-Ind');
     Route::get('/daftarkegiatan/{id}', [halamanController::class, 'daftarkegiatan'])->name('daftarkegiatan');
     Route::post('/daftarkegiatan', [halamanController::class, 'sukarelawanbaru'])->name('sukarelawanbaru');
-    Route::get('/progresskegiatan', [halamanController::class, 'progresskegiatan']);
-    Route::get('/sertifikatkegiatan', [halamanController::class, 'sertifikatkegiatan']);
+    Route::get('/progresskegiatan', [halamanController::class, 'progresskegiatan'])->name('progresskegiatan');
+    Route::get('/sertifikatkegiatan', [halamanController::class, 'sertifikatkegiatan'])->name('sertifikatkegiatan');
+
 
     // profil individu
     Route::get('/profil-Ind', [halamanController::class, 'profilInd'])->name('profil-individu');

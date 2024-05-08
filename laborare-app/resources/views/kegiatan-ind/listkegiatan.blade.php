@@ -32,7 +32,7 @@
 
 {{-- Notes: Tambahin href --}}
 <div class="col">
-  <a href="" id= "btn-kegiatan-yang-diikuti" class="btn btn-light fw-bolder" style="font-size:15px; margin-top:10px; margin-right:-100px;">Kegiatan yang diikuti</a>
+  <a href="{{route('progresskegiatan')}}" id= "btn-kegiatan-yang-diikuti" class="btn btn-light fw-bolder" style="font-size:15px; margin-top:10px; margin-right:-100px;">Kegiatan yang diikuti</a>
 </div>
 
 {{-- Banner --}}
