@@ -58,6 +58,9 @@ class halamanController extends Controller
 
     public function progresskegiatan()
     {
+        $kegiatan = Kegiatan::query();
+        $kegiatan = $kegiatan->join('sukarelawan', 'sukarelawan.id_kegiatan', '=', 'kegiatan.id_kegiatan')->where('id_user', '=',session('loginId'))->paginate(6)->appends(request()->query());
+        return view('kegiatan-ind.progress', compact('kegiatan'));
         return view('kegiatan-ind.progress');
     }
 

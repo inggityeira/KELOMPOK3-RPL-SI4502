@@ -22,12 +22,7 @@ class KegiatanInd extends Controller
     
         return view('kegiatan-ind.listkegiatan', compact('kegiatan'));
     }
-    public function listkegiatandiikutiInd(Request $request){
-        $kegiatan = Kegiatan::query();
-        $kegiatan = $kegiatan->join('sukarelawan', 'sukarelawan.id_kegiatan', '=', 'kegiatan.id_kegiatan')->where('id_user', '=',session('loginId'))->paginate(6)->appends(request()->query());
-    
-        return view('kegiatan-ind.progress', compact('kegiatan'));
-    }
+
     
     
     
