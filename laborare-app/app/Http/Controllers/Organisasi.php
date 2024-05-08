@@ -11,7 +11,12 @@ class Organisasi extends Controller
     // Halaman Profil
     public function index()
     {
-        return view('profil.profilorganisasi');
+        $user = User::where('id_user', session('loginId'))->first();
+
+        return view('profil.profilorganisasi',
+        [
+            'user' => $user
+        ]);
     }
 
     // Halaman edit profil

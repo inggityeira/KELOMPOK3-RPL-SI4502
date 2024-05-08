@@ -4,11 +4,6 @@
 
 @push('css')
     {{-- ISI CSS KALIAN, BISA EKSTERNAL/INTERNAL --}}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Add Activity</title>
     <style>
         body {
             color: #000;
@@ -47,7 +42,6 @@
             margin-bottom: 30px;
         }
     </style>
-</head>
 @endpush
 
 @section('content')
@@ -55,16 +49,10 @@
 
 {{-- Breadscrumb --}}
 <div style="margin-top:30px; margin-left:50px;">
-    <style>
-        .breadcrumb-item+.breadcrumb-item::before {
-        color: white;
-        font-size: 20px;
-        }
-    </style>
     <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item active"><a href="/listbaru-Org" style="font-size:18px; color:white; font-size:20px; text-decoration: none; letter-spacing:1px;"><strong>Kegiatan</strong></a></li>
-            <li class="breadcrumb-item active"><a href="/kegiatanbaru-Org" style="font-size:18px; color:white; font-size:20px; text-decoration: underline; letter-spacing:1px;"><strong>Kegiatan Baru</strong></a></li>
+            <li class="breadcrumb-item active"><a href="/listbaru-Org" style="color:white; font-size:20px; text-decoration: none; letter-spacing:1px;">Kegiatan</a></li>
+            <li class="breadcrumb-item active"><a href="/kegiatanbaru-Org" style="color:white; font-size:20px; text-decoration: underline; letter-spacing:1px;">Kegiatan Baru</a></li>
         </ol>
     </nav>
 </div>

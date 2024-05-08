@@ -70,7 +70,7 @@ class kegiatanController extends Controller
         }
         
     }
-  
+
     // Melakukan delete kegiatan
     public function hapus($id_kegiatan)
     {
@@ -80,14 +80,17 @@ class kegiatanController extends Controller
         return redirect()->route('listkegiatan-Org');
     }
 
-    // Membuka halaman List sukarelawan setiap kegiatan
+    // Membuka halaman List sukarelawan setiap kegiatan yang sudah diterima
     public function laporsukarelawan($id_kegiatan)
     {
         $kegiatan = Kegiatan::find($id_kegiatan);
-        $sukarelawan = Sukarelawan::where('id_kegiatan', $id_kegiatan)->get();
+        $sukarelawan = Sukarelawan::where('id_kegiatan', $id_kegiatan)
+                                ->where('status_sukarelawan', '!=', 'Tidak Diterima')
+                                ->get();
 
         return view('kegiatan-org.listsukarelawan', ['kegiatan' => $kegiatan, 'sukarelawan' => $sukarelawan]);
     }
+
 
     // Membuka halaman Form laporan sukarelawan
     public function formlaporan($id_kegiatan, $id)
@@ -98,6 +101,36 @@ class kegiatanController extends Controller
         return view('kegiatan-org.formlapor', ['sukarelawan' => $sukarelawan, 'kegiatan' => $kegiatan]);
     }
 
+    // Melaporkan Sukarelawan
+    public function laporkan(Request $request, $id_sukarelawan)
+    {
+        $sukarelawan = Sukarelawan::find($id_sukarelawan);
+
+        // Menambahkan poin
+        $poin = $request->poin;
+        $sukarelawan->poin += $poin;
+
+        // Mengubah status sukarelawan
+        if ($request->tugas_selesai)
+        {
+            $sukarelawan->status_sukarelawan = 'Selesai';
+        }
+
+        // Menginputkan sertifikat
+        if ($request->hasFile('sertifikat')) {
+            $request->file('sertifikat')->move('sertifikat/', $request->file('sertifikat')->getClientOriginalName());
+            $sukarelawan->sertifikat = $request->file('sertifikat')->getClientOriginalName();
+        }
+        
+        // Memasukkannya ke database
+        $laporkan = $sukarelawan->save();
+
+        if ($laporkan){
+            return back()->with('success', 'Laporan berhasil tersimpan!');
+        }else{
+            return back()->with('failed', 'Laporan gagal tersimpan!');
+        }
+    }
 
   
 }

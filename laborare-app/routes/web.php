@@ -43,6 +43,7 @@ Route::middleware(['AuthCheck', 'organisasi'])->group(function () {
     Route::get('/editkegiatan-Org/{id}', [halamanController::class, 'editkegiatanOrg'])->name('editkegiatan-Org');
     Route::get('/laporsukarelawan-Org/{id}', [kegiatanController::class, 'laporsukarelawan'])->name('laporsukarelawan-Org');
     Route::get('/formlapor/{id_kegiatan}/{id}', [kegiatanController::class, 'formlaporan'])->name('formlaporan-Org');
+    Route::post('/laporkan/{id}', [kegiatanController::class, 'laporkan'])->name('laporkan');
     Route::post('/updatekegiatan/{id}', [kegiatanController::class, 'update'])->name('updatekegiatan');
     Route::post('/tambahkegiatan', [kegiatanController::class, 'kegiatan'])->name('tambahkegiatan');
     Route::post('/hapuskegiatan/{id}', [kegiatanController::class, 'hapus'])->name('hapuskegiatan');
@@ -57,8 +58,8 @@ Route::middleware(['AuthCheck', 'organisasi'])->group(function () {
 
     // rekruitasi
     Route::get('/listsukarelawan', [halamanController::class, 'listsukarelawan']);
-    Route::get('/detailsukarelawan/{id}', [halamanController::class, 'detailsukarelawan']);
-    Route::get('/rekrutsukarelawan/{id}', [halamanController::class, 'rekrutsukarelawan']);
+    Route::get('/detailsukarelawan/{id}', [halamanController::class, 'detailsukarelawan'])->name('detail-sukarelawan');
+    Route::get('/rekrutsukarelawan/{id}', [halamanController::class, 'rekrutsukarelawan'])->name('rekrut');
     Route::put('/rekrutsukarelawan/{id}', [rekruitasi::class, 'rekrutsukarelawan'])->name('rekrut-sukarelawan');
 
 

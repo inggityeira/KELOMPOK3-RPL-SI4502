@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Kegiatan;
 use App\Models\Sukarelawan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth as FacadesAuth;
 use Illuminate\Support\Facades\Storage;
 
 
@@ -16,17 +17,22 @@ class halamanController extends Controller
     public function daftarkegiatan($id)
     {
         $kegiatan = Kegiatan::find($id);
+        $user = User::where('id_user', session('loginId'))->first();
+
         $daftarKegiatan = Kegiatan::all();
         return view('kegiatan-ind.daftar', [
             'kegiatan' => $kegiatan,
-            'daftarKegiatan' => $daftarKegiatan
+            'daftarKegiatan' => $daftarKegiatan,
+            'user' => $user
         ]);
     }
 
     public function sukarelawanbaru(Request $request)
     {
         $sukarelawan = new Sukarelawan();
-        $sukarelawan->id_user = $request->id_user;
+        $user = User::where('id_user', session('loginId'))->first();
+
+        $sukarelawan->id_user = $user->id_user;
         $sukarelawan->notelpon_sukarelawan = $request->notelpon_sukarelawan;
         $sukarelawan->kontak_wali = $request->kontak_wali;
         $sukarelawan->alamat_sukarelawan = $request->alamat_sukarelawan;
@@ -34,23 +40,11 @@ class halamanController extends Controller
         $sukarelawan->id_kegiatan = $request->id_kegiatan;
 
         if ($request->hasFile('pas_foto')) {
-            $image = $request->file('pas_foto');
-            $imageName = time() . '.' . $image->getClientOriginalExtension();
-            $image->move(public_path('pas_foto'), $imageName);
-            $sukarelawan->pas_foto = $imageName;
-        }
-
-        if ($request->hasFile('sertifikat')) {
-            $image = $request->file('sertifikat');
-            $imageName = time() . '.' . $image->getClientOriginalExtension();
-            $image->move(public_path('sertifikat'), $imageName);
-            $sukarelawan->sertifikat = $imageName;
-        } else {
-            $sukarelawan->sertifikat = '';
+            $request->file('pas_foto')->move('pasfoto/', $request->file('pas_foto')->getClientOriginalName());
+            $sukarelawan->pas_foto = $request->file('pas_foto')->getClientOriginalName();
         }
 
         $sukarelawan->status_sukarelawan = 'Tidak Diterima';
-        $sukarelawan->poin = 0;
         $sukarelawan->save();
 
         return redirect()->route('listkegiatan-Ind');
@@ -101,7 +95,12 @@ class halamanController extends Controller
     // profil individu
     public function profilInd()
     {
-        return view('profil.profilindividu');
+        $user = User::where('id_user', session('loginId'))->first();
+
+        return view('profil.profilindividu',
+        [
+            'user' => $user
+        ]);
     }
 
         // donasi individu
@@ -125,9 +124,9 @@ class halamanController extends Controller
     // rekruitasi
     public function listsukarelawan()
     {
-        return view('rekruitasi.listsukarelawan', [
-            'sukarelawan' => Sukarelawan::paginate(8),
-        ]);
+        $sukarelawan = Sukarelawan::where('status_sukarelawan', '=', 'Tidak Diterima')->paginate(8);
+
+        return view('rekruitasi.listsukarelawan', compact('sukarelawan'));
     }
 
     public function detailsukarelawan($id)
