@@ -24,7 +24,6 @@ class Kegiatan extends Model
 
     public function sukarelawan()
     {
-        return $this->hasMany(Sukarelawan::class);
+        return $this->hasMany(Sukarelawan::class, 'id_kegiatan');
     }
 }
-

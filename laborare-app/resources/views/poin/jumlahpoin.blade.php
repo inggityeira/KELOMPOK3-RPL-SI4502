@@ -7,7 +7,7 @@
 @endpush
 
 @section('content')
-{{-- ISI KONTEN KALIAN DIBAWAH INI --}}
-JUMLAH POIN
+    {{-- ISI KONTEN KALIAN DIBAWAH INI --}}
+    JUMLAH POIN
 
 @endsection

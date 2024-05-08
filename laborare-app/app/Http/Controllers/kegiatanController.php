@@ -13,12 +13,12 @@ class kegiatanController extends Controller
     public function kegiatan(Request $request)
     {
         $request->validate([
-            'activityName'=>'required',
+            'activityName' => 'required',
             'activityDate' => 'required|date',
-            'activityCover'=>'required',
-            'activityStatus'=>'required',
-            'activityCategory'=>'required',
-            'activityDescription'=>'required',
+            'activityCover' => 'required',
+            'activityStatus' => 'required',
+            'activityCategory' => 'required',
+            'activityDescription' => 'required',
         ]);
 
         $kegiatan = new Kegiatan();
@@ -30,23 +30,24 @@ class kegiatanController extends Controller
         if ($request->hasFile('activityCover')) {
             $request->file('activityCover')->move('sampulkegiatan/', $request->file('activityCover')->getClientOriginalName());
             $kegiatan->sampul_kegiatan = $request->file('activityCover')->getClientOriginalName();
-        $new = $kegiatan->save();
-        if ($new){
-            return back()->with('success', 'Kegiatan berhasil ditambahkan!');
-        }else{
-            return back()->with('failed', 'Kegiatan gagal ditambahkan');
-        }
+            $new = $kegiatan->save();
+            if ($new) {
+                return back()->with('success', 'Kegiatan berhasil ditambahkan!');
+            } else {
+                return back()->with('failed', 'Kegiatan gagal ditambahkan');
+            }
         }
     }
 
     // Membuka halaman list kegiatan
-    public function openList(){
+    public function openList()
+    {
         $kegiatan = Kegiatan::query();
         $kegiatan = $kegiatan->paginate(8)->appends(request()->query());
 
         return view('kegiatan-org.listkegiatan', compact('kegiatan'));
     }
-  
+
     // Melakukan update data kegiatan
     public function update(Request $request, $id_kegiatan)
     {
@@ -63,12 +64,11 @@ class kegiatanController extends Controller
         }
         $update = $kegiatan->save();
 
-        if ($update){
+        if ($update) {
             return back()->with('success', 'Kegiatan berhasil diperbarui!');
-        }else{
+        } else {
             return back()->with('failed', 'Kegiatan gagal diperbarui');
         }
-        
     }
 
     // Melakukan delete kegiatan
@@ -85,8 +85,8 @@ class kegiatanController extends Controller
     {
         $kegiatan = Kegiatan::find($id_kegiatan);
         $sukarelawan = Sukarelawan::where('id_kegiatan', $id_kegiatan)
-                                ->where('status_sukarelawan', '!=', 'Tidak Diterima')
-                                ->get();
+            ->where('status_sukarelawan', '!=', 'Tidak Diterima')
+            ->get();
 
         return view('kegiatan-org.listsukarelawan', ['kegiatan' => $kegiatan, 'sukarelawan' => $sukarelawan]);
     }
@@ -97,7 +97,7 @@ class kegiatanController extends Controller
     {
         $kegiatan = Kegiatan::find($id_kegiatan);
         $sukarelawan = Sukarelawan::find($id);
-        
+
         return view('kegiatan-org.formlapor', ['sukarelawan' => $sukarelawan, 'kegiatan' => $kegiatan]);
     }
 
@@ -111,8 +111,7 @@ class kegiatanController extends Controller
         $sukarelawan->poin += $poin;
 
         // Mengubah status sukarelawan
-        if ($request->tugas_selesai)
-        {
+        if ($request->tugas_selesai) {
             $sukarelawan->status_sukarelawan = 'Selesai';
         }
 
@@ -121,18 +120,14 @@ class kegiatanController extends Controller
             $request->file('sertifikat')->move('sertifikat/', $request->file('sertifikat')->getClientOriginalName());
             $sukarelawan->sertifikat = $request->file('sertifikat')->getClientOriginalName();
         }
-        
+
         // Memasukkannya ke database
         $laporkan = $sukarelawan->save();
 
-        if ($laporkan){
+        if ($laporkan) {
             return back()->with('success', 'Laporan berhasil tersimpan!');
-        }else{
+        } else {
             return back()->with('failed', 'Laporan gagal tersimpan!');
         }
     }
-
-  
 }
-
-

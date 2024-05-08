@@ -13,10 +13,12 @@ class Organisasi extends Controller
     {
         $user = User::where('id_user', session('loginId'))->first();
 
-        return view('profil.profilorganisasi',
-        [
-            'user' => $user
-        ]);
+        return view(
+            'profil.profilorganisasi',
+            [
+                'user' => $user
+            ]
+        );
     }
 
     // Halaman edit profil

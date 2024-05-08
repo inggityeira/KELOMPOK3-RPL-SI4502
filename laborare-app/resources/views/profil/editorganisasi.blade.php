@@ -7,21 +7,26 @@
 @endpush
 
 @section('content')
-{{-- ISI KONTEN KALIAN DIBAWAH INI --}}
+    {{-- ISI KONTEN KALIAN DIBAWAH INI --}}
 
-{{-- Breadscrumb --}}
-<div style="margin-top:30px; margin-left:50px;">
-    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="/profil-Org" style="color:white; font-size:20px; text-decoration: none; letter-spacing:1px;font-size:18px;">Profil</a></li>
-            <li class="breadcrumb-item"><a href="{{ route('edit-organisasi', ['id' => $user->id_user]) }}" style="color:white; font-size:20px; text-decoration: underline; letter-spacing:1px; font-size:18px;">Edit Profil</a></li>
-        </ol>
-    </nav>
-</div>
+    {{-- Breadscrumb --}}
+    <div style="margin-top:30px; margin-left:50px;">
+        <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/profil-Org"
+                        style="color:white; font-size:20px; text-decoration: none; letter-spacing:1px;font-size:18px;">Profil</a>
+                </li>
+                <li class="breadcrumb-item"><a href="{{ route('edit-organisasi', ['id' => $user->id_user]) }}"
+                        style="color:white; font-size:20px; text-decoration: underline; letter-spacing:1px; font-size:18px;">Edit
+                        Profil</a></li>
+            </ol>
+        </nav>
+    </div>
 
-{{-- Form update profil --}}
+    {{-- Form update profil --}}
     <div class="d-flex justify-content-center">
-        <form style="width: 55%" method="POST" action="{{ route('update-organisasi', $user->id_user) }}" enctype="multipart/form-data">
+        <form style="width: 55%" method="POST" action="{{ route('update-organisasi', $user->id_user) }}"
+            enctype="multipart/form-data">
             @csrf
 
             <div class="mb-2">

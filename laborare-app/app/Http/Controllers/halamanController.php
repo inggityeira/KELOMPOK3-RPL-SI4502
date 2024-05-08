@@ -2,13 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use auth;
 use App\Models\User;
 use App\Models\Kegiatan;
 use App\Models\Sukarelawan;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth as FacadesAuth;
-use Illuminate\Support\Facades\Storage;
 
 
 class halamanController extends Controller
@@ -52,16 +49,32 @@ class halamanController extends Controller
 
     public function progresskegiatan()
     {
-        $kegiatan = Kegiatan::query();
-        $kegiatan = $kegiatan->join('sukarelawan', 'sukarelawan.id_kegiatan', '=', 'kegiatan.id_kegiatan')->where('id_user', '=',session('loginId'))->paginate(6)->appends(request()->query());
+        $kegiatan = Kegiatan::whereHas('sukarelawan', function ($query) {
+            $query->where('id_user', session('loginId'));
+        })
+            ->paginate(8);
+
         return view('kegiatan-ind.progress', compact('kegiatan'));
-        return view('kegiatan-ind.progress');
     }
 
-    public function sertifikatkegiatan()
+
+    public function sertifikatkegiatan(Request $request, $id_kegiatan)
     {
-        return view('kegiatan-ind.sertifikat');
+        $kegiatan = Kegiatan::find($id_kegiatan);
+
+        $sukarelawan = Sukarelawan::where('id_user', session('loginId'))
+            ->where('id_kegiatan', $id_kegiatan)
+            ->get();
+
+        return view('kegiatan-ind.sertifikat', ['sukarelawan' => $sukarelawan, 'kegiatan' => $kegiatan]);
     }
+
+    public function downloadsertif($filename)
+    {
+        $file_path = public_path('sertifikat/' . $filename);
+        return response()->download($file_path);
+    }
+
 
     public function detailkegiatanInd($id_kegiatan)
     {
@@ -97,13 +110,15 @@ class halamanController extends Controller
     {
         $user = User::where('id_user', session('loginId'))->first();
 
-        return view('profil.profilindividu',
-        [
-            'user' => $user
-        ]);
+        return view(
+            'profil.profilindividu',
+            [
+                'user' => $user
+            ]
+        );
     }
 
-        // donasi individu
+    // donasi individu
     public function listdonasiInd()
     {
         return view('donasi-ind.listdonasi');
@@ -132,7 +147,7 @@ class halamanController extends Controller
     public function detailsukarelawan($id)
     {
         $sukarelawan = Sukarelawan::findOrFail($id);
-        return view('rekruitasi.detailsukarelawan',[
+        return view('rekruitasi.detailsukarelawan', [
             'sukarelawan' => $sukarelawan,
         ]);
     }
