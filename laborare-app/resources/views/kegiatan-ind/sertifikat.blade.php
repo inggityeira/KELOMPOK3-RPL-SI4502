@@ -64,7 +64,7 @@ SERTIFIKAT
 <div class="p-5" style="margin-top:-30px;">
   <div class="container d-flex justify-content-center">
     <div class="row centered" style="flex-wrap: wrap; gap: 20px; justify-content: center;">
-      <img src="{{asset('img/sertifikat.jpg')}}" alt="">
+      <img src="{{asset('img/sertifikat.png')}}" alt="">
     </div>
   </div>
 </div>
