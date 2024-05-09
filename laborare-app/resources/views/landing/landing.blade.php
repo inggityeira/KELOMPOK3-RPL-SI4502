@@ -21,7 +21,8 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg bg-transparent position-relative" style="margin-right: 100px; height:100px;">
+    <nav class="navbar navbar-expand-lg bg-transparent position-relative"
+        style="margin-right: 100px; margin-bottom: -2%; height:100px;">
         <div class="navbar-nav" style="font-size: 18px; margin-top:-20px;">
             <a href="/">
                 <h2><img src="/img/LOGO.png" alt="Laborare" style=" width:90%; margin-left:10px;"></h2>
@@ -34,13 +35,20 @@
     </nav>
 
     <div class="background-image"
-        style="background-image: url('/img/landing.png'); height: 570px; background-size: cover; background-position: center; margin-top: -2%;">
-        <h1 style="color: white; font-size: 700%; margin-left:2%; position: absolute; bottom: 45%; line-height: 0.7;">
-            <strong>Selamat<br>Datang.</strong></h1>
+        style="background-image: url('/img/landing.png'); height: 85vh; background-size: cover; background-position: center; display: flex; flex-direction: column; justify-content: center; align-items: flex-start;">
+        <h1 style="color: white; font-size: 5vw; margin-left: 2%; text-align: center;">
+            <strong>Selamat<br>Datang.</strong>
+        </h1>
+        <br>
         <a class="btn"
-            style="background-color:white; color:black; font-size:110%; margin-left:2%; border-radius: 0%; width:13%; letter-spacing:5px; position: absolute; bottom: 25%;"
+            style="background-color:white; color:black; font-size: 1vw; border-radius: 0%; width: 13vw; letter-spacing: 0.5vw; text-align: center; margin-left: 2%;"
             aria-current="page" href="/daftar"><strong>AYO MULAI!</strong></a>
     </div>
+
+
+
+
+
 
 </body>
 
