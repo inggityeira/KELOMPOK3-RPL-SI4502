@@ -21,7 +21,8 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg bg-transparent position-relative" style="margin-right: 100px; height:100px;">
+    <nav class="navbar navbar-expand-lg bg-transparent position-relative"
+    style="margin-right: 100px; margin-bottom: -2%; height:100px;">
         <div class="navbar-nav" style="font-size: 18px; margin-top:-20px;">
             <a href="/">
                 <h2><img src="/img/LOGO.png" alt="Laborare" style=" width:90%; margin-left:10px;"></h2>
@@ -35,10 +36,10 @@
 
     <div class="background-image d-flex flex-column justify-content-center align-items-center"
         style="background-image: url('/img/register.png');  background-size: 100% 100%;  background-position: center; margin-top: -2%;">
-        <h1 style="color: white; margin-top:20px; font-size:50px; letter-spacing:7px;"><strong>DAFTAR</strong></h1>
         <div class="d-flex flex-column justify-content-center align-items-center"
-            style="width: 55%; margin-top: 2%; background:black; border-radius: 10px;">
-            <form class="row g-3" enctype="multipart/form-data" style="width: 90%; margin-top: 2%;"
+        style="width: 45%; margin-top: 2%; background-color: rgba(0, 0, 0, 0.5); backdrop-filter:blur(40px); border-radius: 10px;">
+        <h1 style="color: white; margin-top:20px; font-size:50px; letter-spacing:7px;"><strong>DAFTAR</strong></h1>
+            <form class="row g-3" enctype="multipart/form-data" style="width: 92%; "
                 action="{{ route('user-daftar') }}" method="POST">
                 @if (Session::has('success'))
                     <div class="alert alert-success">{{ Session::get('success') }}</div>
@@ -110,12 +111,12 @@
                     </span>
                 </div>
 
-                <div class="button-login d-grid mb-5">
+                <div class="button-login d-grid mb-4">
                     <button class="btn btn-lg  text-black btn-login fw-bold" type="submit"
                         style="background-color:#E5EFF8; font-size: 15px;">Daftar</button>
                 </div>
             </form>
-            <div>
+            <div class="mb-3">
                 <p style="color: white; font-size: 18px; font-weight: 500; text-align: center;">- ATAU -</p>
                 <p style="color: white; font-size: 15px; font-weight: 400; text-align: center;">Sudah punya akun? <a
                         href="/masuk" class="primary-text fw-medium" style=" color:white;">Masuk</a></p>
