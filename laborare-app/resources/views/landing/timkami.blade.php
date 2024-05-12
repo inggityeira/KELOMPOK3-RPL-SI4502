@@ -33,5 +33,61 @@
     </nav>
 
 </body>
+<body>
+    <div class="center-right-container">
+        <center>
+          <p style="font-size: 20px; color:white" >KELOMPOK 3 - SI4502 - REKAYASA PERANGKAT LUNAK </p>
+        </center>
+      </center>
+      <div class="container text-center mt-5">
+        <div class="row">
+          <div class="col">
+            <center>
+              <img class="img-fluid" src="img/timkami/inggit.jpg" style="border-radius:100%; height: 150px; width: 150px">
+              <div class="fw-bold" style="color:white">Inggit Yeira Budi Agranata</div>
+              <div style="color:white">1202213238</div>
+            </center>
+          </div>
+          <div class="col">
+            <center>
+              <img class="img-fluid" src="img/timkami/nikita.jpg" style="border-radius:100%; height: 150px; width: 150px">
+              <div class="fw-bold" style="color: white">Nikita Gradiana Shahiesa</div>
+              <div style="color: white">1202213312</div>
+            </center>
+          </div>
+          <div class="col">
+            <center>
+              <img class="img-fluid" src="img/timkami/lucky.jpeg" style="border-radius:100%; height: 150px; width: 150px">
+              <div class="fw-bold" style="color: white">Lucky Akbari Handojo</div>
+              <div style="color: white">1202210323</div>
+            </center>
+          </div>
+        </div>
+        <div class="row mt-5 mb-5">
+          <div class="col">
+            <center>
+              <img class="img-fluid" src="img/timkami/hendrickus.jpg" style="border-radius:100%; height: 150px; width: 150px">
+              <div class="fw-bold" style="color: white">Hendrickus Balzano Hermansah</div>
+              <div style="color: white">1202213128</div>
+            </center>
+          </div>
+          <div class="col">
+            <center>
+              <img class="img-fluid" src="img/timkami/seno.jpeg" style="border-radius:100%; height: 150px; width: 150px">
+              <div class="fw-bold" style="color: white">Raihan Aryoseno</div>
+              <div style="color: white">1202210256</div>
+            </center>
+          </div>
+          <div class="col">
+            <center>
+              <img class="img-fluid" src="img/timkami/ibat.jpeg" style="border-radius:100%; height: 150px; width: 150px">
+              <div class="fw-bold" style="color:white">Shobarna Ibadurrahman</div>
+              <div style="color: white">1202210367</div>
+            </center>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
 
 </html>
