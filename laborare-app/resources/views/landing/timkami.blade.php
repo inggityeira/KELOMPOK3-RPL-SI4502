@@ -16,6 +16,13 @@
             background-color: black;
             font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
         }
+        .img{
+            transition: opacity 0.6s ease;
+        }
+
+        .container:hover > :not(:hover) {
+            opacity: 0.4;
+        }
     </style>
 
 </head>
@@ -33,5 +40,61 @@
     </nav>
 
 </body>
+<body>
+  <div class="center-right-container">
+    <center>
+        <p style="font-size: 20px; color:white; font-weight: bold;">KELOMPOK 3 - SI4502 - REKAYASA PERANGKAT LUNAK</p>
+    </center>
+      </center>
+      <div class="container text-center mt-5">
+        <div class="row">
+          <div class="col">
+            <center>
+              <img class="img-fluid" src="img/timkami/inggit.jpg" style="border-radius:100%; height: 150px; width: 150px">
+              <div class="fw-bold" style="color:white">Inggit Yeira Budi Agranata</div>
+              <div style="color:white">Project Manager</div>
+            </center>
+          </div>
+          <div class="col">
+            <center>
+              <img class="img-fluid" src="img/timkami/nikita.jpg" style="border-radius:100%; height: 150px; width: 150px">
+              <div class="fw-bold" style="color: white">Nikita Gradiana Shahiesa</div>
+              <div style="color: white">Programmer 1</div>
+            </center>
+          </div>
+          <div class="col">
+            <center>
+              <img class="img-fluid" src="img/timkami/lucky.jpeg" style="border-radius:100%; height: 150px; width: 150px">
+              <div class="fw-bold" style="color: white">Lucky Akbari Handojo</div>
+              <div style="color: white">Programmer 2</div>
+            </center>
+          </div>
+        </div>
+        <div class="row mt-5 mb-5">
+          <div class="col">
+            <center>
+              <img class="img-fluid" src="img/timkami/hendrickus.jpg" style="border-radius:100%; height: 150px; width: 150px">
+              <div class="fw-bold" style="color: white">Hendrickus Balzano Hermansah</div>
+              <div style="color: white">Programmer 3</div>
+            </center>
+          </div>
+          <div class="col">
+            <center>
+              <img class="img-fluid" src="img/timkami/seno.jpeg" style="border-radius:100%; height: 150px; width: 150px">
+              <div class="fw-bold" style="color: white">Raihan Aryoseno</div>
+              <div style="color: white">Programmer 4</div>
+            </center>
+          </div>
+          <div class="col">
+            <center>
+              <img class="img-fluid" src="img/timkami/ibat.jpeg" style="border-radius:100%; height: 150px; width: 150px">
+              <div class="fw-bold" style="color:white">Shobarna Ibadurrahman</div>
+              <div style="color: white">Analyst</div>
+            </center>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
 
 </html>
