@@ -69,7 +69,8 @@
                     </div>
                     
                     <div class="container d-flex justify-content-center my-3">
-                        <a href="" class="btn btn-lg bg-black text-white fw-semibold px-5">Daftar Sekarang</a>
+                        <a href="{{ route('daftarkegiatan', ['id' => $kegiatan->id_kegiatan]) }}"
+                            class="btn btn-lg bg-black text-white fw-semibold px-5">Daftar Sekarang</a>
                     </div>
                 </div>
             </div>
