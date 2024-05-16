@@ -22,4 +22,16 @@ class DonasiOrgController extends Controller
 
         return view('donasi-org.listdonasi', compact('donasi', 'totalNominals'));
     }
+
+    // Halaman Donasi Baru
+    public function donasibaru()
+    {
+        return view('donasi-org.donasibaru');
+    }
+
+    // Membuat donasi baru
+    public function addDonasi(Request $request)
+    {
+        
+    }
 }

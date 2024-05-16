@@ -58,6 +58,7 @@ Route::middleware(['AuthCheck', 'organisasi'])->group(function () {
 
     // donasi organisasi
     Route::get('/listdonasi-Org', [DonasiOrgController::class, 'listdonasiOrg']);
+    Route::get('/donasibaru-Org', [DonasiOrgController::class, 'donasibaru']);
 
     // rekruitasi
     Route::get('/listsukarelawan', [halamanController::class, 'listsukarelawan']);

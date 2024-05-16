@@ -56,7 +56,7 @@
 
     {{-- Tombol Tambah Donasi --}}
     <div class="text-end">
-        <a href="" class="btn btn-light fw-bolder" style="font-size:18px; margin-top:-70px; margin-right:130px;">+
+        <a href="/donasibaru-Org" class="btn btn-light fw-bolder" style="font-size:18px; margin-top:-70px; margin-right:130px;">+
             Donasi</a>
     </div>
 
