@@ -135,6 +135,10 @@ class halamanController extends Controller
     {
         return view('poin.jumlahpoin');
     }
+    public function tablepoint()
+    {
+        return view('poin.tablepoint');
+    }
 
     // rekruitasi
     public function listsukarelawan()

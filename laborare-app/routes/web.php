@@ -85,4 +85,5 @@ Route::middleware(['AuthCheck', 'individu'])->group(function () {
 
     // poin
     Route::get('/jumlahpoin', [halamanController::class, 'jumlahpoin']);
+    Route::get('/tablepoint', [halamanController::class, 'tablepoint']);
 });
