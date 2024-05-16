@@ -9,6 +9,7 @@ use App\Http\Controllers\KegiatanInd;
 use App\Http\Controllers\Organisasi;
 use App\Http\Controllers\rekruitasi;
 use App\Http\Controllers\detaildonasi;
+use App\Http\Controllers\donasiindividu;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -84,7 +85,10 @@ Route::middleware(['AuthCheck', 'individu'])->group(function () {
     // donasi individu
     Route::get('/listdonasi-Ind', [halamanController::class, 'listdonasiInd']);
     Route::get('/detaildonasi', [detaildonasi::class, 'detaildonasi'])->name('detaildonasi');
+    Route::get('/formulir', [donasiindividu::class, 'formulirdonasi']);
+    Route::get('/pembayaran', [donasiindividu::class, 'pembayarandonasi']);
 
     // poin
     Route::get('/jumlahpoin', [halamanController::class, 'jumlahpoin']);
+    Route::get('/tablepoint', [halamanController::class, 'tablepoint']);
 });
