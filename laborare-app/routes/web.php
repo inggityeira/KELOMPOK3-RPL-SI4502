@@ -10,6 +10,7 @@ use App\Http\Controllers\Organisasi;
 use App\Http\Controllers\rekruitasi;
 use App\Http\Controllers\detaildonasi;
 use App\Http\Controllers\donasiindividu;
+use App\Http\Controllers\DonasiOrgController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -56,7 +57,7 @@ Route::middleware(['AuthCheck', 'organisasi'])->group(function () {
     Route::post('/updateprofil-Org/{id}', [Organisasi::class, 'update'])->name('update-organisasi');
 
     // donasi organisasi
-    Route::get('/listdonasi-Org', [halamanController::class, 'listdonasiOrg']);
+    Route::get('/listdonasi-Org', [DonasiOrgController::class, 'listdonasiOrg']);
 
     // rekruitasi
     Route::get('/listsukarelawan', [halamanController::class, 'listsukarelawan']);
