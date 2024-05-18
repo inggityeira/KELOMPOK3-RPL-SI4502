@@ -131,7 +131,9 @@ class halamanController extends Controller
     }
     public function tablepoint()
     {
-        return view('poin.tablepoint');
+        return view('poin.tablepoint', [
+            'data' => Sukarelawan::where('id_user', session('loginId'))->get()
+        ]);
     }
 
     // rekruitasi
