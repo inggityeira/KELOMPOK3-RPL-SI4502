@@ -8,11 +8,25 @@ class donasiindividu extends Controller
 {
     public function formulirdonasi()
     {
-        return view('donasi-ind.formulirdonasi');
+        $donasi = Donasi::find(2);
+        // dd($donasi->sampul_donasi);
+        return view('donasi-ind.formulirdonasi', compact('donasi'));
     }
-        public function pembayarandonasi()
+        public function pembayarandonasi(Request $request)
     {
-        return view('donasi-ind.pembayarandonasi');
+        $nominal = $request->nominal;
+        $pesan = $request->pesan;
+        return view('donasi-ind.pembayarandonasi', compact('nominal', 'pesan'));
+    }
+    public function pembayarandonasi_store(Request $request)
+    {
+        $donasi = Donatur::create([
+            "id_user"=>session('loginId'),
+            "pesan"=>$request->pesan,
+            "nominal"=>$request->nominal,
+            "id_donasi"=>"2"
+         ]);
+         return redirect('/listdonasi-Ind');
     }
 }
 
