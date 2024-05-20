@@ -121,7 +121,9 @@ class halamanController extends Controller
     // donasi individu
     public function listdonasiInd()
     {
-        return view('donasi-ind.listdonasi');
+        return view('donasi-ind.listdonasi', [
+            'data'=> Donasi::all(),
+        ]);
     }
 
     // poin
