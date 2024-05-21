@@ -129,12 +129,28 @@ class halamanController extends Controller
     // poin
     public function jumlahpoin()
     {
-        return view('poin.jumlahpoin');
-    }
-    public function tablepoint()
-    {
-        return view('poin.tablepoint', [
-            'data' => Sukarelawan::where('id_user', session('loginId'))->get()
+        $user = User::where('id_user', session('loginId'))->first();
+
+        if($user) {
+            $user_id = $user->id_user;
+            
+            $sukarelawan = Sukarelawan::where('id_user', $user_id)->get();
+        
+            $jumlah_poin = 0;
+            foreach($sukarelawan as $suk) {
+                $jumlah_poin += $suk->poin;
+            }
+        
+            $total_poin = ($jumlah_poin != 0) ? $jumlah_poin : 'n/a';
+        } else {
+            $total_poin = 'n/a';
+        }
+        
+        // dd($total_poin);
+        
+        return view('poin.jumlahpoin',[
+            'total_poin' => $total_poin
+        
         ]);
     }
 
