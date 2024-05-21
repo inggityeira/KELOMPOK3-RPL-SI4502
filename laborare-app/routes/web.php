@@ -88,7 +88,8 @@ Route::middleware(['AuthCheck', 'individu'])->group(function () {
     Route::get('/listdonasi-Ind', [halamanController::class, 'listdonasiInd']);
     Route::get('/detaildonasi', [detaildonasi::class, 'detaildonasi'])->name('detaildonasi');
     Route::get('/formulir', [donasiindividu::class, 'formulirdonasi']);
-    Route::get('/pembayaran', [donasiindividu::class, 'pembayarandonasi']);
+    Route::get('/pembayaran', [donasiindividu::class, 'pembayarandonasi'])->name('pembayarandonasi');
+    Route::post('/pembayaran_store', [donasiindividu::class, 'pembayarandonasi_store'])->name('pembayarandonasi_store');
 
     // poin
     Route::get('/jumlahpoin', [halamanController::class, 'jumlahpoin']);
