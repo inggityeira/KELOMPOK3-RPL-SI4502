@@ -32,6 +32,33 @@ class DonasiOrgController extends Controller
     // Membuat donasi baru
     public function addDonasi(Request $request)
     {
-        
+        $request->validate([
+            'nama_donasi' => 'required',
+            'target_donasi' => 'required',
+            'deskripsi_donasi' => 'required'
+        ]);
+
+        $donasi = new Donasi();
+        $donasi->nama_donasi = $request->nama_donasi;
+        $donasi->target_donasi = $request->target_donasi;
+        $donasi ->deskripsi_donasi = $request->deskripsi_donasi;
+
+        if ($request->hasFile('sampul_donasi')) {
+            $request->file('sampul_donasi')->move('donasi/', $request->file('sampul_donasi')->getClientOriginalName());
+            $donasi->sampul_donasi = $request->file('sampul_donasi')->getClientOriginalName();
+            $new = $donasi->save();
+            if ($new) {
+                return back()->with('success', 'Donasi berhasil ditambahkan!');
+            } else {
+                return back()->with('failed', 'Donasi gagal ditambahkan');
+            }
+        }
+
+    }
+
+    // Halaman Detail Donasi
+    public function detaildonasi()
+    {
+        return view('donasi-org.detaildonasi');
     }
 }
