@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Donasi;
 use App\Models\User;
 use App\Models\Kegiatan;
 use App\Models\Sukarelawan;
