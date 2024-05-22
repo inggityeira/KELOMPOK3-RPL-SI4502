@@ -41,7 +41,7 @@ class DonasiOrgController extends Controller
         $donasi = new Donasi();
         $donasi->nama_donasi = $request->nama_donasi;
         $donasi->target_donasi = $request->target_donasi;
-        $donasi ->deskripsi_donasi = $request->deskripsi_donasi;
+        $donasi->deskripsi_donasi = $request->deskripsi_donasi;
 
         if ($request->hasFile('sampul_donasi')) {
             $request->file('sampul_donasi')->move('donasi/', $request->file('sampul_donasi')->getClientOriginalName());
@@ -53,12 +53,45 @@ class DonasiOrgController extends Controller
                 return back()->with('failed', 'Donasi gagal ditambahkan');
             }
         }
+    }
 
+    // Format Rupiah
+    private function formatRupiah($angka)
+    {
+        return "Rp " . number_format($angka, 0, ',', '.');
     }
 
     // Halaman Detail Donasi
-    public function detaildonasi()
+    public function detaildonasi($id_donasi)
     {
-        return view('donasi-org.detaildonasi');
+        $donasi = Donasi::find($id_donasi);
+
+        if ($donasi) {
+            $totalNominal = Donatur::where('id_donasi', $donasi->id_donasi)
+                ->sum('nominal');
+            $totalNominals[$donasi->id_donasi] = $this->formatRupiah($totalNominal);
+            $donasi->formatted_target_donasi = $this->formatRupiah($donasi->target_donasi);
+        } else {
+            $totalNominals = [];
+            return redirect()->back()->with('error', 'Donasi tidak ditemukan.');
+        }
+
+        return view('donasi-org.detaildonasi', ['donasi' => $donasi, 'totalNominals' => $totalNominals]);
+    }
+
+    // Halaman Edit Donasi
+    public function editdonasiOrg($id_donasi)
+    {
+        $donasi = Donasi::find($id_donasi);
+        return view('donasi-org.editdonasi', ['donasi' => $donasi]);
+    }
+
+    // Menghapus Donasi
+    public function hapusDonasi($id_donasi)
+    {
+        $donasi = Donasi::find($id_donasi);
+        $donasi->delete();
+
+        return redirect()->route('listdonasi-Org');
     }
 }
