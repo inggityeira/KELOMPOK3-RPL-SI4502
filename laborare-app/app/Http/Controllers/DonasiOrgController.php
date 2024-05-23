@@ -94,4 +94,27 @@ class DonasiOrgController extends Controller
 
         return redirect()->route('listdonasi-Org');
     }
+
+    // Perbarui Donasi
+    public function perbaruiDonasi(Request $request, $id_donasi)
+    {
+        $donasi = Donasi:: find($id_donasi);
+        $donasi->nama_donasi = $request->nama_donasi;
+        $donasi->target_donasi = $request->target_donasi;
+        $donasi->deskripsi_donasi = $request->deskripsi_donasi;
+        $donasi->status_donasi = $request->status_donasi;
+
+        if ($request->hasFile('sampul_donasi')) {
+            $request->file('sampul_donasi')->move('donasi/', $request->file('sampul_donasi')->getClientOriginalName());
+            $donasi->sampul_donasi = $request->file('sampul_donasi')->getClientOriginalName();
+        }
+
+        $update = $donasi->save();
+
+        if ($update) {
+            return back()->with('success', 'Donasi berhasil diperbarui!');
+        } else {
+            return back()->with('failed', 'Donasi gagal diperbarui');
+        }
+    }
 }

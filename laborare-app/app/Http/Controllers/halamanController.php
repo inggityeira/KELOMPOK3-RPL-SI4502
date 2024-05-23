@@ -142,16 +142,22 @@ class halamanController extends Controller
                 $jumlah_poin += $suk->poin;
             }
         
-            $total_poin = ($jumlah_poin != 0) ? $jumlah_poin : 'n/a';
+            $total_poin = ($jumlah_poin != 0) ? $jumlah_poin : 0;
         } else {
             $total_poin = 'n/a';
         }
         
-        // dd($total_poin);
         
         return view('poin.jumlahpoin',[
             'total_poin' => $total_poin
         
+        ]);
+    }
+
+    public function tablepoint()
+    {
+        return view('poin.tablepoint', [
+            'data' => Sukarelawan::where('id_user', session('loginId'))->get()
         ]);
     }
 

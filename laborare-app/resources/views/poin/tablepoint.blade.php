@@ -23,6 +23,7 @@
     <div class="container">
         <center>
             <h3 class="fs-3 fw-semibold">RIWAYAT POINT</h3>
+            <br>
             <div class="card mx-4" style="max-width: 600px">
                 <div class="card-body">
                     <table class="table table-borderless rounded-4">
@@ -47,5 +48,7 @@
             </div>
         </center>
     </div>
+
+    <br>
 
 @endsection
