@@ -9,6 +9,8 @@ use App\Http\Controllers\KegiatanInd;
 use App\Http\Controllers\Organisasi;
 use App\Http\Controllers\rekruitasi;
 use App\Http\Controllers\detaildonasi;
+use App\Http\Controllers\donasiindividu;
+use App\Http\Controllers\DonasiOrgController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -55,7 +57,8 @@ Route::middleware(['AuthCheck', 'organisasi'])->group(function () {
     Route::post('/updateprofil-Org/{id}', [Organisasi::class, 'update'])->name('update-organisasi');
 
     // donasi organisasi
-    Route::get('/listdonasi-Org', [halamanController::class, 'listdonasiOrg']);
+    Route::get('/listdonasi-Org', [DonasiOrgController::class, 'listdonasiOrg']);
+    Route::get('/donasibaru-Org', [DonasiOrgController::class, 'donasibaru']);
 
     // rekruitasi
     Route::get('/listsukarelawan', [halamanController::class, 'listsukarelawan']);
@@ -83,7 +86,15 @@ Route::middleware(['AuthCheck', 'individu'])->group(function () {
 
     // donasi individu
     Route::get('/listdonasi-Ind', [halamanController::class, 'listdonasiInd']);
+<<<<<<< HEAD
     Route::get('/donasi/detail/{id}', [halamanController::class, 'detaildonasi'])->name('detail-donasi');
+=======
+    Route::get('/detaildonasi', [detaildonasi::class, 'detaildonasi'])->name('detaildonasi');
+    Route::get('/formulir', [donasiindividu::class, 'formulirdonasi']);
+    Route::get('/pembayaran', [donasiindividu::class, 'pembayarandonasi']);
+
+>>>>>>> 5c5e3a9fc2681c8fe7f6085875fa0f9a181c2dc1
     // poin
     Route::get('/jumlahpoin', [halamanController::class, 'jumlahpoin']);
+    Route::get('/tablepoint', [halamanController::class, 'tablepoint']);
 });

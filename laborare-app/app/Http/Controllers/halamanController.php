@@ -126,16 +126,16 @@ class halamanController extends Controller
         return view('donasi-ind.listdonasi');
     }
 
-    // donasi organisasi
-    public function listdonasiOrg()
-    {
-        return view('donasi-org.listdonasi');
-    }
-
     // poin
     public function jumlahpoin()
     {
         return view('poin.jumlahpoin');
+    }
+    public function tablepoint()
+    {
+        return view('poin.tablepoint', [
+            'data' => Sukarelawan::where('id_user', session('loginId'))->get()
+        ]);
     }
 
     // rekruitasi
