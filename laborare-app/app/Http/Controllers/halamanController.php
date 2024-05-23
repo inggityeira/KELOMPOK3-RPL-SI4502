@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Donasi;
 use App\Models\User;
+use App\Models\Donasi;
+use App\Models\Donatur;
 use App\Models\Kegiatan;
 use App\Models\Sukarelawan;
 use Illuminate\Http\Request;
@@ -187,6 +189,32 @@ class halamanController extends Controller
             'sukarelawan' => $sukarelawan,
             'kegiatan' => $kegiatan,
             'semuaKegiatan' => $semuaKegiatan,
+
         ]);
     }
+
+
+    public function detaildonasi($id)
+    {
+
+        $donasi = Donasi::findOrFail($id);
+        $donatur =  Donatur::where('id_donasi', $id)->get();
+        $jumlah_donator = 0;
+        $jumlah_donasi = 0;
+
+        foreach($donatur as $donatir){
+            $jumlah_donasi += 1;
+            $jumlah_donator += $donatir->nominal;
+        }
+
+    // dd($jumlah_donator);
+
+
+        return view('donasi-ind.detail-donasi',[
+            'donasi' => $donasi,
+            'jumalah_donatur' => $jumlah_donator,
+            'jumlah_donasi'    => $jumlah_donasi
+        ]);
+    }
+
 }
