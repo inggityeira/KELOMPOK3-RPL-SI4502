@@ -72,10 +72,10 @@
 
     {{-- Judul --}}
     <div class="d-flex justify-content-center">
-        <h1 class="judul"><strong>TAMBAH KEGIATAN</strong></h1>
+        <h1 class="judul"><strong>EDIT KEGIATAN</strong></h1>
     </div>
 
-    {{-- Form Kegiatan Baru --}}
+    {{-- Form Edit Kegiatan --}}
     <div class="containerbawah">
         <form class="row g-2" action="{{ route('updatekegiatan', ['id' => $kegiatan->id_kegiatan]) }}" method="POST"
             enctype="multipart/form-data">

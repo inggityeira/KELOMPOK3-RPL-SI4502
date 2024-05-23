@@ -62,6 +62,7 @@ Route::middleware(['AuthCheck', 'organisasi'])->group(function () {
     Route::get('/detaildonasi-Org/{id}', [DonasiOrgController::class, 'detaildonasi'])->name('detaildonasi-Org');
     Route::get('/editdonasi-Org/{id}', [DonasiOrgController::class, 'editdonasiOrg'])->name('editdonasi-Org');
     Route::post('/tambahdonasi', [DonasiOrgController::class, 'addDonasi'])->name('tambahdonasi');
+    Route::post('/updatedonasi/{id}', [DonasiOrgController::class, 'perbaruiDonasi'])->name('updatedonasi');
     Route::post('/hapusdonasi/{id}', [DonasiOrgController::class, 'hapusDonasi'])->name('hapusdonasi');
 
     // rekruitasi
