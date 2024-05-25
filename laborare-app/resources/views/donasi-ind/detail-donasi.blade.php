@@ -21,7 +21,7 @@
     </div>
     <div class="flex flex-col items-center text-center max-w-lg mx-auto">
         <h3 class="font-bold text-2xl mb-2">{{$donasi->nama_donasi}}: Donasi</h3>
-        <img src="" alt="Profile" class="w-full h-auto">
+        <img src="{{ asset('donasi/') }}" alt="Profile" class="w-full h-auto">
 
         <div class="flex justify-between w-full mt-4">
             <div class="text-start">
