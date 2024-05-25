@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Donasi;
 use App\Models\User;
-use App\Models\Donasi;
 use App\Models\Donatur;
 use App\Models\Kegiatan;
 use App\Models\Sukarelawan;
@@ -122,11 +121,28 @@ class halamanController extends Controller
     }
 
     // donasi individu
+
+    // Format Rupiah
+    private function formatRupiah($angka)
+    {
+        return "Rp " . number_format($angka, 0, ',', '.');
+    }
+
     public function listdonasiInd()
     {
-        return view('donasi-ind.listdonasi', [
-            'data'=> Donasi::all(),
-        ]);
+        $donasi = Donasi::paginate(6)->appends(request()->query());
+        $totalNominals = [];
+
+        foreach ($donasi as $item) {
+            // Format target_donasi to Rupiah
+            $item->target_donasi = $this->formatRupiah($item->target_donasi);
+
+            // Calculate and format total nominal
+            $totalNominal = Donatur::where('id_donasi', $item->id_donasi)->sum('nominal');
+            $totalNominals[$item->id_donasi] = $this->formatRupiah($totalNominal);
+        }
+
+        return view('donasi-ind.listdonasi', ['donasi' => $donasi, 'totalNominals' => $totalNominals]);
     }
 
     // poin
