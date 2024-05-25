@@ -70,7 +70,7 @@
     </div>
 
     <div class="form-group float-end text-center" style="padding: 60px">
-        <a class="btn btn-light px-4 fs-6"
+        <a href="{{ route('formulir', ['id' => $donasi->id_donasi]) }}" class="btn btn-light px-4 fs-6"
             style="width: 250px;
         height: 40px;
         line-height: 28px;

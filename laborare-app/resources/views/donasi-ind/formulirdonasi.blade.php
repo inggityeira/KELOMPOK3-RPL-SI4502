@@ -8,16 +8,15 @@
 
 @section('content')
     {{-- ISI KONTEN KALIAN DIBAWAH INI --}}
+    
     <div class="container">
-    <h5>Donasi > Detail Donasi > Formulir Donasi</h5>
     <div class="row">
         <div class="col-5 justify-content-end align-items-end text-end">
-            <img src="{{'donasi/' . $donasi->sampul_donasi}}" class="w-50 h-75" alt="">
+            <img src="{{ asset('donasi/' . $donasi->sampul_donasi) }}" class="w-50 h-75" alt="{{$donasi->nama_donasi}}">
         </div>
         <div class="col-7">
         <form action="{{route('pembayarandonasi')}}" method="GET">
             <h5>Anda Akan Berdonasi Dalam Program:</h5>
-            <h3>Bersama,</h3>
             <h3>{{$donasi->nama_donasi}}</h3>
             <h1>IDR</h1>
             <input type="text" name="nominal" class="w-50">

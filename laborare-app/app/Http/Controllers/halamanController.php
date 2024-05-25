@@ -150,25 +150,25 @@ class halamanController extends Controller
     {
         $user = User::where('id_user', session('loginId'))->first();
 
-        if($user) {
+        if ($user) {
             $user_id = $user->id_user;
-            
+
             $sukarelawan = Sukarelawan::where('id_user', $user_id)->get();
-        
+
             $jumlah_poin = 0;
-            foreach($sukarelawan as $suk) {
+            foreach ($sukarelawan as $suk) {
                 $jumlah_poin += $suk->poin;
             }
-        
+
             $total_poin = ($jumlah_poin != 0) ? $jumlah_poin : 0;
         } else {
             $total_poin = 'n/a';
         }
-        
-        
-        return view('poin.jumlahpoin',[
+
+
+        return view('poin.jumlahpoin', [
             'total_poin' => $total_poin
-        
+
         ]);
     }
 
@@ -218,19 +218,18 @@ class halamanController extends Controller
         $jumlah_donator = 0;
         $jumlah_donasi = 0;
 
-        foreach($donatur as $donatir){
+        foreach ($donatur as $donatir) {
             $jumlah_donasi += 1;
             $jumlah_donator += $donatir->nominal;
         }
 
-    // dd($jumlah_donator);
+        // dd($jumlah_donator);
 
 
-        return view('donasi-ind.detail-donasi',[
+        return view('donasi-ind.detail-donasi', [
             'donasi' => $donasi,
             'jumalah_donatur' => $jumlah_donator,
             'jumlah_donasi'    => $jumlah_donasi
         ]);
     }
-
 }
