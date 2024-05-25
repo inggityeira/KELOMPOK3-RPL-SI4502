@@ -6,7 +6,7 @@
     {{-- ISI CSS KALIAN, BISA EKSTERNAL/INTERNAL --}}
     <style>
         .donasi-banner {
-            height: 300px;
+            height: 250px;
         }
 
         .donasi-banner img {
@@ -21,6 +21,7 @@
             margin-top: 40px;
             margin-left: 130px;
         }
+
         .pagination-container .pagination .page-link {
             color: white;
             background-color: black;
@@ -31,7 +32,7 @@
 
 @section('content')
     {{-- ISI KONTEN KALIAN DIBAWAH INI --}}
-    
+
     {{-- Breadscrumb --}}
     <div style="margin-top:20px; margin-left:50px;">
         <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
@@ -44,12 +45,12 @@
     </div>
 
     {{-- Banner --}}
-<div class="donasi-banner" style="position: relative; text-align: center;">
-    <h2 style="position: absolute; top: 100px; left: 20%; color: white;  padding: 10px;">
-        <strong>Tindakan Kecil, Dampak Besar: Donasikan Sekarang!</strong>
-    </h2>
-    <img src="{{ url('/img/DonasiInd.jpg') }}" class="img-fluid" alt="donasi">
-</div>
+    <div class="donasi-banner" style="position: relative; text-align: center;">
+        <h2 style="position: absolute; top: 100px; left: 20%; color: white;  padding: 10px;">
+            <strong>Tindakan Kecil, Dampak Besar: Donasikan Sekarang!</strong>
+        </h2>
+        <img src="{{ url('/img/DonasiInd.jpg') }}" class="img-fluid" alt="donasi">
+    </div>
 
 
     {{-- Judul --}}
@@ -87,6 +88,6 @@
                 {{ $donasi->links('pagination::bootstrap-4') }}
             </div>
         </center>
-        
+
     </div>
 @endsection
