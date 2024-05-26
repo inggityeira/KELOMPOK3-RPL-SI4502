@@ -8,43 +8,42 @@
 
 @section('content')
     {{-- ISI KONTEN KALIAN DIBAWAH INI --}}
-    
+
     <div class="container">
-    <div class="row">
-        <div class="col-5 justify-content-end align-items-end text-end">
-            <img src="{{ asset('donasi/' . $donasi->sampul_donasi) }}" class="w-50 h-75" alt="{{$donasi->nama_donasi}}">
-        </div>
-        <div class="col-7">
-        <form action="{{route('pembayarandonasi')}}" method="GET">
-            <h5>Anda Akan Berdonasi Dalam Program:</h5>
-            <h3>{{$donasi->nama_donasi}}</h3>
-            <h1>IDR</h1>
-            <input type="text" name="nominal" class="w-50">
-        </div>
-    </div>
-    <div class="row w-100">
-        <div class="col-2">
-            &nbsp;
-        </div>
-        <div class="col-8">
-            <h1 class="justify-content-center align-items-center text-center">Data Diri</h1>
-            
+        <form action="{{ route('pembayarandonasi_store', ['id' => $donasi->id_donasi]) }}" method="POST">
+
             @csrf
-            @method('POST')
-            <div class="col-12">
-                <h4 class="text-start">Nama Lengkap</h4>
-                <input type="text" class="w-100" name="nama_lengkap">
-                <h4>Tuliskan Pesan atau Doa</h4>
-                <textarea name="pesan" rows="5" cols="88"></textarea>
-                <div class="row justify-content-center align-items-center">
-                    <button type="submit" class="btn btn-light text-dark fw-bold w-25 mt-2">Donasi</button>
+            
+            <div class="row mb-3">
+                <div class="col-5 text-end">
+                    <img src="{{ asset('donasi/' . $donasi->sampul_donasi) }}" width="300px;" height="300px;" alt="{{ $donasi->nama_donasi }}">
                 </div>
+            
+                <div class="col-5" style="margin-top: 50px;">
+                    <h2>Anda Akan Berdonasi Dalam Program:</h2>
+                    <h2><strong>{{ $donasi->nama_donasi }}</strong></h2>
+                    <div class="my-3">
+                        <label class="form-label">
+                            <h1><strong>IDR</strong></h1>
+                        </label>
+                        <input name="nominal" type="number" class="form-control" style="background-color: #FFFFFF;" required>
+                    </div>
+                </div>
+            
+                <h1 class="text-center" style="font-size: 25px; margin-top:10px;"><strong>DATA DIRI</strong></h1>
             </div>
-            </form>
-        </div>
-        <div class="col-2">
-            &nbsp;
-        </div>
+            
+            <div class="d-flex flex-column align-items-center">
+                <div class="mb-3" style="width: 700px;">
+                    <label class="form-label fw-semibold">Nama Lengkap</label>
+                    <div style="background-color: #FFFFFF; color:black;" class="p-2 px-3 rounded">{{ $user->nama_user }}</div>
+                </div>
+                <div class="mb-3" style="width: 700px;">
+                    <label for="nama_lengkap" class="form-label fw-semibold">Tuliskan Pesan dan Doa</label>
+                    <textarea name="pesan" rows="5" cols="85" class="rounded" style="background-color: #FFFFFF;"></textarea>
+                </div>
+                <button type="submit" class="btn btn-light text-dark" style="width: 150px;"><strong>Donasi</strong></button>
+            </div>
+        </form>
     </div>
-</div>
 @endsection
