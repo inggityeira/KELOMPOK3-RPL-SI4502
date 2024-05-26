@@ -54,7 +54,7 @@
 
 
     {{-- Judul --}}
-    <div>
+    <div class="mb-3">
         <h1 class="judul"><strong>Bergabunglah Dalam Memberi,</strong></h1>
     </div>
 

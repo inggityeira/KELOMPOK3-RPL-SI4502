@@ -22,9 +22,9 @@
 
     <div class="container">
         <center>
-            <h3 class="fs-3 fw-semibold">RIWAYAT POINT</h3>
+            <h3 class="fw-semibold" style="font-size: 25px;">RIWAYAT POINT</h3>
             <br>
-            <div class="card mx-4" style="max-width: 600px">
+            <div class="card mx-4" style="width: 850px; margin-bottom:150px; margin-top:20px;">
                 <div class="card-body">
                     <table class="table table-borderless rounded-4">
                         <thead class="table-secondary">
