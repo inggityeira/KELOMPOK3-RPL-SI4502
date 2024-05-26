@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Donasi;
 use App\Models\Donatur;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class donasiindividu extends Controller
@@ -12,26 +13,30 @@ class donasiindividu extends Controller
     public function formulirdonasi($id_donasi)
     {
         $donasi = Donasi::find($id_donasi);
-        return view('donasi-ind.formulirdonasi', compact('donasi'));
+        $user = User::where('id_user', session('loginId'))->first();
+        return view('donasi-ind.formulirdonasi', compact('donasi', 'user'));
     }
 
-
-    public function pembayarandonasi(Request $request)
+    // Halaman pembayaran
+    public function pembayarandonasi($id_donasi)
     {
-        $nominal = $request->nominal;
-        $pesan = $request->pesan;
-        return view('donasi-ind.pembayarandonasi', compact('nominal', 'pesan'));
+        $donasi = Donasi::find($id_donasi);
+        return view('donasi-ind.pembayarandonasi', compact('donasi'));
     }
 
-    
+    // Input ke tabel donatur
     public function pembayarandonasi_store(Request $request, $id_donasi)
     {
-        $donasi = Donatur::create([
-            "id_user" => session('loginId'),
-            "pesan" => $request->pesan,
-            "nominal" => $request->nominal,
-            "id_donasi" => $id_donasi
-        ]);
-        return redirect('/listdonasi-Ind');
+        $donatur = new Donatur();
+        $user = User::where('id_user', session('loginId'))->first();
+
+        $donatur->id_user = $user->id_user;
+        $donatur->pesan = $request->pesan;
+        $donatur->nominal = $request->nominal;
+        $donatur->id_donasi = $id_donasi;
+
+        $donatur->save();
+
+        return redirect()->route('pembayarandonasi', ['id' => $id_donasi]);
     }
 }
