@@ -26,10 +26,10 @@
             </li>
             <li class="nav-item">
                 @if ($user->peran_user == 'Organisasi')
-                    <a class="{{ Request::is('listdonasi-Org*') ? 'nav-link active' : 'nav-link' }} mx-5"
+                    <a class="{{ Request::is('listdonasi-Org*', 'donasibaru-Org*', 'detaildonasi-Org*', 'editdonasi-Org*') ? 'nav-link active' : 'nav-link' }} mx-5"
                         aria-current="page" href="/listdonasi-Org" style="color: white;"><strong>DONASI</strong></a>
                 @elseif($user->peran_user == 'Individu')
-                    <a class="{{ Request::is('listdonasi-Ind*') ? 'nav-link active' : 'nav-link' }} mx-5"
+                    <a class="{{ Request::is('listdonasi-Ind*', 'donasi/detail*', 'formulir*', 'pembayaran*') ? 'nav-link active' : 'nav-link' }} mx-5"
                         aria-current="page" href="/listdonasi-Ind" style="color: white;"><strong>DONASI</strong></a>
                 @endif
             </li>
@@ -39,7 +39,7 @@
                         aria-current="page" href="/listsukarelawan"
                         style="color: white;"><strong>REKRUITASI</strong></a>
                 @elseif($user->peran_user == 'Individu')
-                    <a class="{{ Request::is('jumlahpoin*') ? 'nav-link active' : 'nav-link' }} mx-5"
+                    <a class="{{ Request::is('jumlahpoin*', 'tablepoint*') ? 'nav-link active' : 'nav-link' }} mx-5"
                         aria-current="page" href="/jumlahpoin" style="color: white;"><strong>POIN</strong></a>
                 @endif
             </li>
